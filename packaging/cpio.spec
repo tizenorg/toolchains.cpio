@@ -15,6 +15,7 @@ URL:        http://www.gnu.org/software/cpio/
 Source0:    ftp://ftp.gnu.org/gnu/cpio/cpio-%{version}.tar.gz
 Source1:    cpio.1
 Source100:  cpio.yaml
+Source1001: packaging/cpio.manifest 
 Patch0:     cpio-2.6-setLocale.patch
 Patch1:     cpio-2.9-rh.patch
 Patch2:     cpio-2.9-exitCode.patch
@@ -60,6 +61,7 @@ Install cpio if you need a program to manage file archives.
 # << setup
 
 %build
+cp %{SOURCE1001} .
 # >> build pre
 # << build pre
 
@@ -91,6 +93,7 @@ rm -rf %{buildroot}%{_prefix}/libexec/rmt
 
 
 %files
+%manifest cpio.manifest
 %defattr(-,root,root,-)
 # >> files
 %doc COPYING
