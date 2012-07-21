@@ -1,365 +1,338 @@
-/* Miscellaneous error functions
+/* Error handler for noninteractive utilities
+   Copyright (C) 1990-1998, 2000-2005, 2006 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
 
-   Copyright (C) 2005, 2007 Free Software Foundation, Inc.
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2, or (at your option)
+   any later version.
 
-   This program is free software; you can redistribute it and/or modify it
-   under the terms of the GNU General Public License as published by the
-   Free Software Foundation; either version 3, or (at your option) any later
-   version.
-
-   This program is distributed in the hope that it will be useful, but
-   WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-   Public License for more details.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License along
-   with this program; if not, write to the Free Software Foundation, Inc.,
-   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
+   with this program; if not, write to the Free Software Foundation,
+   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
 
-#include <system.h>
-#include <paxlib.h>
-#include <quote.h>
-#include <quotearg.h>
+/* Written by David MacKenzie <djm@gnu.ai.mit.edu>.  */
 
-/* Decode MODE from its binary form in a stat structure, and encode it
-   into a 9-byte string STRING, terminated with a NUL.  */
+#if !_LIBC
+# include <config.h>
+#endif
 
-void
-pax_decode_mode (mode_t mode, char *string)
+#include "error.h"
+
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#if !_LIBC && ENABLE_NLS
+# include "gettext.h"
+#endif
+
+#ifdef _LIBC
+# include <libintl.h>
+# include <stdbool.h>
+# include <stdint.h>
+# include <wchar.h>
+# define mbsrtowcs __mbsrtowcs
+#endif
+
+#if USE_UNLOCKED_IO
+# include "unlocked-io.h"
+#endif
+
+#ifndef _
+# define _(String) String
+#endif
+
+/* If NULL, error will flush stdout, then print on stderr the program
+   name, a colon and a space.  Otherwise, error will call this
+   function without parameters instead.  */
+void (*error_print_progname) (void);
+
+/* This variable is incremented each time `error' is called.  */
+unsigned int error_message_count;
+
+#ifdef _LIBC
+/* In the GNU C library, there is a predefined variable for this.  */
+
+# define program_name program_invocation_name
+# include <errno.h>
+# include <limits.h>
+# include <libio/libioP.h>
+
+/* In GNU libc we want do not want to use the common name `error' directly.
+   Instead make it a weak alias.  */
+extern void __error (int status, int errnum, const char *message, ...)
+     __attribute__ ((__format__ (__printf__, 3, 4)));
+extern void __error_at_line (int status, int errnum, const char *file_name,
+			     unsigned int line_number, const char *message,
+			     ...)
+     __attribute__ ((__format__ (__printf__, 5, 6)));;
+# define error __error
+# define error_at_line __error_at_line
+
+# include <libio/iolibio.h>
+# define fflush(s) INTUSE(_IO_fflush) (s)
+# undef putc
+# define putc(c, fp) INTUSE(_IO_putc) (c, fp)
+
+# include <bits/libc-lock.h>
+
+#else /* not _LIBC */
+
+# if !HAVE_DECL_STRERROR_R && STRERROR_R_CHAR_P
+#  ifndef HAVE_DECL_STRERROR_R
+"this configure-time declaration test was not run"
+#  endif
+char *strerror_r ();
+# endif
+
+/* The calling program should define program_name and set it to the
+   name of the executing program.  */
+extern char *program_name;
+
+# if HAVE_STRERROR_R || defined strerror_r
+#  define __strerror_r strerror_r
+# endif	/* HAVE_STRERROR_R || defined strerror_r */
+#endif	/* not _LIBC */
+
+static void
+print_errno_message (int errnum)
 {
-  *string++ = mode & S_IRUSR ? 'r' : '-';
-  *string++ = mode & S_IWUSR ? 'w' : '-';
-  *string++ = (mode & S_ISUID
-	       ? (mode & S_IXUSR ? 's' : 'S')
-	       : (mode & S_IXUSR ? 'x' : '-'));
-  *string++ = mode & S_IRGRP ? 'r' : '-';
-  *string++ = mode & S_IWGRP ? 'w' : '-';
-  *string++ = (mode & S_ISGID
-	       ? (mode & S_IXGRP ? 's' : 'S')
-	       : (mode & S_IXGRP ? 'x' : '-'));
-  *string++ = mode & S_IROTH ? 'r' : '-';
-  *string++ = mode & S_IWOTH ? 'w' : '-';
-  *string++ = (mode & S_ISVTX
-	       ? (mode & S_IXOTH ? 't' : 'T')
-	       : (mode & S_IXOTH ? 'x' : '-'));
-  *string = '\0';
-}
+  char const *s;
 
-/* Report an error associated with the system call CALL and the
-   optional name NAME.  */
-void
-call_arg_error (char const *call, char const *name)
-{
-  int e = errno;
-  /* TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
-     Directly translating this to another language will not work, first because
-     %s itself is not translated.
-     Translate it as `%s: Function %s failed'. */
-  ERROR ((0, e, _("%s: Cannot %s"), quotearg_colon (name), call));
-}
-
-/* Report a fatal error associated with the system call CALL and
-   the optional file name NAME.  */
-void
-call_arg_fatal (char const *call, char const *name)
-{
-  int e = errno;
-  /* TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
-     Directly translating this to another language will not work, first because
-     %s itself is not translated.
-     Translate it as `%s: Function %s failed'. */
-  FATAL_ERROR ((0, e, _("%s: Cannot %s"), quotearg_colon (name),  call));
-}
-
-/* Report a warning associated with the system call CALL and
-   the optional file name NAME.  */
-void
-call_arg_warn (char const *call, char const *name)
-{
-  int e = errno;
-  /* TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
-     Directly translating this to another language will not work, first because
-     %s itself is not translated.
-     Translate it as `%s: Function %s failed'. */
-  WARN ((0, e, _("%s: Warning: Cannot %s"), quotearg_colon (name), call));
-}
-
-void
-chmod_error_details (char const *name, mode_t mode)
-{
-  int e = errno;
-  char buf[10];
-  pax_decode_mode (mode, buf);
-  ERROR ((0, e, _("%s: Cannot change mode to %s"),
-	  quotearg_colon (name), buf));
-}
-
-void
-chown_error_details (char const *name, uid_t uid, gid_t gid)
-{
-  int e = errno;
-  ERROR ((0, e, _("%s: Cannot change ownership to uid %lu, gid %lu"),
-	  quotearg_colon (name), (unsigned long) uid, (unsigned long) gid));
-}
-
-void
-close_error (char const *name)
-{
-  call_arg_error ("close", name);
-}
-
-void
-close_warn (char const *name)
-{
-  call_arg_warn ("close", name);
-}
-
-void
-exec_fatal (char const *name)
-{
-  call_arg_fatal ("exec", name);
-}
-
-void
-link_error (char const *target, char const *source)
-{
-  int e = errno;
-  ERROR ((0, e, _("%s: Cannot hard link to %s"),
-	  quotearg_colon (source), quote_n (1, target)));
-}
-
-void
-mkdir_error (char const *name)
-{
-  call_arg_error ("mkdir", name);
-}
-
-void
-mkfifo_error (char const *name)
-{
-  call_arg_error ("mkfifo", name);
-}
-
-void
-mknod_error (char const *name)
-{
-  call_arg_error ("mknod", name);
-}
-
-void
-open_error (char const *name)
-{
-  call_arg_error ("open", name);
-}
-
-void
-open_fatal (char const *name)
-{
-  call_arg_fatal ("open", name);
-}
-
-void
-open_warn (char const *name)
-{
-  call_arg_warn ("open", name);
-}
-
-void
-read_error (char const *name)
-{
-  call_arg_error ("read", name);
-}
-
-void
-read_error_details (char const *name, off_t offset, size_t size)
-{
-  char buf[UINTMAX_STRSIZE_BOUND];
-  int e = errno;
-  ERROR ((0, e,
-	  ngettext ("%s: Read error at byte %s, while reading %lu byte",
-		    "%s: Read error at byte %s, while reading %lu bytes",
-		    size),
-	  quotearg_colon (name), STRINGIFY_BIGINT (offset, buf),
-	  (unsigned long) size));
-}
-
-void
-read_warn_details (char const *name, off_t offset, size_t size)
-{
-  char buf[UINTMAX_STRSIZE_BOUND];
-  int e = errno;
-  WARN ((0, e,
-	 ngettext ("%s: Warning: Read error at byte %s, while reading %lu byte",
-		   "%s: Warning: Read error at byte %s, while reading %lu bytes",
-		   size),
-	 quotearg_colon (name), STRINGIFY_BIGINT (offset, buf),
-	 (unsigned long) size));
-}
-
-void
-read_fatal (char const *name)
-{
-  call_arg_fatal ("read", name);
-}
-
-void
-read_fatal_details (char const *name, off_t offset, size_t size)
-{
-  char buf[UINTMAX_STRSIZE_BOUND];
-  int e = errno;
-  FATAL_ERROR ((0, e,
-		ngettext ("%s: Read error at byte %s, while reading %lu byte",
-			  "%s: Read error at byte %s, while reading %lu bytes",
-			  size),
-		quotearg_colon (name), STRINGIFY_BIGINT (offset, buf),
-		(unsigned long) size));
-}
-
-void
-readlink_error (char const *name)
-{
-  call_arg_error ("readlink", name);
-}
-
-void
-readlink_warn (char const *name)
-{
-  call_arg_warn ("readlink", name);
-}
-
-void
-rmdir_error (char const *name)
-{
-  call_arg_error ("rmdir", name);
-}
-
-void
-savedir_error (char const *name)
-{
-  call_arg_error ("savedir", name);
-}
-
-void
-savedir_warn (char const *name)
-{
-  call_arg_warn ("savedir", name);
-}
-
-void
-seek_error (char const *name)
-{
-  call_arg_error ("seek", name);
-}
-
-void
-seek_error_details (char const *name, off_t offset)
-{
-  char buf[UINTMAX_STRSIZE_BOUND];
-  int e = errno;
-  ERROR ((0, e, _("%s: Cannot seek to %s"),
-	  quotearg_colon (name),
-	  STRINGIFY_BIGINT (offset, buf)));
-}
-
-void
-seek_warn (char const *name)
-{
-  call_arg_warn ("seek", name);
-}
-
-void
-seek_warn_details (char const *name, off_t offset)
-{
-  char buf[UINTMAX_STRSIZE_BOUND];
-  int e = errno;
-  WARN ((0, e, _("%s: Warning: Cannot seek to %s"),
-	 quotearg_colon (name),
-	 STRINGIFY_BIGINT (offset, buf)));
-}
-
-void
-symlink_error (char const *contents, char const *name)
-{
-  int e = errno;
-  ERROR ((0, e, _("%s: Cannot create symlink to %s"),
-	  quotearg_colon (name), quote_n (1, contents)));
-}
-
-void
-stat_fatal (char const *name)
-{
-  call_arg_fatal ("stat", name);
-}
-
-void
-stat_error (char const *name)
-{
-  call_arg_error ("stat", name);
-}
-
-void
-stat_warn (char const *name)
-{
-  call_arg_warn ("stat", name);
-}
-
-void
-truncate_error (char const *name)
-{
-  call_arg_error ("truncate", name);
-}
-
-void
-truncate_warn (char const *name)
-{
-  call_arg_warn ("truncate", name);
-}
-
-void
-unlink_error (char const *name)
-{
-  call_arg_error ("unlink", name);
-}
-
-void
-utime_error (char const *name)
-{
-  call_arg_error ("utime", name);
-}
-
-void
-waitpid_error (char const *name)
-{
-  call_arg_error ("waitpid", name);
-}
-
-void
-write_error (char const *name)
-{
-  call_arg_error ("write", name);
-}
-
-void
-write_error_details (char const *name, size_t status, size_t size)
-{
-  if (status == 0)
-    write_error (name);
+#if defined HAVE_STRERROR_R || _LIBC
+  char errbuf[1024];
+# if STRERROR_R_CHAR_P || _LIBC
+  s = __strerror_r (errnum, errbuf, sizeof errbuf);
+# else
+  if (__strerror_r (errnum, errbuf, sizeof errbuf) == 0)
+    s = errbuf;
   else
-    ERROR ((0, 0,
-	    ngettext ("%s: Wrote only %lu of %lu byte",
-		      "%s: Wrote only %lu of %lu bytes",
-		      size),
-	    name, (unsigned long int) status, (unsigned long int) size));
+    s = 0;
+# endif
+#else
+  s = strerror (errnum);
+#endif
+
+#if !_LIBC
+  if (! s)
+    s = _("Unknown system error");
+#endif
+
+#if _LIBC
+  __fxprintf (NULL, ": %s", s);
+#else
+  fprintf (stderr, ": %s", s);
+#endif
 }
 
-void
-write_fatal (char const *name)
+static void
+error_tail (int status, int errnum, const char *message, va_list args)
 {
-  call_arg_fatal ("write", name);
+#if _LIBC
+  if (_IO_fwide (stderr, 0) > 0)
+    {
+# define ALLOCA_LIMIT 2000
+      size_t len = strlen (message) + 1;
+      wchar_t *wmessage = NULL;
+      mbstate_t st;
+      size_t res;
+      const char *tmp;
+      bool use_malloc = false;
+
+      while (1)
+	{
+	  if (__libc_use_alloca (len * sizeof (wchar_t)))
+	    wmessage = (wchar_t *) alloca (len * sizeof (wchar_t));
+	  else
+	    {
+	      if (!use_malloc)
+		wmessage = NULL;
+
+	      wchar_t *p = (wchar_t *) realloc (wmessage,
+						len * sizeof (wchar_t));
+	      if (p == NULL)
+		{
+		  free (wmessage);
+		  fputws_unlocked (L"out of memory\n", stderr);
+		  return;
+		}
+	      wmessage = p;
+	      use_malloc = true;
+	    }
+
+	  memset (&st, '\0', sizeof (st));
+	  tmp = message;
+
+	  res = mbsrtowcs (wmessage, &tmp, len, &st);
+	  if (res != len)
+	    break;
+
+	  if (__builtin_expect (len >= SIZE_MAX / 2, 0))
+	    {
+	      /* This really should not happen if everything is fine.  */
+	      res = (size_t) -1;
+	      break;
+	    }
+
+	  len *= 2;
+	}
+
+      if (res == (size_t) -1)
+	{
+	  /* The string cannot be converted.  */
+	  if (use_malloc)
+	    {
+	      free (wmessage);
+	      use_malloc = false;
+	    }
+	  wmessage = (wchar_t *) L"???";
+	}
+
+      __vfwprintf (stderr, wmessage, args);
+
+      if (use_malloc)
+	free (wmessage);
+    }
+  else
+#endif
+    vfprintf (stderr, message, args);
+  va_end (args);
+
+  ++error_message_count;
+  if (errnum)
+    print_errno_message (errnum);
+#if _LIBC
+  __fxprintf (NULL, "\n");
+#else
+  putc ('\n', stderr);
+#endif
+  fflush (stderr);
+  if (status)
+    exit (status);
 }
 
+
+/* Print the program name and error message MESSAGE, which is a printf-style
+   format string with optional args.
+   If ERRNUM is nonzero, print its corresponding system error message.
+   Exit with status STATUS if it is nonzero.  */
 void
-chdir_fatal (char const *name)
+error (int status, int errnum, const char *message, ...)
 {
-  call_arg_fatal ("chdir", name);
+  va_list args;
+
+#if defined _LIBC && defined __libc_ptf_call
+  /* We do not want this call to be cut short by a thread
+     cancellation.  Therefore disable cancellation for now.  */
+  int state = PTHREAD_CANCEL_ENABLE;
+  __libc_ptf_call (pthread_setcancelstate, (PTHREAD_CANCEL_DISABLE, &state),
+		   0);
+#endif
+
+  fflush (stdout);
+#ifdef _LIBC
+  _IO_flockfile (stderr);
+#endif
+  if (error_print_progname)
+    (*error_print_progname) ();
+  else
+    {
+#if _LIBC
+      __fxprintf (NULL, "%s: ", program_name);
+#else
+      fprintf (stderr, "%s: ", program_name);
+#endif
+    }
+
+  va_start (args, message);
+  error_tail (status, errnum, message, args);
+
+#ifdef _LIBC
+  _IO_funlockfile (stderr);
+# ifdef __libc_ptf_call
+  __libc_ptf_call (pthread_setcancelstate, (state, NULL), 0);
+# endif
+#endif
 }
+
+/* Sometimes we want to have at most one error per line.  This
+   variable controls whether this mode is selected or not.  */
+int error_one_per_line;
+
+void
+error_at_line (int status, int errnum, const char *file_name,
+	       unsigned int line_number, const char *message, ...)
+{
+  va_list args;
+
+  if (error_one_per_line)
+    {
+      static const char *old_file_name;
+      static unsigned int old_line_number;
+
+      if (old_line_number == line_number
+	  && (file_name == old_file_name
+	      || strcmp (old_file_name, file_name) == 0))
+	/* Simply return and print nothing.  */
+	return;
+
+      old_file_name = file_name;
+      old_line_number = line_number;
+    }
+
+#if defined _LIBC && defined __libc_ptf_call
+  /* We do not want this call to be cut short by a thread
+     cancellation.  Therefore disable cancellation for now.  */
+  int state = PTHREAD_CANCEL_ENABLE;
+  __libc_ptf_call (pthread_setcancelstate, (PTHREAD_CANCEL_DISABLE, &state),
+		   0);
+#endif
+
+  fflush (stdout);
+#ifdef _LIBC
+  _IO_flockfile (stderr);
+#endif
+  if (error_print_progname)
+    (*error_print_progname) ();
+  else
+    {
+#if _LIBC
+      __fxprintf (NULL, "%s:", program_name);
+#else
+      fprintf (stderr, "%s:", program_name);
+#endif
+    }
+
+#if _LIBC
+  __fxprintf (NULL, file_name != NULL ? "%s:%d: " : " ",
+	      file_name, line_number);
+#else
+  fprintf (stderr, file_name != NULL ? "%s:%d: " : " ",
+	   file_name, line_number);
+#endif
+
+  va_start (args, message);
+  error_tail (status, errnum, message, args);
+
+#ifdef _LIBC
+  _IO_funlockfile (stderr);
+# ifdef __libc_ptf_call
+  __libc_ptf_call (pthread_setcancelstate, (state, NULL), 0);
+# endif
+#endif
+}
+
+#ifdef _LIBC
+/* Make the weak alias.  */
+# undef error
+# undef error_at_line
+weak_alias (__error, error)
+weak_alias (__error_at_line, error_at_line)
+#endif

@@ -1,11 +1,11 @@
 /* Definitions for communicating with a remote tape drive.
 
-   Copyright (C) 1988, 1992, 1996, 1997, 2001, 2003, 2004, 2007 Free
+   Copyright (C) 1988, 1992, 1996, 1997, 2001, 2003, 2004 Free
    Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -61,7 +61,7 @@ extern bool force_local_option;
 
 #define rmtcreat(dev_name, mode, command) \
    (_remdev (dev_name) \
-    ? rmt_open__ (dev_name, O_CREAT | O_WRONLY, __REM_BIAS, command) \
+    ? rmt_open__ (dev_name, 1 | O_CREAT, __REM_BIAS, command) \
     : creat (dev_name, mode))
 
 #define rmtlstat(dev_name, muffer) \

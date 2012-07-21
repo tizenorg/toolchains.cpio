@@ -1,11 +1,11 @@
 /* Functions for communicating with a remote tape drive.
 
    Copyright (C) 1988, 1992, 1994, 1996, 1997, 1999, 2000, 2001, 2004,
-   2005, 2006, 2007 Free Software Foundation, Inc.
+   2005, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -425,10 +425,7 @@ rmt_open__ (const char *file_name, int open_mode, int bias,
   }
 
   /* FIXME: Should somewhat validate the decoding, here.  */
-  if (gethostbyname (remote_host) == NULL)
-    error (EXIT_ON_EXEC_ERROR, 0, _("Cannot connect to %s: resolve failed"),
-	   remote_host);
-	  
+
   if (remote_user && *remote_user == '\0')
     remote_user = 0;
 
@@ -464,7 +461,7 @@ rmt_open__ (const char *file_name, int open_mode, int bias,
 	return -1;
 #endif
       }
-    remote_shell_basename = last_component (remote_shell);
+    remote_shell_basename = base_name (remote_shell);
 
     /* Set up the pipes for the `rsh' command, and fork.  */
 
@@ -573,8 +570,7 @@ rmt_read__ (int handle, char *buffer, size_t length)
 
   sprintf (command_buffer, "R%lu\n", (unsigned long) length);
   if (do_command (handle, command_buffer) == -1
-      || (status = get_status (handle)) == SAFE_READ_ERROR
-      || status > length)
+      || (status = get_status (handle)) == SAFE_READ_ERROR)
     return SAFE_READ_ERROR;
 
   for (counter = 0; counter < status; counter += rlen, buffer += rlen)
@@ -710,12 +706,6 @@ rmt_ioctl__ (int handle, int operation, char *argument)
 	    || (status = get_status (handle), status == -1))
 	  return -1;
 
-	if (status > sizeof (struct mtop))
-	  {
-	    errno = EOVERFLOW;
-	    return -1;
-	  }
-	
 	for (; status > 0; status -= counter, argument += counter)
 	  {
 	    counter = safe_read (READ_SIDE (handle), argument, status);

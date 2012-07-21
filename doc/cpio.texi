@@ -15,8 +15,7 @@
 @copying
 This manual documents GNU cpio (version @value{VERSION}, @value{UPDATED}).
 
-Copyright @copyright{} 1995, 2001, 2002, 2004, 2010 Free Software
-Foundation, Inc.
+Copyright @copyright{} 1995, 2001, 2002, 2004 Free Software Foundation, Inc.
 @sp 1
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -235,7 +234,7 @@ unreadable.
 cpio @{-o|--create@} [-0acvABLV] [-C bytes] [-H format]
 [-M message] [-O [[user@@]host:]archive] [-F [[user@@]host:]archive]
 [--file=[[user@@]host:]archive] [--format=format]
-[--message=message] [--null] [--reset-access-time] [--verbose]
+[--message=message][--null] [--reset-access-time] [--verbose]
 [--dot] [--append] [--block-size=blocks] [--dereference]
 [--io-size=bytes] [--rsh-command=command] [--help] [--version]
 < name-list [> archive]
@@ -265,8 +264,8 @@ cpio @{-i|--extract@} [-bcdfmnrtsuvBSV] [-C bytes] [-E file]
 [--swap-halfwords] [--io-size=bytes] [--pattern-file=file]
 [--format=format] [--owner=[user][:.][group]]
 [--no-preserve-owner] [--message=message] [--help] [--version]
-[--no-absolute-filenames] [--sparse] [-only-verify-crc] [--to-stdout]
-[-quiet] [--rsh-command=command] [pattern...] [< archive]
+[--no-absolute-filenames] [--sparse] [-only-verify-crc] [-quiet]
+[--rsh-command=command] [pattern...] [< archive]
 @end example
 
 @node Copy-pass mode, Options, Copy-in mode, Invoking cpio
@@ -370,32 +369,31 @@ ordinarily indicate a remote host name.
 
 @item -H @var{format}
 @itemx --format=@var{format}
-Use archive format @var{format}.  The valid formats are listed below
-with file size limits for individual files in parentheses; the same
+Use archive format @var{format}.  The valid formats are listed below; the same
 names are also recognized in all-caps.  The default in copy-in mode is
 to automatically detect the archive format, and in copy-out mode is
 @samp{bin}.
 
 @table @samp
 @item bin  
-The obsolete binary format. (2147483647 bytes)
+The obsolete binary format.
 
 @item odc
-The old (POSIX.1) portable format. (8589934591 bytes)
+The old (POSIX.1) portable format.
 
 @item newc
 The new (SVR4) portable format, which supports file systems having more
-than 65536 i-nodes. (4294967295 bytes)
+than 65536 i-nodes.
 
 @item crc
 The new (SVR4) portable format with a checksum added.
 
 @item tar
-The old tar format. (8589934591 bytes)
+The old tar format.
 
 @item ustar
 The POSIX.1 tar format.  Also recognizes GNU tar archives, which are
-similar but not identical. (8589934591 bytes)
+similar but not identical.
 
 @item hpbin
 The obsolete binary format used by HPUX's cpio (which stores device
@@ -533,9 +531,6 @@ used in copy-in and copy-pass modes.
 @item -t
 @itemx --list
 Print a table of contents of the input.
-
-@item --to-stdout
-Extract files to standard output.  This option may be used in copy-in mode.
 
 @item -u
 @itemx --unconditional

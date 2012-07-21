@@ -1,10 +1,10 @@
 /* userspec.c -- Parse a user and group string.
-   Copyright (C) 1989, 1990, 1991, 1992, 2001, 2004, 2005, 2007, 2010
-   Free Software Foundation, Inc.
+   Copyright (C) 1989, 1990, 1991, 1992, 2001, 
+   2004, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -20,10 +20,36 @@
 /* Written by David MacKenzie <djm@gnu.ai.mit.edu>.  */
 
 #include <system.h>
+
+#ifdef __GNUC__
+#define alloca __builtin_alloca
+#else
+#ifdef HAVE_ALLOCA_H
 #include <alloca.h>
+#else
+#ifdef _AIX
+ #pragma alloca
+#else
+char *alloca ();
+#endif
+#endif
+#endif
+
 #include <stdio.h>
 #include <ctype.h>
 #include <sys/types.h>
+#include <pwd.h>
+#include <grp.h>
+
+#if !HAVE_DECL_GETPWNAM
+extern struct passwd *getpwnam (const char *name);
+#endif
+#if !HAVE_DECL_GETGRNAM
+extern struct group *getgrnam (const char *name);
+#endif
+#if !HAVE_DECL_GETGRGID
+extern struct group *getgrgid (gid_t gid);
+#endif
 
 #ifndef HAVE_ENDPWENT
 # define endpwent()

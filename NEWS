@@ -1,39 +1,8 @@
-GNU cpio NEWS -- history of user-visible changes. 2010-03-10
-Copyright (C) 2003, 2004, 2005, 2006, 2007, 2009,
-2010 Free Software Foundation, Inc.
+GNU cpio NEWS -- history of user-visible changes. 2007-06-08
+Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 See the end of file for copying conditions.
 
 Please send cpio bug reports to <bug-cpio@gnu.org>.
-
-Version 2.11 - Sergey Poznyakoff, 2010-03-10
-
-* Fix mt build.
-* In copy-in mode, if directory attributes do not permit writing to it,
-setting them is delayed until the end of run. This allows to correctly
-extract files in such directories.
-* In copy-in mode, permissions of a directory are restored if it
-appears in the file list after files in it (find . -depth). This fixes
-debian bug #458079.
-* Fix possible memory overflow in the rmt client code (CVE-2010-0624).
-
-
-Version 2.10 - Sergey Poznyakoff, 2009-06-20
-
-* Ensure record headers are properly packed (fix builds on ARM).
-* Fix exit codes to reliably indicate success or failure of the operation.
-* Fix large file support.
-* Support MinGW builds (thanks to Robert Millan).
-* Minor bugfixes.
-
-
-Version 2.9 - Sergey Poznyakoff, 2007-06-28
-
-* Licensed under the GPLv3.
-
-* Bugfixes:
-** Honor umask when creating intermediate directories, not specified
-in the archive (debian bug #430053)
-
 
 Version 2.8 - Sergey Poznyakoff, 2007-06-08
 
@@ -164,8 +133,7 @@ multiple links and of multi-volume archives on floppy disks.
 ----------------------------------------------------------------------
 Copyright information:
 
-Copyright (C) 2003, 2004, 2005, 2006, 2007, 2009,
-2010 Free Software Foundation, Inc.
+Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 
    Permission is granted to anyone to make or distribute verbatim copies
    of this document as received, in any medium, provided that the

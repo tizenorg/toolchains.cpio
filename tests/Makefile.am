@@ -1,11 +1,10 @@
 # Makefile for GNU cpio regression tests.
 
-# Copyright (C) 2004, 2007, 2008, 2009, 2010 Free Software Foundation,
-# Inc.
+# Copyright (C) 2004 Free Software Foundation, Inc.
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation; either version 3, or (at your option)
+## the Free Software Foundation; either version 2, or (at your option)
 ## any later version.
 
 ## This program is distributed in the hope that it will be useful,
@@ -45,12 +44,6 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac
 TESTSUITE_AT = \
  testsuite.at\
  inout.at\
- interdir.at\
- setstat01.at\
- setstat02.at\
- setstat03.at\
- setstat04.at\
- setstat05.at\
  symlink.at\
  version.at
 
@@ -68,11 +61,11 @@ clean-local:
 	$(SHELL) $(TESTSUITE) --clean
 
 check-local: atconfig atlocal $(TESTSUITE)
-	$(SHELL) $(TESTSUITE) $(TESTSUITEFLAGS)
+	$(SHELL) $(TESTSUITE)
 
 # Run the test suite on the *installed* tree.
 installcheck-local:
-	$(SHELL) $(TESTSUITE) $(TESTSUITEFLAGS) AUTOTEST_PATH=$(exec_prefix)/bin
+	$(SHELL) $(TESTSUITE) AUTOTEST_PATH=$(exec_prefix)/bin
 
 
 ## ------------ ##
@@ -84,8 +77,8 @@ check_PROGRAMS = genfile
 genfile_SOURCES = genfile.c argcv.c argcv.h
 
 localedir = $(datadir)/locale
-INCLUDES = -I$(top_srcdir)/gnu -I../gnu -I$(top_srcdir)/lib
+INCLUDES = -I$(top_srcdir)/lib -I../lib -I$(top_srcdir)/src
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
 
-LDADD=../gnu/libgnu.a @LIB_CLOCK_GETTIME@ @INTLLIBS@
+LDADD = ../lib/libcpio.a $(LIBINTL) $(LIB_CLOCK_GETTIME)
 

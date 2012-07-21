@@ -1,10 +1,10 @@
 /* copyin.c - extract or list a cpio archive
-   Copyright (C) 1990, 1991, 1992, 2001, 2002, 2003, 2004, 2005, 2006,
-   2007, 2009, 2010 Free Software Foundation, Inc.
+   Copyright (C) 1990,1991,1992,2001,2002,2003,2004,
+   2005, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -108,9 +108,9 @@ query_rename(struct cpio_file_stat* file_hdr, FILE *tty_in, FILE *tty_out,
    header type.  */
 
 static void
-tape_skip_padding (int in_file_des, off_t offset)
+tape_skip_padding (int in_file_des, int offset)
 {
-  off_t pad;
+  int pad;
 
   if (archive_format == arf_crcascii || archive_format == arf_newascii)
     pad = (4 - (offset % 4)) % 4;
@@ -258,7 +258,7 @@ create_defered_links (struct cpio_file_stat *file_hdr)
 {
   struct deferment *d;
   struct deferment *d_prev;
-  ino_t	ino;
+  int	ino;
   int 	maj;
   int   min;
   int 	link_res;
@@ -306,7 +306,7 @@ create_defered_links_to_skipped (struct cpio_file_stat *file_hdr,
 {
   struct deferment *d;
   struct deferment *d_prev;
-  ino_t	ino;
+  int	ino;
   int 	maj;
   int   min;
   if (file_hdr->c_filesize == 0)
@@ -567,6 +567,88 @@ copyin_regular_file (struct cpio_file_stat* file_hdr, int in_file_des)
 }
 
 static void
+copyin_directory (struct cpio_file_stat *file_hdr, int existing_dir)
+{
+  int res;			/* Result of various function calls.  */
+#ifdef HPUX_CDF
+  int cdf_flag;                 /* True if file is a CDF.  */
+  int cdf_char;                 /* Index of `+' char indicating a CDF.  */
+#endif
+
+  if (to_stdout_option)
+    return;
+  
+  /* Strip any trailing `/'s off the filename; tar puts
+     them on.  We might as well do it here in case anybody
+     else does too, since they cause strange things to happen.  */
+  strip_trailing_slashes (file_hdr->c_name);
+
+  /* Ignore the current directory.  It must already exist,
+     and we don't want to change its permission, ownership
+     or time.  */
+  if (file_hdr->c_name[0] == '.' && file_hdr->c_name[1] == '\0')
+    {
+      return;
+    }
+
+#ifdef HPUX_CDF
+  cdf_flag = 0;
+#endif
+  if (!existing_dir)
+
+    {
+#ifdef HPUX_CDF
+      /* If the directory name ends in a + and is SUID,
+	 then it is a CDF.  Strip the trailing + from
+	 the name before creating it.  */
+      cdf_char = strlen (file_hdr->c_name) - 1;
+      if ( (cdf_char > 0) &&
+	   (file_hdr->c_mode & 04000) && 
+	   (file_hdr->c_name [cdf_char] == '+') )
+	{
+	  file_hdr->c_name [cdf_char] = '\0';
+	  cdf_flag = 1;
+	}
+#endif
+      res = mkdir (file_hdr->c_name, file_hdr->c_mode);
+    }
+  else
+    res = 0;
+  if (res < 0 && create_dir_flag)
+    {
+      create_all_directories (file_hdr->c_name);
+      res = mkdir (file_hdr->c_name, file_hdr->c_mode);
+    }
+  if (res < 0)
+    {
+      /* In some odd cases where the file_hdr->c_name includes `.',
+	 the directory may have actually been created by
+	 create_all_directories(), so the mkdir will fail
+	 because the directory exists.  If that's the case,
+	 don't complain about it.  */
+      struct stat file_stat;
+      if (errno != EEXIST)
+	{
+	  mkdir_error (file_hdr->c_name);
+	  return;
+	}
+      if (lstat (file_hdr->c_name, &file_stat))
+	{
+	  stat_error (file_hdr->c_name);
+	  return;
+	}
+      if (!(S_ISDIR (file_stat.st_mode)))
+	{
+	  error (0, 0, _("%s is not a directory"),
+		 quotearg_colon (file_hdr->c_name));
+	  return;
+	}
+    }
+
+  set_perms (-1, file_hdr); 
+}
+
+static void
 copyin_device (struct cpio_file_stat* file_hdr)
 {
   int res;			/* Result of various function calls.  */
@@ -687,7 +769,7 @@ copyin_link(struct cpio_file_stat *file_hdr, int in_file_des)
 }
 
 static void
-copyin_file (struct cpio_file_stat *file_hdr, int in_file_des)
+copyin_file (struct cpio_file_stat* file_hdr, int in_file_des)
 {
   int existing_dir;
 
@@ -703,7 +785,7 @@ copyin_file (struct cpio_file_stat *file_hdr, int in_file_des)
       break;
 
     case CP_IFDIR:
-      cpio_create_dir (file_hdr, existing_dir);
+      copyin_directory (file_hdr, existing_dir);
       break;
 
     case CP_IFCHR:
@@ -761,7 +843,7 @@ long_format (struct cpio_file_stat *file_hdr, char *link_name)
     }
   tbuf[16] = '\0';
 
-  printf ("%s %3lu ", mbuf, (unsigned long) file_hdr->c_nlink);
+  printf ("%s %3lu ", mbuf, file_hdr->c_nlink);
 
   if (numeric_uid)
     printf ("%-8u %-8u ", (unsigned int) file_hdr->c_uid,
@@ -1184,7 +1266,7 @@ read_in_binary (struct cpio_file_stat *file_hdr,
 	  error (0, 0, _("warning: archive header has reverse byte-order"));
 	  warned = 1;
 	}
-      swab_array ((char *) short_hdr, 13);
+      swab_array ((char *) &short_hdr, 13);
     }
 
   file_hdr->c_dev_maj = major (short_hdr->c_dev);
@@ -1279,7 +1361,7 @@ process_copy_in ()
   char skip_file;		/* Flag for use with patterns.  */
   int i;			/* Loop index variable.  */
 
-  newdir_umask = umask (0);     /* Reset umask to preserve modes of
+  umask (0);                    /* Reset umask to preserve modes of
 				   created files  */
   
   /* Initialize the copy in.  */
@@ -1352,8 +1434,8 @@ process_copy_in ()
 	  struct cpio_file_stat *h;
 	  h = &file_hdr;
 	  fprintf (stderr, 
-		"magic = 0%o, ino = %ld, mode = 0%o, uid = %d, gid = %d\n",
-		h->c_magic, (long)h->c_ino, h->c_mode, h->c_uid, h->c_gid);
+		"magic = 0%o, ino = %d, mode = 0%o, uid = %d, gid = %d\n",
+		h->c_magic, h->c_ino, h->c_mode, h->c_uid, h->c_gid);
 	  fprintf (stderr, 
 		"nlink = %d, mtime = %d, filesize = %d, dev_maj = 0x%x\n",
 		h->c_nlink, h->c_mtime, h->c_filesize, h->c_dev_maj);
@@ -1480,8 +1562,6 @@ process_copy_in ()
   if (dot_flag)
     fputc ('\n', stderr);
 
-  apply_delayed_set_stat ();
-  
   if (append_flag)
     return;
 
@@ -1491,12 +1571,9 @@ process_copy_in ()
     }
   if (!quiet_flag)
     {
-      size_t blocks;
+      int blocks;
       blocks = (input_bytes + io_block_size - 1) / io_block_size;
-      fprintf (stderr,
-	       ngettext ("%lu block\n", "%lu blocks\n",
-			 (unsigned long) blocks),
-	       (unsigned long) blocks);
+      fprintf (stderr, ngettext ("%d block\n", "%d blocks\n", blocks), blocks);
     }
 }
 

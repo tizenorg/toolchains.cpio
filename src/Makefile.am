@@ -1,10 +1,9 @@
 # This file is part of GNU cpio
-# Copyright (C) 2003, 2004, 2007, 2009, 2010 Free Software Foundation,
-# Inc.
+# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3, or (at your option)
+# the Free Software Foundation; either version 2, or (at your option)
 # any later version.
 #
 # This program is distributed in the hope that it will be useful,
@@ -17,7 +16,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301 USA.
 
-INCLUDES=-I. -I.. -I$(top_srcdir)/gnu -I$(top_builddir)/gnu  -I$(top_srcdir)/lib -I$(top_builddir)/lib
+INCLUDES=-I. -I.. -I$(top_srcdir)/lib 
 
 bin_PROGRAMS=cpio @CPIO_MT_PROG@
 EXTRA_PROGRAMS=mt
@@ -29,7 +28,6 @@ cpio_SOURCES = \
  defer.c\
  dstring.c\
  global.c\
- fatal.c\
  main.c\
  tar.c\
  util.c\
@@ -49,5 +47,9 @@ noinst_HEADERS =\
  filetypes.h\
  safe-stat.h
 
-LDADD=../lib/libpax.a ../gnu/libgnu.a @INTLLIBS@
+cpio_LDADD = ../lib/libcpio.a $(INTLLIBS)
 
+mt_SOURCES = mt.c 
+mt_LDADD = ../lib/lib$(PACKAGE).a $(INTLLIBS)
+
+mt.o main.o: ../lib/rmt-command.h

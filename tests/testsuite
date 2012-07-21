@@ -1,31 +1,26 @@
 #! /bin/sh
-# Generated from testsuite.at by GNU Autoconf 2.63.
 #
-# Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
-# Free Software Foundation, Inc.
+# Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
+# Foundation, Inc.
 # This test suite is free software; the Free Software Foundation gives
 # unlimited permission to copy, distribute and modify it.
 ## --------------------- ##
 ## M4sh Initialization.  ##
 ## --------------------- ##
 
-# Be more Bourne compatible
-DUALCASE=1; export DUALCASE # for MKS sh
+# Be Bourne compatible
 if test -n "${ZSH_VERSION+set}" && (emulate sh) >/dev/null 2>&1; then
   emulate sh
   NULLCMD=:
-  # Pre-4.2 versions of Zsh do word splitting on ${1+"$@"}, which
+  # Zsh 3.x and 4.x performs word splitting on ${1+"$@"}, which
   # is contrary to our usage.  Disable this feature.
   alias -g '${1+"$@"}'='"$@"'
   setopt NO_GLOB_SUBST
 else
-  case `(set -o) 2>/dev/null` in
-  *posix*) set -o posix ;;
-esac
-
+  case `(set -o) 2>/dev/null` in *posix*) set -o posix;; esac
 fi
-
-
+BIN_SH=xpg4; export BIN_SH # for Tru64
+DUALCASE=1; export DUALCASE # for MKS sh
 
 
 # PATH needs CR
@@ -36,45 +31,17 @@ as_cr_Letters=$as_cr_letters$as_cr_LETTERS
 as_cr_digits='0123456789'
 as_cr_alnum=$as_cr_Letters$as_cr_digits
 
-as_nl='
-'
-export as_nl
-# Printing a long string crashes Solaris 7 /usr/bin/printf.
-as_echo='\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'
-as_echo=$as_echo$as_echo$as_echo$as_echo$as_echo
-as_echo=$as_echo$as_echo$as_echo$as_echo$as_echo$as_echo
-if (test "X`printf %s $as_echo`" = "X$as_echo") 2>/dev/null; then
-  as_echo='printf %s\n'
-  as_echo_n='printf %s'
-else
-  if test "X`(/usr/ucb/echo -n -n $as_echo) 2>/dev/null`" = "X-n $as_echo"; then
-    as_echo_body='eval /usr/ucb/echo -n "$1$as_nl"'
-    as_echo_n='/usr/ucb/echo -n'
-  else
-    as_echo_body='eval expr "X$1" : "X\\(.*\\)"'
-    as_echo_n_body='eval
-      arg=$1;
-      case $arg in
-      *"$as_nl"*)
-	expr "X$arg" : "X\\(.*\\)$as_nl";
-	arg=`expr "X$arg" : ".*$as_nl\\(.*\\)"`;;
-      esac;
-      expr "X$arg" : "X\\(.*\\)" | tr -d "$as_nl"
-    '
-    export as_echo_n_body
-    as_echo_n='sh -c $as_echo_n_body as_echo'
-  fi
-  export as_echo_body
-  as_echo='sh -c $as_echo_body as_echo'
-fi
-
 # The user is always right.
 if test "${PATH_SEPARATOR+set}" != set; then
-  PATH_SEPARATOR=:
-  (PATH='/bin;/bin'; FPATH=$PATH; sh -c :) >/dev/null 2>&1 && {
-    (PATH='/bin:/bin'; FPATH=$PATH; sh -c :) >/dev/null 2>&1 ||
-      PATH_SEPARATOR=';'
-  }
+  echo "#! /bin/sh" >conf$$.sh
+  echo  "exit 0"   >>conf$$.sh
+  chmod +x conf$$.sh
+  if (PATH="/nonexistent;."; conf$$.sh) >/dev/null 2>&1; then
+    PATH_SEPARATOR=';'
+  else
+    PATH_SEPARATOR=:
+  fi
+  rm -f conf$$.sh
 fi
 
 # Support unset when possible.
@@ -90,6 +57,8 @@ fi
 # there to prevent editors from complaining about space-tab.
 # (If _AS_PATH_WALK were called with IFS unset, it would disable word
 # splitting by setting IFS to empty value.)
+as_nl='
+'
 IFS=" ""	$as_nl"
 
 # Find who we are.  Look in the path if we contain no directory separator.
@@ -112,7 +81,7 @@ if test "x$as_myself" = x; then
   as_myself=$0
 fi
 if test ! -f "$as_myself"; then
-  $as_echo "$as_myself: error: cannot find myself; rerun with an absolute file name" >&2
+  echo "$as_myself: error: cannot find myself; rerun with an absolute file name" >&2
   { (exit 1); exit 1; }
 fi
 
@@ -125,10 +94,17 @@ PS2='> '
 PS4='+ '
 
 # NLS nuisances.
-LC_ALL=C
-export LC_ALL
-LANGUAGE=C
-export LANGUAGE
+for as_var in \
+  LANG LANGUAGE LC_ADDRESS LC_ALL LC_COLLATE LC_CTYPE LC_IDENTIFICATION \
+  LC_MEASUREMENT LC_MESSAGES LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER \
+  LC_TELEPHONE LC_TIME
+do
+  if (set +x; test -z "`(eval $as_var=C; export $as_var) 2>&1`"); then
+    eval $as_var=C; export $as_var
+  else
+    ($as_unset $as_var) >/dev/null 2>&1 && $as_unset $as_var
+  fi
+done
 
 # Required to use basename.
 if expr a : '\(a\)' >/dev/null 2>&1 &&
@@ -150,7 +126,7 @@ as_me=`$as_basename -- "$0" ||
 $as_expr X/"$0" : '.*/\([^/][^/]*\)/*$' \| \
 	 X"$0" : 'X\(//\)$' \| \
 	 X"$0" : 'X\(/\)' \| . 2>/dev/null ||
-$as_echo X/"$0" |
+echo X/"$0" |
     sed '/^.*\/\([^/][^/]*\)\/*$/{
 	    s//\1/
 	    q
@@ -176,7 +152,7 @@ else
   as_have_required=no
 fi
 
-  if test $as_have_required = yes &&	 (eval ":
+  if test $as_have_required = yes && 	 (eval ":
 (as_func_return () {
   (exit \$1)
 }
@@ -237,7 +213,7 @@ test \$exitcode = 0) || { (exit 1); exit 1; }
 else
   as_candidate_shells=
     as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in /bin$PATH_SEPARATOR/usr/bin$PATH_SEPARATOR$PATH
+for as_dir in /usr/bin/posix$PATH_SEPARATOR/bin$PATH_SEPARATOR/usr/bin$PATH_SEPARATOR$PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
@@ -255,20 +231,19 @@ IFS=$as_save_IFS
 	 # Try only shells that exist, to save several forks.
 	 if { test -f "$as_shell" || test -f "$as_shell.exe"; } &&
 		{ ("$as_shell") 2> /dev/null <<\_ASEOF
+# Be Bourne compatible
 if test -n "${ZSH_VERSION+set}" && (emulate sh) >/dev/null 2>&1; then
   emulate sh
   NULLCMD=:
-  # Pre-4.2 versions of Zsh do word splitting on ${1+"$@"}, which
+  # Zsh 3.x and 4.x performs word splitting on ${1+"$@"}, which
   # is contrary to our usage.  Disable this feature.
   alias -g '${1+"$@"}'='"$@"'
   setopt NO_GLOB_SUBST
 else
-  case `(set -o) 2>/dev/null` in
-  *posix*) set -o posix ;;
-esac
-
+  case `(set -o) 2>/dev/null` in *posix*) set -o posix;; esac
 fi
-
+BIN_SH=xpg4; export BIN_SH # for Tru64
+DUALCASE=1; export DUALCASE # for MKS sh
 
 :
 _ASEOF
@@ -276,20 +251,19 @@ _ASEOF
   CONFIG_SHELL=$as_shell
 	       as_have_required=yes
 	       if { "$as_shell" 2> /dev/null <<\_ASEOF
+# Be Bourne compatible
 if test -n "${ZSH_VERSION+set}" && (emulate sh) >/dev/null 2>&1; then
   emulate sh
   NULLCMD=:
-  # Pre-4.2 versions of Zsh do word splitting on ${1+"$@"}, which
+  # Zsh 3.x and 4.x performs word splitting on ${1+"$@"}, which
   # is contrary to our usage.  Disable this feature.
   alias -g '${1+"$@"}'='"$@"'
   setopt NO_GLOB_SUBST
 else
-  case `(set -o) 2>/dev/null` in
-  *posix*) set -o posix ;;
-esac
-
+  case `(set -o) 2>/dev/null` in *posix*) set -o posix;; esac
 fi
-
+BIN_SH=xpg4; export BIN_SH # for Tru64
+DUALCASE=1; export DUALCASE # for MKS sh
 
 :
 (as_func_return () {
@@ -359,10 +333,10 @@ fi
 
       if test "x$CONFIG_SHELL" != x; then
   for as_var in BASH_ENV ENV
-	do ($as_unset $as_var) >/dev/null 2>&1 && $as_unset $as_var
-	done
-	export CONFIG_SHELL
-	exec "$CONFIG_SHELL" "$as_myself" ${1+"$@"}
+        do ($as_unset $as_var) >/dev/null 2>&1 && $as_unset $as_var
+        done
+        export CONFIG_SHELL
+        exec "$CONFIG_SHELL" "$as_myself" ${1+"$@"}
 fi
 
 
@@ -431,10 +405,9 @@ fi
 
 test \$exitcode = 0") || {
   echo No shell found that supports shell functions.
-  echo Please tell bug-autoconf@gnu.org about your system,
-  echo including any error possibly output before this message.
-  echo This can help us improve future autoconf versions.
-  echo Configuration will now proceed without shell functions.
+  echo Please tell autoconf@gnu.org about your system,
+  echo including any error possibly output before this
+  echo message
 }
 
 
@@ -470,8 +443,7 @@ test \$exitcode = 0") || {
       s/-\n.*//
     ' >$as_me.lineno &&
   chmod +x "$as_me.lineno" ||
-    { { $as_echo "$as_me:$LINENO: error: cannot create $as_me.lineno; rerun with a POSIX shell" >&5
-$as_echo "$as_me: error: cannot create $as_me.lineno; rerun with a POSIX shell" >&2;}
+    { echo "$as_me: error: cannot create $as_me.lineno; rerun with a POSIX shell" >&2
    { (exit 1); exit 1; }; }
 
   # Don't try to exec as it changes $[0], causing all sort of problems
@@ -499,6 +471,7 @@ case `echo -n x` in
 *)
   ECHO_N='-n';;
 esac
+
 if expr a : '\(a\)' >/dev/null 2>&1 &&
    test "X`expr 00001 : '.*\(...\)'`" = X001; then
   as_expr=expr
@@ -511,22 +484,19 @@ if test -d conf$$.dir; then
   rm -f conf$$.dir/conf$$.file
 else
   rm -f conf$$.dir
-  mkdir conf$$.dir 2>/dev/null
+  mkdir conf$$.dir
 fi
-if (echo >conf$$.file) 2>/dev/null; then
-  if ln -s conf$$.file conf$$ 2>/dev/null; then
-    as_ln_s='ln -s'
-    # ... but there are two gotchas:
-    # 1) On MSYS, both `ln -s file dir' and `ln file dir' fail.
-    # 2) DJGPP < 2.04 has no symlinks; `ln -s' creates a wrapper executable.
-    # In both cases, we have to default to `cp -p'.
-    ln -s conf$$.file conf$$.dir 2>/dev/null && test ! -f conf$$.exe ||
-      as_ln_s='cp -p'
-  elif ln conf$$.file conf$$ 2>/dev/null; then
-    as_ln_s=ln
-  else
+echo >conf$$.file
+if ln -s conf$$.file conf$$ 2>/dev/null; then
+  as_ln_s='ln -s'
+  # ... but there are two gotchas:
+  # 1) On MSYS, both `ln -s file dir' and `ln file dir' fail.
+  # 2) DJGPP < 2.04 has no symlinks; `ln -s' creates a wrapper executable.
+  # In both cases, we have to default to `cp -p'.
+  ln -s conf$$.file conf$$.dir 2>/dev/null && test ! -f conf$$.exe ||
     as_ln_s='cp -p'
-  fi
+elif ln conf$$.file conf$$ 2>/dev/null; then
+  as_ln_s=ln
 else
   as_ln_s='cp -p'
 fi
@@ -540,28 +510,19 @@ else
   as_mkdir_p=false
 fi
 
-if test -x / >/dev/null 2>&1; then
-  as_test_x='test -x'
+# Find out whether ``test -x'' works.  Don't use a zero-byte file, as
+# systems may use methods other than mode bits to determine executability.
+cat >conf$$.file <<_ASEOF
+#! /bin/sh
+exit 0
+_ASEOF
+chmod +x conf$$.file
+if test -x conf$$.file >/dev/null 2>&1; then
+  as_executable_p="test -x"
 else
-  if ls -dL / >/dev/null 2>&1; then
-    as_ls_L_option=L
-  else
-    as_ls_L_option=
-  fi
-  as_test_x='
-    eval sh -c '\''
-      if test -d "$1"; then
-	test -d "$1/.";
-      else
-	case $1 in
-	-*)set "./$1";;
-	esac;
-	case `ls -ld'$as_ls_L_option' "$1" 2>/dev/null` in
-	???[sx]*):;;*)false;;esac;fi
-    '\'' sh
-  '
+  as_executable_p=:
 fi
-as_executable_p=$as_test_x
+rm -f conf$$.file
 
 # Sed expression to map a string onto a valid CPP name.
 as_tr_cpp="eval sed 'y%*$as_cr_letters%P$as_cr_LETTERS%;s%[^_$as_cr_alnum]%_%g'"
@@ -571,13 +532,32 @@ as_tr_sh="eval sed 'y%*+%pp%;s%[^_$as_cr_alnum]%_%g'"
 
 
 
-
-
 SHELL=${CONFIG_SHELL-/bin/sh}
 
 # How were we run?
 at_cli_args="$@"
 
+# Load the config file.
+for at_file in atconfig atlocal
+do
+  test -r $at_file || continue
+  . ./$at_file || { echo "$as_me: error: invalid content: $at_file" >&2
+   { (exit 1); exit 1; }; }
+done
+
+# Autoconf <=2.59b set at_top_builddir instead of at_top_build_prefix:
+: ${at_top_build_prefix=$at_top_builddir}
+
+# atconfig delivers names relative to the directory the test suite is
+# in, but the groups themselves are run in testsuite-dir/group-dir.
+if test -n "$at_top_srcdir"; then
+  builddir=../..
+  for at_dir in srcdir top_srcdir top_build_prefix
+  do
+    at_val=`eval echo '${'at_$at_dir'}'`
+    eval "$at_dir=\$at_val/../.."
+  done
+fi
 
 # Not all shells have the 'times' builtin; the subshell is needed to make
 # sure we discard the 'times: not found' message from the shell.
@@ -588,9 +568,9 @@ at_times_p=false
 at_debug_args=
 # -e sets to true
 at_errexit_p=false
-# Shall we be verbose?  ':' means no, empty means yes.
+# Shall we be verbose?
 at_verbose=:
-at_quiet=
+at_quiet=echo
 
 # Shall we keep the debug scripts?  Must be `:' when the suite is
 # run by a debug script, so that the script doesn't remove itself.
@@ -601,66 +581,40 @@ at_help_p=false
 at_version_p=false
 # List test groups?
 at_list_p=false
-# --clean
-at_clean=false
 # Test groups to run
 at_groups=
-# Whether a write failure occurred
-at_write_fail=0
 
-# The directory we run the suite in.  Default to . if no -C option.
+# The directory we are in.
 at_dir=`pwd`
-# An absolute reference to this testsuite script.
-case $as_myself in
-  [\\/]* | ?:[\\/]* ) at_myself=$as_myself ;;
-  * ) at_myself=$at_dir/$as_myself ;;
-esac
-# Whether -C is in effect.
-at_change_dir=false
+# The directory the whole suite works in.
+# Should be absolutely to let the user `cd' at will.
+at_suite_dir=$at_dir/$as_me.dir
+# The file containing the suite.
+at_suite_log=$at_dir/$as_me.log
+# The file containing the location of the last AT_CHECK.
+at_check_line_file=$at_suite_dir/at-check-line
+# The file containing the exit status of the last command.
+at_status_file=$at_suite_dir/at-status
+# The files containing the output of the tested commands.
+at_stdout=$at_suite_dir/at-stdout
+at_stder1=$at_suite_dir/at-stder1
+at_stderr=$at_suite_dir/at-stderr
+# The file containing dates.
+at_times_file=$at_suite_dir/at-times
 
 # List of the tested programs.
 at_tested='cpio'
 # List of the all the test groups.
-at_groups_all=' 1 2 3 4 5 6 7 8 9'
+at_groups_all=' 1 2 3'
 # As many question marks as there are digits in the last test group number.
 # Used to normalize the test group numbers so that `ls' lists them in
 # numerical order.
 at_format='?'
 # Description of all the test groups.
-at_help_all="1;version.at:19;cpio version;;
+at_help_all='1;version.at:19;cpio version;;
 2;inout.at:19;basic functionality: copyin/copyout;copyin copyout;
 3;symlink.at:22;symlink;symlink copyout;
-4;interdir.at:24;interdir;interdir copyin copypass;
-5;setstat01.at:17;delayed setstat;setstat setstat01;
-6;setstat02.at:17;delayed setstat (with -depth);setstat debian=458079 setstat02;
-7;setstat03.at:17;delayed setstat (copy-pass);setstat debian=458079 setstat03;
-8;setstat04.at:17;delayed setstat (umask);setstat debian=458079 setstat04;
-9;setstat05.at:17;delayed setstat (umask, copy-pass);setstat debian=458079 setstat05;
-"
-
-# at_func_validate_ranges [NAME...]
-# ---------------------------------
-# Validate and normalize the test group number contained in each
-# variable NAME.  Leading zeroes are treated as decimal.
-at_func_validate_ranges ()
-{
-  for at_grp
-  do
-    eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 9; then
-      $as_echo "invalid test group: $at_value" >&2
-      exit 1
-    fi
-    case $at_value in
-      0*) # We want to treat leading 0 as decimal, like expr and test, but
-	  # at_func_arith treats it as octal if it uses $(( )).
-	  # With XSI shells, ${at_value#${at_value%%[1-9]*}} avoids the
-	  # expr fork, but it is not worth the effort to determine if the
-	  # shell supports XSI when the user can just avoid leading 0.
-	  eval $at_grp='`expr $at_value + 0`' ;;
-    esac
-  done
-}
+'
 
 at_prev=
 for at_option
@@ -692,7 +646,10 @@ do
 	;;
 
     --clean | -c )
-	at_clean=:
+	test -d "$at_suite_dir" &&
+	  find "$at_suite_dir" -type d ! -perm -700 -exec chmod u+rwx \{\} \;
+	rm -f -r "$at_suite_dir" "$at_suite_log"
+	exit 0
 	;;
 
     --debug | -d )
@@ -705,7 +662,7 @@ do
 	;;
 
     --verbose | -v )
-	at_verbose=; at_quiet=:
+	at_verbose=echo; at_quiet=:
 	;;
 
     --trace | -x )
@@ -713,23 +670,20 @@ do
 	;;
 
     [0-9] | [0-9][0-9] | [0-9][0-9][0-9] | [0-9][0-9][0-9][0-9])
-	at_func_validate_ranges at_option
 	at_groups="$at_groups$at_option "
 	;;
 
     # Ranges
     [0-9]- | [0-9][0-9]- | [0-9][0-9][0-9]- | [0-9][0-9][0-9][0-9]-)
 	at_range_start=`echo $at_option |tr -d X-`
-	at_func_validate_ranges at_range_start
-	at_range=`$as_echo " $at_groups_all " | \
+	at_range=`echo " $at_groups_all " | \
 	  sed -e 's/^.* \('$at_range_start' \)/\1/'`
 	at_groups="$at_groups$at_range "
 	;;
 
     -[0-9] | -[0-9][0-9] | -[0-9][0-9][0-9] | -[0-9][0-9][0-9][0-9])
 	at_range_end=`echo $at_option |tr -d X-`
-	at_func_validate_ranges at_range_end
-	at_range=`$as_echo " $at_groups_all " | \
+	at_range=`echo " $at_groups_all " | \
 	  sed -e 's/\( '$at_range_end'\) .*$/\1/'`
 	at_groups="$at_groups$at_range "
 	;;
@@ -747,20 +701,10 @@ do
 	  at_range_end=$at_range_start
 	  at_range_start=$at_tmp
 	fi
-	at_func_validate_ranges at_range_start at_range_end
-	at_range=`$as_echo " $at_groups_all " | \
+	at_range=`echo " $at_groups_all " | \
 	  sed -e 's/^.*\( '$at_range_start' \)/\1/' \
 	      -e 's/\( '$at_range_end'\) .*$/\1/'`
 	at_groups="$at_groups$at_range "
-	;;
-
-    # Directory selection.
-    --directory | -C )
-	at_prev=--directory
-	;;
-    --directory=* )
-	at_change_dir=:
-	at_dir=$at_optarg
 	;;
 
     # Keywords.
@@ -784,57 +728,68 @@ do
 	    ;;
 	  esac
 	  # It is on purpose that we match the test group titles too.
-	  at_groups_selected=`$as_echo "$at_groups_selected" |
+	  at_groups_selected=`echo "$at_groups_selected" |
 	      grep -i $at_invert "^[1-9][^;]*;.*[; ]$at_keyword[ ;]"`
 	done
+	at_groups_selected=`echo "$at_groups_selected" | sed 's/;.*//'`
 	# Smash the newlines.
-	at_groups_selected=`$as_echo "$at_groups_selected" | sed 's/;.*//' |
-	  tr "$as_nl" ' '
-	`
-	at_groups="$at_groups$at_groups_selected "
+	at_groups="$at_groups`echo $at_groups_selected` "
 	;;
 
     *=*)
 	at_envvar=`expr "x$at_option" : 'x\([^=]*\)='`
 	# Reject names that are not valid shell variable names.
-	case $at_envvar in
-	  '' | [0-9]* | *[!_$as_cr_alnum]* )
-	    { { $as_echo "$as_me:$LINENO: error: invalid variable name: $at_envvar" >&5
-$as_echo "$as_me: error: invalid variable name: $at_envvar" >&2;}
-   { (exit 1); exit 1; }; } ;;
-	esac
-	at_value=`$as_echo "$at_optarg" | sed "s/'/'\\\\\\\\''/g"`
-	# Export now, but save eval for later and for debug scripts.
+	expr "x$at_envvar" : ".*[^_$as_cr_alnum]" >/dev/null &&
+	  { echo "$as_me: error: invalid variable name: $at_envvar" >&2
+   { (exit 1); exit 1; }; }
+	at_value=`echo "$at_optarg" | sed "s/'/'\\\\\\\\''/g"`
+	eval "$at_envvar='$at_value'"
 	export $at_envvar
+	# Propagate to debug scripts.
 	at_debug_args="$at_debug_args $at_envvar='$at_value'"
 	;;
 
-     *) $as_echo "$as_me: invalid option: $at_option" >&2
-	$as_echo "Try \`$0 --help' for more information." >&2
+     *) echo "$as_me: invalid option: $at_option" >&2
+	echo "Try \`$0 --help' for more information." >&2
 	exit 1
 	;;
   esac
 done
 
-# Verify our last option didn't require an argument
-if test -n "$at_prev"; then
-  { { $as_echo "$as_me:$LINENO: error: \`$at_prev' requires an argument." >&5
-$as_echo "$as_me: error: \`$at_prev' requires an argument." >&2;}
-   { (exit 1); exit 1; }; }
-fi
-
-
 # Selected test groups.
 if test -z "$at_groups"; then
   at_groups=$at_groups_all
 else
-  # Sort the tests, removing duplicates.
-  at_groups=`$as_echo "$at_groups" | tr ' ' "$as_nl" | sort -nu`
+  # Sort the tests, removing duplicates:
+  at_groups=`echo $at_groups | tr ' ' "$as_nl" | sort -nu`
+  # and add banners.  (Passing at_groups_all is tricky--see the comment
+  # starting with "Passing at_groups is tricky.")
+  at_groups=`echo "$at_groups$as_nl $at_groups_all" |
+    awk 'BEGIN { FS = "@" } # Effectively switch off field splitting.
+	/^$/ { next }  # Ignore the empty line.
+	!/ / { groups++; selected[$ 0] = 1; next }
+	# The last line, containing at_groups_all.
+	{
+		n = split($ 0, a, " ")
+		# If there are several tests, select their banners:
+		if (groups > 1) {
+			for (i = 1; i <= n; i++) {
+				if (a[i] ~ /^banner-/)
+					banner = a[i]
+				else if (banner != "" && selected[a[i]] == 1)
+					selected[banner] = 1
+			}
+		}
+		for (i = 1; i <= n; i++)
+			if (selected[a[i]] == 1)
+				list = list " " a[i]
+		print list
+	}'`
 fi
 
 # Help message.
 if $at_help_p; then
-  cat <<_ATEOF || at_write_fail=1
+  cat <<_ATEOF
 Usage: $0 [OPTION]... [VARIABLE=VALUE]... [TESTS]
 
 Run all the tests, or the selected TESTS, given by numeric ranges, and
@@ -851,7 +806,7 @@ possibly amounts into
 
   PATH=/tmp/foo-1.0/bin:/src/foo-1.0/bin:\$PATH
 _ATEOF
-cat <<_ATEOF || at_write_fail=1
+cat <<_ATEOF
 
 Operation modes:
   -h, --help     print the help message, then exit
@@ -859,32 +814,30 @@ Operation modes:
   -c, --clean    remove all the files this test suite might create and exit
   -l, --list     describes all the tests, or the selected TESTS
 _ATEOF
-cat <<_ATEOF || at_write_fail=1
+cat <<_ATEOF
 
 Execution tuning:
-  -C, --directory=DIR
-                 change to directory DIR before starting
   -k, --keywords=KEYWORDS
-                 select the tests matching all the comma-separated KEYWORDS
-                 multiple \`-k' accumulate; prefixed \`!' negates a KEYWORD
+	         select the tests matching all the comma-separated KEYWORDS
+	         multiple \`-k' accumulate; prefixed \`!' negates a KEYWORD
   -e, --errexit  abort as soon as a test fails; implies --debug
   -v, --verbose  force more detailed output
-                 default for debugging scripts
+	         default for debugging scripts
   -d, --debug    inhibit clean up and top-level logging
-                 default for debugging scripts
+	         default for debugging scripts
   -x, --trace    enable tests shell tracing
 _ATEOF
-cat <<_ATEOF || at_write_fail=1
+cat <<_ATEOF
 
 Report bugs to <bug-cpio@gnu.org>.
 _ATEOF
-  exit $at_write_fail
+  exit 0
 fi
 
 # List of tests.
 if $at_list_p; then
-  cat <<_ATEOF || at_write_fail=1
-GNU cpio 2.11 test suite test groups:
+  cat <<_ATEOF
+GNU cpio 2.8 test suite test groups:
 
  NUM: FILE-NAME:LINE     TEST-GROUP-NAME
       KEYWORDS
@@ -893,12 +846,7 @@ _ATEOF
   # Passing at_groups is tricky.  We cannot use it to form a literal string
   # or regexp because of the limitation of AIX awk.  And Solaris' awk
   # doesn't grok more than 99 fields in a record, so we have to use `split'.
-  # at_groups needs to be space-separated for this script to work.
-  case $at_groups in
-    *"$as_nl"* )
-      at_groups=`$as_echo "$at_groups" | tr "$as_nl" ' '` ;;
-  esac
-  $as_echo "$at_groups$as_nl$at_help_all" |
+  echo "$at_groups$as_nl$at_help_all" |
     awk 'BEGIN { FS = ";" }
 	 NR == 1 {
 	   for (n = split($ 0, a, " "); n; n--) selected[a[n]] = 1
@@ -909,129 +857,29 @@ _ATEOF
 	     printf " %3d: %-18s %s\n", $ 1, $ 2, $ 3
 	     if ($ 4) printf "      %s\n", $ 4
 	   }
-	 }' || at_write_fail=1
-  exit $at_write_fail
+	 }'
+  exit 0
 fi
 if $at_version_p; then
-  $as_echo "$as_me (GNU cpio 2.11)" &&
-  cat <<\_ACEOF || at_write_fail=1
+  echo "$as_me (GNU cpio 2.8)"
+  cat <<\_ACEOF
 
-Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
-Free Software Foundation, Inc.
+Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software
+Foundation, Inc.
 This test suite is free software; the Free Software Foundation gives
 unlimited permission to copy, distribute and modify it.
 _ACEOF
-  exit $at_write_fail
-fi
-
-# Should we print banners?  at_groups is space-separated for entire test,
-# newline-separated if only a subset of the testsuite is run.
-case $at_groups in
-  *' '*' '* | *"$as_nl"*"$as_nl"* )
-      at_print_banners=: ;;
-  * ) at_print_banners=false ;;
-esac
-# Text for banner N, set to empty once printed.
-
-# Take any -C into account.
-if $at_change_dir ; then
-  if test x- = "x$at_dir" ; then
-    at_dir=./-
-  fi
-  test x != "x$at_dir" && cd "$at_dir" \
-    || { { $as_echo "$as_me:$LINENO: error: unable to change directory" >&5
-$as_echo "$as_me: error: unable to change directory" >&2;}
-   { (exit 1); exit 1; }; }
-  at_dir=`pwd`
-fi
-
-# Load the config files for any default variable assignments.
-for at_file in atconfig atlocal
-do
-  test -r $at_file || continue
-  . ./$at_file || { { $as_echo "$as_me:$LINENO: error: invalid content: $at_file" >&5
-$as_echo "$as_me: error: invalid content: $at_file" >&2;}
-   { (exit 1); exit 1; }; }
-done
-
-# Autoconf <=2.59b set at_top_builddir instead of at_top_build_prefix:
-: ${at_top_build_prefix=$at_top_builddir}
-
-# Perform any assignments requested during argument parsing.
-eval "$at_debug_args"
-
-# atconfig delivers names relative to the directory the test suite is
-# in, but the groups themselves are run in testsuite-dir/group-dir.
-if test -n "$at_top_srcdir"; then
-  builddir=../..
-  for at_dir_var in srcdir top_srcdir top_build_prefix
-  do
-    at_val=`eval 'as_val=${'at_$at_dir_var'}
-		 $as_echo "$as_val"'`
-    case $at_val in
-      [\\/$]* | ?:[\\/]* ) at_prefix= ;;
-      *) at_prefix=../../ ;;
-    esac
-    eval "$at_dir_var=\$at_prefix\$at_val"
-  done
-fi
-
-## ------------------- ##
-## Directory structure ##
-## ------------------- ##
-
-# This is the set of directories and files used by this script
-# (non-literals are capitalized):
-#
-# TESTSUITE         - the testsuite
-# TESTSUITE.log     - summarizes the complete testsuite run
-# TESTSUITE.dir/    - created during a run, remains after -d or failed test
-# + at-groups/      - during a run: status of all groups in run
-# | + NNN/          - during a run: meta-data about test group NNN
-# | | + check-line  - location (source file and line) of current AT_CHECK
-# | | + status      - exit status of current AT_CHECK
-# | | + stdout      - stdout of current AT_CHECK
-# | | + stder1      - stderr, including trace
-# | | + stderr      - stderr, with trace filtered out
-# | | + test-source - portion of testsuite that defines group
-# | | + times       - timestamps for computing duration
-# | | + pass        - created if group passed
-# | | + xpass       - created if group xpassed
-# | | + fail        - created if group failed
-# | | + xfail       - created if group xfailed
-# | | + skip        - created if group skipped
-# + at-stop         - during a run: end the run if this file exists
-# + at-source-lines - during a run: cache of TESTSUITE line numbers for extraction
-# + 0..NNN/         - created for each group NNN, remains after -d or failed test
-# | + TESTSUITE.log - summarizes the group results
-# | + ...           - files created during the group
-
-# The directory the whole suite works in.
-# Should be absolute to let the user `cd' at will.
-at_suite_dir=$at_dir/$as_me.dir
-# The file containing the suite.
-at_suite_log=$at_dir/$as_me.log
-# The directory containing helper files per test group.
-at_helper_dir=$at_suite_dir/at-groups
-# Stop file: if it exists, do not start new jobs.
-at_stop_file=$at_suite_dir/at-stop
-
-if $at_clean; then
-  test -d "$at_suite_dir" &&
-    find "$at_suite_dir" -type d ! -perm -700 -exec chmod u+rwx \{\} \;
-  rm -f -r "$at_suite_dir" "$at_suite_log"
-  exit $?
+  exit 0
 fi
 
 # Don't take risks: use only absolute directories in PATH.
 #
-# For stand-alone test suites (ie. atconfig was not found),
-# AUTOTEST_PATH is relative to `.'.
+# For stand-alone test suites, AUTOTEST_PATH is relative to `.'.
 #
 # For embedded test suites, AUTOTEST_PATH is relative to the top level
 # of the package.  Then expand it into build/src parts, since users
 # may create executables in both places.
-AUTOTEST_PATH=`$as_echo "$AUTOTEST_PATH" | sed "s|:|$PATH_SEPARATOR|g"`
+AUTOTEST_PATH=`echo $AUTOTEST_PATH | sed "s&:&$PATH_SEPARATOR&g"`
 at_path=
 as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $AUTOTEST_PATH $PATH
@@ -1062,30 +910,31 @@ IFS=$as_save_IFS
 #
 # There might be directories that don't exist, but don't redirect
 # builtins' (eg., cd) stderr directly: Ultrix's sh hates that.
-at_new_path=
+PATH=
 as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $at_path
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
-  test -d "$as_dir" || continue
-case $as_dir in
-  [\\/]* | ?:[\\/]* ) ;;
-  * ) as_dir=`(cd "$as_dir" && pwd) 2>/dev/null` ;;
-esac
-case $PATH_SEPARATOR$at_new_path$PATH_SEPARATOR in
-  *$PATH_SEPARATOR$as_dir$PATH_SEPARATOR*) ;;
-  $PATH_SEPARATOR$PATH_SEPARATOR) at_new_path=$as_dir ;;
-  *) at_new_path=$at_new_path$PATH_SEPARATOR$as_dir ;;
+  as_dir=`(cd "$as_dir" && pwd) 2>/dev/null`
+test -d "$as_dir" || continue
+case $PATH in
+	          $as_dir                 | \
+	          $as_dir$PATH_SEPARATOR* | \
+  *$PATH_SEPARATOR$as_dir                 | \
+  *$PATH_SEPARATOR$as_dir$PATH_SEPARATOR* ) ;;
+
+  '') PATH=$as_dir ;;
+   *) PATH=$PATH$PATH_SEPARATOR$as_dir ;;
 esac
 done
 IFS=$as_save_IFS
 
-PATH=$at_new_path
 export PATH
 
 # Setting up the FDs.
 # 5 is the log file.  Not to be overwritten if `-d'.
+
 if $at_debug_p; then
   at_suite_log=/dev/null
 else
@@ -1095,28 +944,26 @@ exec 5>>"$at_suite_log"
 
 # Banners and logs.
 cat <<\_ASBOX
-## ------------------------- ##
-## GNU cpio 2.11 test suite. ##
-## ------------------------- ##
+## ------------------------ ##
+## GNU cpio 2.8 test suite. ##
+## ------------------------ ##
 _ASBOX
 {
   cat <<\_ASBOX
-## ------------------------- ##
-## GNU cpio 2.11 test suite. ##
-## ------------------------- ##
+## ------------------------ ##
+## GNU cpio 2.8 test suite. ##
+## ------------------------ ##
 _ASBOX
   echo
 
-  $as_echo "$as_me: command line was:"
-  $as_echo "  \$ $0 $at_cli_args"
+  echo "$as_me: command line was:"
+  echo "  $ $0 $at_cli_args"
   echo
 
   # Try to find a few ChangeLogs in case it might help determining the
   # exact version.  Use the relative dir: if the top dir is a symlink,
   # find will not follow it (and options to follow the links are not
-  # portable), which would result in no output here.  Prune directories
-  # matching the package tarname, since they tend to be leftovers from
-  # `make dist' or `make distcheck' and contain redundant or stale logs.
+  # portable), which would result in no output here.
   if test -n "$at_top_srcdir"; then
     cat <<\_ASBOX
 ## ----------- ##
@@ -1124,16 +971,14 @@ _ASBOX
 ## ----------- ##
 _ASBOX
     echo
-    for at_file in `find "$at_top_srcdir" -name "cpio-*" -prune -o -name ChangeLog -print`
+    for at_file in `find "$at_top_srcdir" -name ChangeLog -print`
     do
-      $as_echo "$as_me: $at_file:"
+      echo "$as_me: $at_file:"
       sed 's/^/| /;10q' $at_file
       echo
     done
 
-  fi
-
-  {
+    {
 cat <<_ASUNAME
 ## --------- ##
 ## Platform. ##
@@ -1163,162 +1008,23 @@ for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
-  $as_echo "PATH: $as_dir"
+  echo "PATH: $as_dir"
 done
 IFS=$as_save_IFS
 
 }
-  echo
+    echo
+  fi
 
   # Contents of the config files.
   for at_file in atconfig atlocal
   do
     test -r $at_file || continue
-    $as_echo "$as_me: $at_file:"
+    echo "$as_me: $at_file:"
     sed 's/^/| /' $at_file
     echo
   done
-} >&5
 
-
-## --------------- ##
-## Shell functions ##
-## --------------- ##
-
-# at_func_banner NUMBER
-# ---------------------
-# Output banner NUMBER, provided the testsuite is running multiple groups
-# and this particular banner has not yet been printed.
-at_func_banner ()
-{
-  $at_print_banners || return 0
-  eval at_banner_text=\$at_banner_text_$1
-  test "x$at_banner_text" = x && return 0
-  eval at_banner_text_$1=
-  $as_echo "$as_nl$at_banner_text$as_nl"
-} # at_func_banner
-
-# at_func_check_newline COMMAND
-# -----------------------------
-# Test if COMMAND includes a newline and, if so, print a message and return
-# exit code 1
-at_func_check_newline ()
-{
-  case "$1" in
- *'
-'*) echo 'Not enabling shell tracing (command contains an embedded newline)'
-    return 1 ;;
- *) return 0 ;;
-  esac
-}
-
-# at_func_filter_trace EXIT-CODE
-# ------------------------------
-# Split the contents of file "$at_stder1" into the "set -x" trace (on stderr)
-# and the other lines (on file "$at_stderr").  Return the exit code EXIT-CODE.
-at_func_filter_trace ()
-{
-  grep '^ *+' "$at_stder1" >&2
-  grep -v '^ *+' "$at_stder1" >"$at_stderr"
-  return $1
-}
-
-# at_func_log_failure FILE-LIST
-# -----------------------------
-# Copy the files in the list on stdout with a "> " prefix, and exit the shell
-# with a failure exit code.
-at_func_log_failure ()
-{
-  for file
-    do $as_echo "$file:"; sed 's/^/> /' "$file"; done
-  echo 1 > "$at_status_file"
-  exit 1
-}
-
-# at_func_check_skip EXIT-CODE
-# ----------------------------
-# Check whether EXIT-CODE is the special exit code 77, and if so exit the shell
-# with that same exit code.
-at_func_check_skip ()
-{
-  case $1 in
-    77) echo 77 > "$at_status_file"; exit 77;;
-  esac
-}
-
-# at_func_check_status EXPECTED EXIT-CODE LINE
-# --------------------------------------------
-# Check whether EXIT-CODE is the expected exit code, and if so do nothing.
-# Otherwise, if it is 77 exit the shell with that same exit code; if it is
-# anything else print an error message and fail the test.
-at_func_check_status ()
-{
-  case $2 in
-    $1 ) ;;
-    77) echo 77 > "$at_status_file"; exit 77;;
-    *) $as_echo "$3: exit code was $2, expected $1"
-      at_failed=:;;
-  esac
-}
-
-# at_func_diff_devnull FILE
-# -------------------------
-# Emit a diff between /dev/null and FILE.  Uses "test -s" to avoid useless
-# diff invocations.
-at_func_diff_devnull ()
-{
-  test -s "$1" || return 0
-  $at_diff "$at_devnull" "$1"
-}
-
-# at_func_test NUMBER
-# -------------------
-# Parse out test NUMBER from the tail of this file.
-at_func_test ()
-{
-  eval at_sed=\$at_sed$1
-  sed "$at_sed" "$at_myself" > "$at_test_source"
-}
-
-# at_func_create_debugging_script
-# -------------------------------
-# Create the debugging script $at_group_dir/run which will reproduce the
-# current test group.
-at_func_create_debugging_script ()
-{
-  {
-    echo "#! /bin/sh" &&
-    echo 'test "${ZSH_VERSION+set}" = set && alias -g '\''${1+"$@"}'\''='\''"$@"'\''' &&
-    $as_echo "cd '$at_dir'" &&
-    $as_echo "exec \${CONFIG_SHELL-$SHELL} \"$at_myself\" -v -d $at_debug_args $at_group \${1+\"\$@\"}" &&
-    echo 'exit 1'
-  } >"$at_group_dir/run" &&
-  chmod +x "$at_group_dir/run"
-}
-
-# at_func_arith
-# -------------
-# Arithmetic evaluation, avoids expr if the shell is sane.  The
-# interpretation of leading zeroes is unspecified.
-#
-# subshell and eval are needed to keep Solaris sh from bailing out:
-if ( eval 'test $(( 1 + 1 )) = 2' ) 2>/dev/null; then
-  # With "$@", bash does not split positional parameters:
-  eval 'at_func_arith ()
-  {
-    at_func_arith_result=$(( $* ))
-  }'
-else
-  at_func_arith ()
-  {
-    at_func_arith_result=`expr "$@"`
-  }
-fi
-
-## ---------------------- ##
-## End of shell functions ##
-## ---------------------- ##
-{
   cat <<\_ASBOX
 ## ---------------- ##
 ## Tested programs. ##
@@ -1342,13 +1048,13 @@ IFS=$as_save_IFS
 
   if test -f "$as_dir/$at_program"; then
     {
-      $as_echo "$at_srcdir/testsuite.at:26: $as_dir/$at_program --version"
-      "$as_dir/$at_program" --version </dev/null
+      echo "$at_srcdir/testsuite.at:26: $as_dir/$at_program --version"
+      "$as_dir/$at_program" --version
       echo
     } >&5 2>&1
   else
-    { { $as_echo "$as_me:$LINENO: error: cannot find $at_program" >&5
-$as_echo "$as_me: error: cannot find $at_program" >&2;}
+    { { echo "$as_me:$LINENO: error: cannot find $at_program" >&5
+echo "$as_me: error: cannot find $at_program" >&2;}
    { (exit 1); exit 1; }; }
   fi
 done
@@ -1363,13 +1069,19 @@ _ASBOX
 
 at_start_date=`date`
 at_start_time=`date +%s 2>/dev/null`
-$as_echo "$as_me: starting at: $at_start_date" >&5
+echo "$as_me: starting at: $at_start_date" >&5
+at_xpass_list=
+at_xfail_list=
+at_pass_list=
+at_fail_list=
+at_skip_list=
+at_group_count=0
 
 # Create the master directory if it doesn't already exist.
 test -d "$at_suite_dir" ||
   mkdir "$at_suite_dir" ||
-  { { $as_echo "$as_me:$LINENO: error: cannot create '$at_suite_dir'" >&5
-$as_echo "$as_me: error: cannot create '$at_suite_dir'" >&2;}
+  { { echo "$as_me:$LINENO: error: cannot create '$at_suite_dir'" >&5
+echo "$as_me: error: cannot create '$at_suite_dir'" >&2;}
    { (exit 1); exit 1; }; }
 
 # Can we diff with `/dev/null'?  DU 5.0 refuses.
@@ -1388,87 +1100,37 @@ else
   at_diff=diff
 fi
 
-# Get the last needed group.
-for at_group in : $at_groups; do :; done
 
-# Extract the start and end lines of each test group at the tail
-# of this file
-awk '
-BEGIN { FS="" }
-/^#AT_START_/ {
-  start = NR
-}
-/^#AT_STOP_/ {
-  test = substr ($ 0, 10)
-  print "at_sed" test "=\"1," start "d;" (NR-1) "q\""
-  if (test == "'"$at_group"'") exit
-}' "$at_myself" > "$at_suite_dir/at-source-lines" &&
-. "$at_suite_dir/at-source-lines" ||
-  { { $as_echo "$as_me:$LINENO: error: cannot create test line number cache" >&5
-$as_echo "$as_me: error: cannot create test line number cache" >&2;}
-   { (exit 1); exit 1; }; }
-rm -f "$at_suite_dir/at-source-lines"
-
-# Set up helper dirs.
-rm -rf "$at_helper_dir" &&
-mkdir "$at_helper_dir" &&
-cd "$at_helper_dir" &&
-{ test -z "$at_groups" || mkdir $at_groups; } ||
-{ { $as_echo "$as_me:$LINENO: error: testsuite directory setup failed" >&5
-$as_echo "$as_me: error: testsuite directory setup failed" >&2;}
-   { (exit 1); exit 1; }; }
-
-# Functions for running a test group.  We leave the actual
-# test group execution outside of a shell function in order
-# to avoid hitting zsh 4.x exit status bugs.
-
-# at_func_group_prepare
-# ---------------------
-# Prepare running a test group
-at_func_group_prepare ()
-{
-  # The directory for additional per-group helper files.
-  at_job_dir=$at_helper_dir/$at_group
-  # The file containing the location of the last AT_CHECK.
-  at_check_line_file=$at_job_dir/check-line
-  # The file containing the exit status of the last command.
-  at_status_file=$at_job_dir/status
-  # The files containing the output of the tested commands.
-  at_stdout=$at_job_dir/stdout
-  at_stder1=$at_job_dir/stder1
-  at_stderr=$at_job_dir/stderr
-  # The file containing the code for a test group.
-  at_test_source=$at_job_dir/test-source
-  # The file containing dates.
-  at_times_file=$at_job_dir/times
-
+for at_group in $at_groups
+do
   # Be sure to come back to the top test directory.
   cd "$at_suite_dir"
 
-  # Clearly separate the test groups when verbose.
-  $at_first || $at_verbose echo
+  case $at_group in
+    banner-*)
+      at_group_log=$at_suite_log
+      ;;
 
-  at_group_normalized=$at_group
+    *)
+      at_group_normalized=$at_group
 
-  eval 'while :; do
+  while :; do
     case $at_group_normalized in #(
-    '"$at_format"'*) break;;
+    $at_format*) break;;
     esac
     at_group_normalized=0$at_group_normalized
-  done'
+  done
 
 
-  # Create a fresh directory for the next test group, and enter.
-  at_group_dir=$at_suite_dir/$at_group_normalized
-  at_group_log=$at_group_dir/$as_me.log
-  if test -d "$at_group_dir"; then
-    find "$at_group_dir" -type d ! -perm -700 -exec chmod u+rwx \{\} \;
-    rm -fr "$at_group_dir" ||
-    { $as_echo "$as_me:$LINENO: WARNING: test directory for $at_group_normalized could not be cleaned." >&5
-$as_echo "$as_me: WARNING: test directory for $at_group_normalized could not be cleaned." >&2;}
-  fi
-  # Be tolerant if the above `rm' was not able to remove the directory.
-  { as_dir="$at_group_dir"
+      # Create a fresh directory for the next test group, and enter.
+      at_group_dir=$at_suite_dir/$at_group_normalized
+      at_group_log=$at_group_dir/$as_me.log
+      if test -d "$at_group_dir"; then
+	find "$at_group_dir" -type d ! -perm -700 -exec chmod u+rwx \{\} \;
+	rm -fr "$at_group_dir"
+      fi
+      # Be tolerant if the above `rm' was not able to remove the directory.
+      { as_dir=$at_group_dir
   case $as_dir in #(
   -*) as_dir=./$as_dir;;
   esac
@@ -1476,7 +1138,7 @@ $as_echo "$as_me: WARNING: test directory for $at_group_normalized could not be 
     as_dirs=
     while :; do
       case $as_dir in #(
-      *\'*) as_qdir=`$as_echo "$as_dir" | sed "s/'/'\\\\\\\\''/g"`;; #'(
+      *\'*) as_qdir=`echo "$as_dir" | sed "s/'/'\\\\\\\\''/g"`;; #(
       *) as_qdir=$as_dir;;
       esac
       as_dirs="'$as_qdir' $as_dirs"
@@ -1485,7 +1147,7 @@ $as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
 	 X"$as_dir" : 'X\(//\)[^/]' \| \
 	 X"$as_dir" : 'X\(//\)$' \| \
 	 X"$as_dir" : 'X\(/\)' \| . 2>/dev/null ||
-$as_echo X"$as_dir" |
+echo X"$as_dir" |
     sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
 	    s//\1/
 	    q
@@ -1506,182 +1168,410 @@ $as_echo X"$as_dir" |
       test -d "$as_dir" && break
     done
     test -z "$as_dirs" || eval "mkdir $as_dirs"
-  } || test -d "$as_dir" || { { $as_echo "$as_me:$LINENO: error: cannot create directory $as_dir" >&5
-$as_echo "$as_me: error: cannot create directory $as_dir" >&2;}
+  } || test -d "$as_dir" || { { echo "$as_me:$LINENO: error: cannot create directory $as_dir" >&5
+echo "$as_me: error: cannot create directory $as_dir" >&2;}
    { (exit 1); exit 1; }; }; }
+      cd $at_group_dir
+      ;;
+  esac
 
   echo 0 > "$at_status_file"
 
+  # Clearly separate the test groups when verbose.
+  test $at_group_count != 0 && $at_verbose
+
   # In verbose mode, append to the log file *and* show on
-  # the standard output; in quiet mode only write to the log.
-  if test -z "$at_verbose"; then
+  # the standard output; in quiet mode only write to the log
+  if test $at_verbose = echo; then
     at_tee_pipe='tee -a "$at_group_log"'
   else
     at_tee_pipe='cat >> "$at_group_log"'
   fi
-}
 
-# at_func_group_postprocess
-# -------------------------
-at_func_group_postprocess ()
-{
+  case $at_group in
+  1 ) # 1. version.at:19: cpio version
+    at_setup_line='version.at:19'
+    at_desc='cpio version'
+    $at_quiet $ECHO_N "  1: cpio version                                 $ECHO_C"
+    at_xfail=no
+    echo "#                             -*- compilation -*-" >> "$at_group_log"
+    (
+      echo "1. version.at:19: testing ..."
+      $at_traceon
+
+
+$at_traceoff
+echo "$at_srcdir/version.at:21: cpio --version"
+echo version.at:21 >"$at_check_line_file"
+
+at_trace_this=
+if test -n "$at_traceon"; then
+    at_trace_this=yes
+fi
+
+if test -n "$at_trace_this"; then
+    ( $at_traceon; cpio --version ) >"$at_stdout" 2>"$at_stder1"
+    at_status=$?
+    grep '^ *+' "$at_stder1" >&2
+    grep -v '^ *+' "$at_stder1" >"$at_stderr"
+else
+    ( :; cpio --version ) >"$at_stdout" 2>"$at_stderr"
+    at_status=$?
+fi
+
+at_failed=false
+$at_diff "$at_devnull" "$at_stderr" || at_failed=:
+echo >>"$at_stdout"; echo "cpio (GNU cpio) 2.8
+" | $at_diff - "$at_stdout" || at_failed=:
+case $at_status in
+   77) echo 77 > "$at_status_file"; exit 77;;
+   0) ;;
+   *) echo "$at_srcdir/version.at:21: exit code was $at_status, expected 0"
+      at_failed=:;;
+esac
+if $at_failed; then
+
+
+  echo 1 > "$at_status_file"
+  exit 1
+else
+
+echo '=============================================================='
+echo 'WARNING: Not using the proper version, *all* checks dubious...'
+echo '=============================================================='
+
+fi
+
+$at_traceon
+
+
+      $at_traceoff
+      $at_times_p && times >"$at_times_file"
+    ) 5>&1 2>&1 | eval $at_tee_pipe
+    at_status=`cat "$at_status_file"`
+    ;;
+
+  2 ) # 2. inout.at:19: basic functionality: copyin/copyout
+    at_setup_line='inout.at:19'
+    at_desc='basic functionality: copyin/copyout'
+    $at_quiet $ECHO_N "  2: basic functionality: copyin/copyout          $ECHO_C"
+    at_xfail=no
+    echo "#                             -*- compilation -*-" >> "$at_group_log"
+    (
+      echo "2. inout.at:19: testing ..."
+      $at_traceon
+
+
+
+cat >filelist <<'_ATEOF'
+a 18
+b	1024
+c	356
+d	20000
+e	3
+f	0
+g	10658
+h	45
+_ATEOF
+
+
+$at_traceoff
+echo "$at_srcdir/inout.at:32:
+while read NAME LENGTH
+do
+	genfile --length \$LENGTH > \$NAME
+	echo \$NAME
+done < filelist |
+ cpio --quiet -o > archive"
+echo inout.at:32 >"$at_check_line_file"
+
+at_trace_this=
+if test -n "$at_traceon"; then
+    echo 'Not enabling shell tracing (command contains an embedded newline)'
+fi
+
+if test -n "$at_trace_this"; then
+    ( $at_traceon;
+while read NAME LENGTH
+do
+	genfile --length $LENGTH > $NAME
+	echo $NAME
+done < filelist |
+ cpio --quiet -o > archive ) >"$at_stdout" 2>"$at_stder1"
+    at_status=$?
+    grep '^ *+' "$at_stder1" >&2
+    grep -v '^ *+' "$at_stder1" >"$at_stderr"
+else
+    ( :;
+while read NAME LENGTH
+do
+	genfile --length $LENGTH > $NAME
+	echo $NAME
+done < filelist |
+ cpio --quiet -o > archive ) >"$at_stdout" 2>"$at_stderr"
+    at_status=$?
+fi
+
+at_failed=false
+$at_diff "$at_devnull" "$at_stderr" || at_failed=:
+$at_diff "$at_devnull" "$at_stdout" || at_failed=:
+case $at_status in
+   77) echo 77 > "$at_status_file"; exit 77;;
+   0) ;;
+   *) echo "$at_srcdir/inout.at:32: exit code was $at_status, expected 0"
+      at_failed=:;;
+esac
+if $at_failed; then
+
+
+  echo 1 > "$at_status_file"
+  exit 1
+fi
+
+$at_traceon
+
+
+      $at_traceoff
+      $at_times_p && times >"$at_times_file"
+    ) 5>&1 2>&1 | eval $at_tee_pipe
+    at_status=`cat "$at_status_file"`
+    ;;
+
+  3 ) # 3. symlink.at:22: symlink
+    at_setup_line='symlink.at:22'
+    at_desc='symlink'
+    $at_quiet $ECHO_N "  3: symlink                                      $ECHO_C"
+    at_xfail=no
+    echo "#                             -*- compilation -*-" >> "$at_group_log"
+    (
+      echo "3. symlink.at:22: testing ..."
+      $at_traceon
+
+
+
+cat >filelist <<'_ATEOF'
+file
+symlink
+_ATEOF
+
+
+$at_traceoff
+echo "$at_srcdir/symlink.at:29:
+genfile --file file
+ln -s file symlink || exit 77
+echo Creating the archive
+cpio --quiet -o < filelist > archive
+echo Extracting the archive
+mkdir dir
+cd dir
+cpio --quiet -i < ../archive
+find . | sort
+"
+echo symlink.at:29 >"$at_check_line_file"
+
+at_trace_this=
+if test -n "$at_traceon"; then
+    echo 'Not enabling shell tracing (command contains an embedded newline)'
+fi
+
+if test -n "$at_trace_this"; then
+    ( $at_traceon;
+genfile --file file
+ln -s file symlink || exit 77
+echo Creating the archive
+cpio --quiet -o < filelist > archive
+echo Extracting the archive
+mkdir dir
+cd dir
+cpio --quiet -i < ../archive
+find . | sort
+ ) >"$at_stdout" 2>"$at_stder1"
+    at_status=$?
+    grep '^ *+' "$at_stder1" >&2
+    grep -v '^ *+' "$at_stder1" >"$at_stderr"
+else
+    ( :;
+genfile --file file
+ln -s file symlink || exit 77
+echo Creating the archive
+cpio --quiet -o < filelist > archive
+echo Extracting the archive
+mkdir dir
+cd dir
+cpio --quiet -i < ../archive
+find . | sort
+ ) >"$at_stdout" 2>"$at_stderr"
+    at_status=$?
+fi
+
+at_failed=false
+$at_diff "$at_devnull" "$at_stderr" || at_failed=:
+echo >>"$at_stdout"; echo "Creating the archive
+Extracting the archive
+.
+./file
+./symlink
+" | $at_diff - "$at_stdout" || at_failed=:
+case $at_status in
+   77) echo 77 > "$at_status_file"; exit 77;;
+   0) ;;
+   *) echo "$at_srcdir/symlink.at:29: exit code was $at_status, expected 0"
+      at_failed=:;;
+esac
+if $at_failed; then
+
+
+  echo 1 > "$at_status_file"
+  exit 1
+fi
+
+$at_traceon
+
+
+      $at_traceoff
+      $at_times_p && times >"$at_times_file"
+    ) 5>&1 2>&1 | eval $at_tee_pipe
+    at_status=`cat "$at_status_file"`
+    ;;
+
+
+  * )
+    echo "$as_me: no such test group: $at_group" >&2
+    continue
+    ;;
+  esac
+
   # Be sure to come back to the suite directory, in particular
   # since below we might `rm' the group directory we are in currently.
   cd "$at_suite_dir"
 
-  if test ! -f "$at_check_line_file"; then
-    sed "s/^ */$as_me: WARNING: /" <<_ATEOF
-      A failure happened in a test group before any test could be
-      run. This means that test suite is improperly designed.  Please
-      report this failure to <bug-cpio@gnu.org>.
-_ATEOF
-    $as_echo "$at_setup_line" >"$at_check_line_file"
-  fi
-  $at_verbose $as_echo_n "$at_group. $at_setup_line: "
-  $as_echo_n "$at_group. $at_setup_line: " >> "$at_group_log"
-  case $at_xfail:$at_status in
-    yes:0)
-	at_msg="UNEXPECTED PASS"
-	at_res=xpass
-	at_errexit=$at_errexit_p
-	;;
-    no:0)
-	at_msg="ok"
-	at_res=pass
-	at_errexit=false
-	;;
-    *:77)
-	at_msg='skipped ('`cat "$at_check_line_file"`')'
-	at_res=skip
-	at_errexit=false
-	;;
-    yes:*)
-	at_msg='expected failure ('`cat "$at_check_line_file"`')'
-	at_res=xfail
-	at_errexit=false
-	;;
-    no:*)
-	at_msg='FAILED ('`cat "$at_check_line_file"`')'
-	at_res=fail
-	at_errexit=$at_errexit_p
-	;;
-  esac
-  echo "$at_res" > "$at_job_dir/$at_res"
-  # Make sure there is a separator even with long titles.
-  $as_echo " $at_msg"
-  at_log_msg="$at_group. $at_desc ($at_setup_line): $at_msg"
-  case $at_status in
-    0|77)
-      # $at_times_file is only available if the group succeeded.
-      # We're not including the group log, so the success message
-      # is written in the global log separately.  But we also
-      # write to the group log in case they're using -d.
-      if test -f "$at_times_file"; then
-	at_log_msg="$at_log_msg     ("`sed 1d "$at_times_file"`')'
-	rm -f "$at_times_file"
-      fi
-      $as_echo "$at_log_msg" >> "$at_group_log"
-      $as_echo "$at_log_msg" >&5
-
-      # Cleanup the group directory, unless the user wants the files.
-      if $at_debug_p; then
-	at_func_create_debugging_script
-      else
-	if test -d "$at_group_dir"; then
-	  find "$at_group_dir" -type d ! -perm -700 -exec chmod u+rwx \{\} \;
-	  rm -fr "$at_group_dir"
-	fi
-	rm -f "$at_test_source"
-      fi
-      ;;
+  case $at_group in
+    banner-*) ;;
     *)
-      # Upon failure, include the log into the testsuite's global
-      # log.  The failure message is written in the group log.  It
-      # is later included in the global log.
-      $as_echo "$at_log_msg" >> "$at_group_log"
-
-      # Upon failure, keep the group directory for autopsy, and create
-      # the debugging script.  With -e, do not start any further tests.
-      at_func_create_debugging_script
-      if $at_errexit; then
-	echo stop > "$at_stop_file"
+      if test ! -f "$at_check_line_file"; then
+	sed "s/^ */$as_me: warning: /" <<_ATEOF
+	A failure happened in a test group before any test could be
+	run. This means that test suite is improperly designed.  Please
+	report this failure to <bug-cpio@gnu.org>.
+_ATEOF
+	echo "$at_setup_line" >"$at_check_line_file"
       fi
+      at_group_count=`expr 1 + $at_group_count`
+      $at_verbose $ECHO_N "$at_group. $at_setup_line: $ECHO_C"
+      echo $ECHO_N "$at_group. $at_setup_line: $ECHO_C" >> "$at_group_log"
+      case $at_xfail:$at_status in
+	yes:0)
+	    at_msg="UNEXPECTED PASS"
+	    at_xpass_list="$at_xpass_list $at_group"
+	    at_errexit=$at_errexit_p
+	    ;;
+	no:0)
+	    at_msg="ok"
+	    at_pass_list="$at_pass_list $at_group"
+	    at_errexit=false
+	    ;;
+	*:77)
+	    at_msg='skipped ('`cat "$at_check_line_file"`')'
+	    at_skip_list="$at_skip_list $at_group"
+	    at_errexit=false
+	    ;;
+	yes:*)
+	    at_msg='expected failure ('`cat "$at_check_line_file"`')'
+	    at_xfail_list="$at_xfail_list $at_group"
+	    at_errexit=false
+	    ;;
+	no:*)
+	    at_msg='FAILED ('`cat "$at_check_line_file"`')'
+	    at_fail_list="$at_fail_list $at_group"
+	    at_errexit=$at_errexit_p
+	    ;;
+      esac
+      # Make sure there is a separator even with long titles.
+      echo " $at_msg"
+      at_log_msg="$at_group. $at_desc ($at_setup_line): $at_msg"
+      case $at_status in
+	0|77)
+	  # $at_times_file is only available if the group succeeded.
+	  # We're not including the group log, so the success message
+	  # is written in the global log separately.  But we also
+	  # write to the group log in case they're using -d.
+	  if test -f "$at_times_file"; then
+	    at_log_msg="$at_log_msg	("`sed 1d "$at_times_file"`')'
+	    rm -f "$at_times_file"
+          fi
+	  echo "$at_log_msg" >> "$at_group_log"
+	  echo "$at_log_msg" >&5
+
+	  # Cleanup the group directory, unless the user wants the files.
+	  if $at_debug_p ; then
+	    	  {
+	    echo "#! /bin/sh"
+	    echo 'test "${ZSH_VERSION+set}" = set && alias -g '\''${1+"$@"}'\''='\''"$@"'\'''
+	    echo "cd '$at_dir'"
+	    echo 'exec ${CONFIG_SHELL-'"$SHELL"'}' "$0" \
+	         '-v -d' "$at_debug_args" "$at_group" '${1+"$@"}'
+	    echo 'exit 1'
+	  } >$at_group_dir/run
+	  chmod +x $at_group_dir/run
+
+	  elif test -d "$at_group_dir"; then
+	    find "$at_group_dir" -type d ! -perm -700 -exec chmod u+rwx \{\} \;
+	    rm -fr "$at_group_dir"
+	  fi
+	  ;;
+	*)
+	  # Upon failure, include the log into the testsuite's global
+	  # log.  The failure message is written in the group log.  It
+	  # is later included in the global log.
+	  echo "$at_log_msg" >> "$at_group_log"
+
+	  # Upon failure, keep the group directory for autopsy, and
+	  # create the debugging script.
+	  	  {
+	    echo "#! /bin/sh"
+	    echo 'test "${ZSH_VERSION+set}" = set && alias -g '\''${1+"$@"}'\''='\''"$@"'\'''
+	    echo "cd '$at_dir'"
+	    echo 'exec ${CONFIG_SHELL-'"$SHELL"'}' "$0" \
+	         '-v -d' "$at_debug_args" "$at_group" '${1+"$@"}'
+	    echo 'exit 1'
+	  } >$at_group_dir/run
+	  chmod +x $at_group_dir/run
+
+	  $at_errexit && break
+	  ;;
+      esac
       ;;
   esac
-}
-
-
-## ------------ ##
-## Driver loop. ##
-## ------------ ##
-
-rm -f "$at_stop_file"
-at_first=:
-
-for at_group in $at_groups; do
-  at_func_group_prepare
-  if cd "$at_group_dir" &&
-     at_func_test $at_group &&
-     . "$at_test_source"; then :; else
-    { $as_echo "$as_me:$LINENO: WARNING: unable to parse test group: $at_group" >&5
-$as_echo "$as_me: WARNING: unable to parse test group: $at_group" >&2;}
-    at_failed=:
-  fi
-  at_func_group_postprocess
-  test -f "$at_stop_file" && break
-  at_first=false
 done
-
-# Wrap up the test suite with summary statistics.
-cd "$at_helper_dir"
-
-# Use ?..???? when the list must remain sorted, the faster * otherwise.
-at_pass_list=`for f in */pass; do echo $f; done | sed '/\*/d; s,/pass,,'`
-at_skip_list=`for f in */skip; do echo $f; done | sed '/\*/d; s,/skip,,'`
-at_xfail_list=`for f in */xfail; do echo $f; done | sed '/\*/d; s,/xfail,,'`
-at_xpass_list=`for f in ?/xpass ??/xpass ???/xpass ????/xpass; do
-		 echo $f; done | sed '/?/d; s,/xpass,,'`
-at_fail_list=`for f in ?/fail ??/fail ???/fail ????/fail; do
-		echo $f; done | sed '/?/d; s,/fail,,'`
-
-set X $at_pass_list $at_xpass_list $at_xfail_list $at_fail_list $at_skip_list
-shift; at_group_count=$#
-set X $at_xpass_list; shift; at_xpass_count=$#; at_xpass_list=$*
-set X $at_xfail_list; shift; at_xfail_count=$#
-set X $at_fail_list; shift; at_fail_count=$#; at_fail_list=$*
-set X $at_skip_list; shift; at_skip_count=$#
-
-at_func_arith $at_group_count - $at_skip_count
-at_run_count=$at_func_arith_result
-at_func_arith $at_xpass_count + $at_fail_count
-at_unexpected_count=$at_func_arith_result
-at_func_arith $at_xfail_count + $at_fail_count
-at_total_fail_count=$at_func_arith_result
 
 # Back to the top directory.
 cd "$at_dir"
-rm -rf "$at_helper_dir"
 
 # Compute the duration of the suite.
 at_stop_date=`date`
 at_stop_time=`date +%s 2>/dev/null`
-$as_echo "$as_me: ending at: $at_stop_date" >&5
+echo "$as_me: ending at: $at_stop_date" >&5
 case $at_start_time,$at_stop_time in
   [0-9]*,[0-9]*)
-    at_func_arith $at_stop_time - $at_start_time
-    at_duration_s=$at_func_arith_result
-    at_func_arith $at_duration_s / 60
-    at_duration_m=$at_func_arith_result
-    at_func_arith $at_duration_m / 60
-    at_duration_h=$at_func_arith_result
-    at_func_arith $at_duration_s % 60
-    at_duration_s=$at_func_arith_result
-    at_func_arith $at_duration_m % 60
-    at_duration_m=$at_func_arith_result
+    at_duration_s=`expr $at_stop_time - $at_start_time`
+    at_duration_m=`expr $at_duration_s / 60`
+    at_duration_h=`expr $at_duration_m / 60`
+    at_duration_s=`expr $at_duration_s % 60`
+    at_duration_m=`expr $at_duration_m % 60`
     at_duration="${at_duration_h}h ${at_duration_m}m ${at_duration_s}s"
-    $as_echo "$as_me: test suite duration: $at_duration" >&5
+    echo "$as_me: test suite duration: $at_duration" >&5
     ;;
 esac
+
+# Wrap up the test suite with summary statistics.
+at_skip_count=`set dummy $at_skip_list; shift; echo $#`
+at_fail_count=`set dummy $at_fail_list; shift; echo $#`
+at_xpass_count=`set dummy $at_xpass_list; shift; echo $#`
+at_xfail_count=`set dummy $at_xfail_list; shift; echo $#`
+
+at_run_count=`expr $at_group_count - $at_skip_count`
+at_unexpected_count=`expr $at_xpass_count + $at_fail_count`
+at_total_fail_count=`expr $at_xfail_count + $at_fail_count`
 
 echo
 cat <<\_ASBOX
@@ -1781,17 +1671,17 @@ _ASBOX
     # Summary of failed and skipped tests.
     if test $at_fail_count != 0; then
       echo "Failed tests:"
-      $SHELL "$at_myself" $at_fail_list --list
+      $SHELL "$0" $at_fail_list --list
       echo
     fi
     if test $at_skip_count != 0; then
       echo "Skipped tests:"
-      $SHELL "$at_myself" $at_skip_list --list
+      $SHELL "$0" $at_skip_list --list
       echo
     fi
     if test $at_xpass_count != 0; then
       echo "Unexpected passes:"
-      $SHELL "$at_myself" $at_xpass_list --list
+      $SHELL "$0" $at_xpass_list --list
       echo
     fi
     if test $at_fail_count != 0; then
@@ -1803,17 +1693,17 @@ _ASBOX
       echo
       for at_group in $at_fail_list
       do
-	at_group_normalized=$at_group
+        at_group_normalized=$at_group
 
-  eval 'while :; do
+  while :; do
     case $at_group_normalized in #(
-    '"$at_format"'*) break;;
+    $at_format*) break;;
     esac
     at_group_normalized=0$at_group_normalized
-  done'
+  done
 
-	cat "$at_suite_dir/$at_group_normalized/$as_me.log"
-	echo
+        cat "$at_suite_dir/$at_group_normalized/$as_me.log"
+        echo
       done
       echo
     fi
@@ -1831,16 +1721,16 @@ _ASBOX
 _ASBOX
 
   echo
-  $as_echo "Please send \`${at_testdir+${at_testdir}/}$as_me.log' and all information you think might help:
-
-   To: <bug-cpio@gnu.org>
-   Subject: [GNU cpio 2.11] $as_me: $at_fail_list${at_fail_list:+ failed${at_xpass_list:+, }}$at_xpass_list${at_xpass_list:+ passed unexpectedly}
-"
+  echo "Please send \`${at_testdir+${at_testdir}/}$as_me.log' and all information you think might help:"
+  echo
+  echo "   To: <bug-cpio@gnu.org>"
+  echo "   Subject: [GNU cpio 2.8] $as_me:$at_fail_list${at_fail_list:+ failed${at_xpass_list:+,}}$at_xpass_list${at_xpass_list:+ passed unexpectedly}"
+  echo
   if test $at_debug_p = false; then
     echo
     echo 'You may investigate any problem if you feel able to do so, in which'
     echo 'case the test suite provides a good starting point.  Its output may'
-    $as_echo "be found below \`${at_testdir+${at_testdir}/}$as_me.dir'."
+    echo "be found below \`${at_testdir+${at_testdir}/}$as_me.dir'."
     echo
   fi
     exit 1
@@ -1848,695 +1738,5 @@ fi
 
 exit 0
 
-## ------------- ##
-## Actual tests. ##
-## ------------- ##
-#AT_START_1
-# 1. version.at:19: cpio version
-at_setup_line='version.at:19'
-at_desc="cpio version"
-$at_quiet $as_echo_n "  1: $at_desc                                   "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "1. version.at:19: testing ..."
-  $at_traceon
 
 
-{ $at_traceoff
-$as_echo "$at_srcdir/version.at:21: cpio --version | sed 1q"
-echo version.at:21 >"$at_check_line_file"
-
-if test -n "$at_traceon"; then
-  ( $at_traceon; cpio --version | sed 1q ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :; cpio --version | sed 1q ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "cpio (GNU cpio) 2.11
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/version.at:21"
-if $at_failed; then
-  :
-else
-
-echo '=============================================================='
-echo 'WARNING: Not using the proper version, *all* checks dubious...'
-echo '=============================================================='
-
-fi
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_1
-#AT_START_2
-# 2. inout.at:19: basic functionality: copyin/copyout
-at_setup_line='inout.at:19'
-at_desc="basic functionality: copyin/copyout"
-$at_quiet $as_echo_n "  2: $at_desc            "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "2. inout.at:19: testing ..."
-  $at_traceon
-
-
-
-cat >filelist <<'_ATEOF'
-a 18
-b	1024
-c	356
-d	20000
-e	3
-f	0
-g	10658
-h	45
-_ATEOF
-
-
-{ $at_traceoff
-$as_echo "$at_srcdir/inout.at:32:
-while read NAME LENGTH
-do
-	genfile --length \$LENGTH > \$NAME
-	echo \$NAME
-done < filelist |
- cpio --quiet -o > archive"
-echo inout.at:32 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-while read NAME LENGTH
-do
-	genfile --length $LENGTH > $NAME
-	echo $NAME
-done < filelist |
- cpio --quiet -o > archive ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-while read NAME LENGTH
-do
-	genfile --length $LENGTH > $NAME
-	echo $NAME
-done < filelist |
- cpio --quiet -o > archive ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-at_func_diff_devnull "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/inout.at:32"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_2
-#AT_START_3
-# 3. symlink.at:22: symlink
-at_setup_line='symlink.at:22'
-at_desc="symlink"
-$at_quiet $as_echo_n "  3: $at_desc                                        "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "3. symlink.at:22: testing ..."
-  $at_traceon
-
-
-
-cat >filelist <<'_ATEOF'
-file
-symlink
-_ATEOF
-
-
-{ $at_traceoff
-$as_echo "$at_srcdir/symlink.at:29:
-genfile --file file
-ln -s file symlink || exit 77
-echo Creating the archive
-cpio --quiet -o < filelist > archive
-echo Extracting the archive
-mkdir dir
-cd dir
-cpio --quiet -i < ../archive
-find . | sort
-"
-echo symlink.at:29 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-genfile --file file
-ln -s file symlink || exit 77
-echo Creating the archive
-cpio --quiet -o < filelist > archive
-echo Extracting the archive
-mkdir dir
-cd dir
-cpio --quiet -i < ../archive
-find . | sort
- ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-genfile --file file
-ln -s file symlink || exit 77
-echo Creating the archive
-cpio --quiet -o < filelist > archive
-echo Extracting the archive
-mkdir dir
-cd dir
-cpio --quiet -i < ../archive
-find . | sort
- ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "Creating the archive
-Extracting the archive
-.
-./file
-./symlink
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/symlink.at:29"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_3
-#AT_START_4
-# 4. interdir.at:24: interdir
-at_setup_line='interdir.at:24'
-at_desc="interdir"
-$at_quiet $as_echo_n "  4: $at_desc                                       "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "4. interdir.at:24: testing ..."
-  $at_traceon
-
-
-
-cat >filelist <<'_ATEOF'
-dir
-dir/file
-_ATEOF
-
-
-{ $at_traceoff
-$as_echo "$at_srcdir/interdir.at:31:
-umask 022
-mkdir dir
-chmod 700 dir
-genfile --file dir/file
-echo Copying the hierarchy
-cpio -pdvm en/to/tre < filelist 2>&1
-echo Results
-genfile --stat=name,mode.777 en
-genfile --stat=name,mode.777 en/to
-genfile --stat=name,mode.777 en/to/tre
-genfile --stat=name,mode.777 en/to/tre/dir
-genfile --stat=name,mode.777 en/to/tre/dir/file
-"
-echo interdir.at:31 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-umask 022
-mkdir dir
-chmod 700 dir
-genfile --file dir/file
-echo Copying the hierarchy
-cpio -pdvm en/to/tre < filelist 2>&1
-echo Results
-genfile --stat=name,mode.777 en
-genfile --stat=name,mode.777 en/to
-genfile --stat=name,mode.777 en/to/tre
-genfile --stat=name,mode.777 en/to/tre/dir
-genfile --stat=name,mode.777 en/to/tre/dir/file
- ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-umask 022
-mkdir dir
-chmod 700 dir
-genfile --file dir/file
-echo Copying the hierarchy
-cpio -pdvm en/to/tre < filelist 2>&1
-echo Results
-genfile --stat=name,mode.777 en
-genfile --stat=name,mode.777 en/to
-genfile --stat=name,mode.777 en/to/tre
-genfile --stat=name,mode.777 en/to/tre/dir
-genfile --stat=name,mode.777 en/to/tre/dir/file
- ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "Copying the hierarchy
-en/to/tre/dir
-en/to/tre/dir/file
-0 blocks
-Results
-en 755
-en/to 755
-en/to/tre 755
-en/to/tre/dir 700
-en/to/tre/dir/file 644
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/interdir.at:31"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_4
-#AT_START_5
-# 5. setstat01.at:17: delayed setstat
-at_setup_line='setstat01.at:17'
-at_desc="delayed setstat"
-$at_quiet $as_echo_n "  5: $at_desc                                "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "5. setstat01.at:17: testing ..."
-  $at_traceon
-
-
-
-# In cpio up to 2.10, in copy-in mode, permissions and ownership of
-# created directories were set right after creating them. If directory
-# permissions did not allow writing to it, cpio was unable to populate
-# the directory.
-
-{ $at_traceoff
-$as_echo "$at_srcdir/setstat01.at:25:
-mkdir dir
-echo \"test file\" > dir/file
-chmod 500 dir
-
-find dir | cpio -o --quiet > archive
-mv dir old
-
-cpio -i --quiet < archive
-genfile --stat=mode.777 dir
-"
-echo setstat01.at:25 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-mkdir dir
-echo "test file" > dir/file
-chmod 500 dir
-
-find dir | cpio -o --quiet > archive
-mv dir old
-
-cpio -i --quiet < archive
-genfile --stat=mode.777 dir
- ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-mkdir dir
-echo "test file" > dir/file
-chmod 500 dir
-
-find dir | cpio -o --quiet > archive
-mv dir old
-
-cpio -i --quiet < archive
-genfile --stat=mode.777 dir
- ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "500
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/setstat01.at:25"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_5
-#AT_START_6
-# 6. setstat02.at:17: delayed setstat (with -depth)
-at_setup_line='setstat02.at:17'
-at_desc="delayed setstat (with -depth)"
-$at_quiet $as_echo_n "  6: $at_desc                  "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "6. setstat02.at:17: testing ..."
-  $at_traceon
-
-
-
-# Description: Cpio versions up to 2.10 failed to restore directory
-# permissions, if the directory was already present on dist (e.g. when
-# using find . -depth).
-#
-# References:
-#   <20090620185721.GA18708@scru.org>
-#   http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=458079
-#
-# See also: setstat03, setstat04, setstat05
-
-{ $at_traceoff
-$as_echo "$at_srcdir/setstat02.at:30:
-mkdir dir
-echo \"test file\" > dir/file
-chmod 500 dir
-
-find dir -depth | cpio -o --quiet > archive
-mv dir old
-
-cpio -id --quiet < archive
-genfile --stat=mode.777 dir
-"
-echo setstat02.at:30 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-mkdir dir
-echo "test file" > dir/file
-chmod 500 dir
-
-find dir -depth | cpio -o --quiet > archive
-mv dir old
-
-cpio -id --quiet < archive
-genfile --stat=mode.777 dir
- ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-mkdir dir
-echo "test file" > dir/file
-chmod 500 dir
-
-find dir -depth | cpio -o --quiet > archive
-mv dir old
-
-cpio -id --quiet < archive
-genfile --stat=mode.777 dir
- ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "500
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/setstat02.at:30"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_6
-#AT_START_7
-# 7. setstat03.at:17: delayed setstat (copy-pass)
-at_setup_line='setstat03.at:17'
-at_desc="delayed setstat (copy-pass)"
-$at_quiet $as_echo_n "  7: $at_desc                    "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "7. setstat03.at:17: testing ..."
-  $at_traceon
-
-
-
-# Description: Cpio versions up to 2.10 failed to restore directory
-# permissions, if the directory was already present on dist (e.g. when
-# using find . -depth).
-# This test case does the same as setstat02, but using copy-pass mode.
-#
-# References:
-#   <20090620185721.GA18708@scru.org>
-#   http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=458079
-#
-# See also: setstat02, setstat04. setstat05
-
-{ $at_traceoff
-$as_echo "$at_srcdir/setstat03.at:31:
-mkdir dir
-echo \"test file\" > dir/file
-chmod 500 dir
-mkdir newdir
-
-find dir -depth | cpio -pmaud --quiet newdir
-genfile --stat=mode.777 newdir/dir
-"
-echo setstat03.at:31 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-mkdir dir
-echo "test file" > dir/file
-chmod 500 dir
-mkdir newdir
-
-find dir -depth | cpio -pmaud --quiet newdir
-genfile --stat=mode.777 newdir/dir
- ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-mkdir dir
-echo "test file" > dir/file
-chmod 500 dir
-mkdir newdir
-
-find dir -depth | cpio -pmaud --quiet newdir
-genfile --stat=mode.777 newdir/dir
- ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "500
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/setstat03.at:31"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_7
-#AT_START_8
-# 8. setstat04.at:17: delayed setstat (umask)
-at_setup_line='setstat04.at:17'
-at_desc="delayed setstat (umask)"
-$at_quiet $as_echo_n "  8: $at_desc                        "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "8. setstat04.at:17: testing ..."
-  $at_traceon
-
-
-
-# Description: Cpio versions up to 2.10 failed to restore directory
-# permissions, if the directory was already present on dist (e.g. when
-# using find . -depth).
-# This test case verifies whether umask settings do not affect directory
-# permissions.
-#
-# References:
-#   <20090620185721.GA18708@scru.org>
-#   http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=458079
-#
-# See also: setstat02, setstat03, setstat05
-
-{ $at_traceoff
-$as_echo "$at_srcdir/setstat04.at:32:
-umask 022
-mkdir dir
-echo \"test file\" > dir/file
-mkdir newdir
-find dir -depth | cpio -o --quiet > archive
-mv dir old
-
-umask 077
-cpio -id --quiet < archive
-genfile --stat=mode.777 dir
-"
-echo setstat04.at:32 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-umask 022
-mkdir dir
-echo "test file" > dir/file
-mkdir newdir
-find dir -depth | cpio -o --quiet > archive
-mv dir old
-
-umask 077
-cpio -id --quiet < archive
-genfile --stat=mode.777 dir
- ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-umask 022
-mkdir dir
-echo "test file" > dir/file
-mkdir newdir
-find dir -depth | cpio -o --quiet > archive
-mv dir old
-
-umask 077
-cpio -id --quiet < archive
-genfile --stat=mode.777 dir
- ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "755
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/setstat04.at:32"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_8
-#AT_START_9
-# 9. setstat05.at:17: delayed setstat (umask, copy-pass)
-at_setup_line='setstat05.at:17'
-at_desc="delayed setstat (umask, copy-pass)"
-$at_quiet $as_echo_n "  9: $at_desc             "
-at_xfail=no
-echo "#                             -*- compilation -*-" >> "$at_group_log"
-(
-  $as_echo "9. setstat05.at:17: testing ..."
-  $at_traceon
-
-
-
-# Description: Cpio versions up to 2.10 failed to restore directory
-# permissions, if the directory was already present on dist (e.g. when
-# using find . -depth).
-# This test case verifies whether umask settings do not affect directory
-# permissions in copy-pass mode.
-#
-# References:
-#   <20090620185721.GA18708@scru.org>
-#   http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=458079
-#
-# See also: setstat02, setstat03
-
-{ $at_traceoff
-$as_echo "$at_srcdir/setstat05.at:32:
-umask 022
-mkdir dir
-echo \"test file\" > dir/file
-mkdir newdir
-umask 077
-find dir -depth | cpio -pmaud --quiet newdir
-genfile --stat=mode.777 newdir/dir
-"
-echo setstat05.at:32 >"$at_check_line_file"
-
-if { echo 'Not enabling shell tracing (command contains an embedded newline)'
-   false; }; then
-  ( $at_traceon;
-umask 022
-mkdir dir
-echo "test file" > dir/file
-mkdir newdir
-umask 077
-find dir -depth | cpio -pmaud --quiet newdir
-genfile --stat=mode.777 newdir/dir
- ) >"$at_stdout" 2>"$at_stder1"
-  at_func_filter_trace $?
-else
-  ( :;
-umask 022
-mkdir dir
-echo "test file" > dir/file
-mkdir newdir
-umask 077
-find dir -depth | cpio -pmaud --quiet newdir
-genfile --stat=mode.777 newdir/dir
- ) >"$at_stdout" 2>"$at_stderr"
-fi
-at_status=$?
-at_failed=false
-at_func_diff_devnull "$at_stderr" || at_failed=:
-echo >>"$at_stdout"; $as_echo "755
-" | \
-  $at_diff - "$at_stdout" || at_failed=:
-at_func_check_status 0 $at_status "$at_srcdir/setstat05.at:32"
-
-$at_failed && at_func_log_failure
-$at_traceon; }
-
-
-  $at_traceoff
-  $at_times_p && times >"$at_times_file"
-) 5>&1 2>&1 | eval $at_tee_pipe
-at_status=`cat "$at_status_file"`
-#AT_STOP_9

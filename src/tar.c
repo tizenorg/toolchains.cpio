@@ -1,10 +1,9 @@
 /* tar.c - read in write tar headers for cpio
-   Copyright (C) 1992, 2001, 2004, 2006, 2007, 2010 Free Software
-   Foundation, Inc.
+   Copyright (C) 1992, 2001, 2004, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -218,7 +217,7 @@ write_out_tar_header (struct cpio_file_stat *file_hdr, int out_des)
       char *name;
 
       strncpy (tar_hdr->magic, TMAGIC, TMAGLEN);
-      strncpy (tar_hdr->version, TVERSION, TVERSLEN);
+      strncpy (tar_hdr->magic + TMAGLEN, TVERSION, TVERSLEN);
 
       name = getuser (file_hdr->c_uid);
       if (name)

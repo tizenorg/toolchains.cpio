@@ -4,10 +4,10 @@ EXTRA_PROGRAMS = rmt
 
 rmt_SOURCES = rmt.c
 
-INCLUDES = -I$(top_srcdir)/gnu -I../ -I../gnu -I$(top_srcdir)/lib
+INCLUDES = -I$(top_srcdir)/lib -I../ -I../lib
 
-LDADD = ../gnu/libgnu.a $(LIBINTL)
+LDADD = ../lib/lib$(PACKAGE).a $(LIBINTL)
 
 rmt_LDADD = $(LDADD) $(LIB_SETSOCKOPT)
 
-rmt.o: ../gnu/configmake.h
+rmt.o: ../lib/configmake.h

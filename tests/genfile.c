@@ -1,15 +1,15 @@
 /* Generate a file containing some preset patterns.
    Print statistics for existing files.
 
-   Copyright (C) 1995, 1996, 1997, 2001, 2003, 2004, 2005, 2006, 2007,
-   2008, 2009 Free Software Foundation, Inc.
+   Copyright (C) 1995, 1996, 1997, 2001, 2003, 2004, 2005, 2006
+   Free Software Foundation, Inc.
 
    François Pinard <pinard@iro.umontreal.ca>, 1995.
-   Sergey Poznyakoff <gray@mirddin.farlep.net>, 2004, 2005, 2006, 2007, 2008.
+   Sergey Poznyakoff <gray@mirddin.farlep.net>, 2004, 2005, 2006.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful, but
@@ -29,10 +29,9 @@
 #include <argp.h>
 #include <argcv.h>
 #include <getdate.h>
+#include <setenv.h>
 #include <utimens.h>
 #include <inttostr.h>
-#include <fcntl.h>
-#include <sys/stat.h>
 #define obstack_chunk_alloc malloc
 #define obstack_chunk_free free
 #include <obstack.h>
@@ -99,7 +98,6 @@ char *buffer;
 /* Number of arguments and argument vector for mode == mode_exec */
 int exec_argc;
 char **exec_argv;
-char *checkpoint_option;
 
 /* Time for --touch option */
 struct timespec touch_time;
@@ -120,7 +118,6 @@ static char doc[] = N_("genfile manipulates data files for GNU paxutils test sui
 #define OPT_DATE       261
 #define OPT_VERBOSE    262
 #define OPT_SEEK       263
-#define OPT_UNLINK     264
 
 static struct argp_option options[] = {
 #define GRP 0
@@ -161,8 +158,8 @@ static struct argp_option options[] = {
   {NULL, 0, NULL, 0,
    N_("Synchronous execution options:"), GRP},
 
-  {"run", 'r', N_("OPTION"), OPTION_ARG_OPTIONAL,
-   N_("Execute ARGS. Useful with --checkpoint and one of --cut, --append, --touch, --unlink"),
+  {"run", 'r', N_("COMMAND"), 0,
+   N_("Execute given COMMAND. Useful with --checkpoint and one of --cut, --append, --touch"),
    GRP+1 },
   {"checkpoint", OPT_CHECKPOINT, N_("NUMBER"), 0,
    N_("Perform given action (see below) upon reaching checkpoint NUMBER"),
@@ -190,9 +187,6 @@ static struct argp_option options[] = {
    GRP+1 },
   {"exec", OPT_EXEC, N_("COMMAND"), 0,
    N_("Execute COMMAND"),
-   GRP+1 },
-  {"unlink", OPT_UNLINK, N_("FILE"), 0,
-   N_("Unlink FILE"),
    GRP+1 },
 #undef GRP
   { NULL, }
@@ -266,11 +260,13 @@ verify_file (char *file_name)
 	error (0, errno, _("stat(%s) failed"), file_name);
 
       if (st.st_size != file_length + seek_offset)
-	error (1, 0, _("requested file length %lu, actual %lu"),
-	       (unsigned long)st.st_size, (unsigned long)file_length);
+	{
+	  printf ("%lu %lu\n", (unsigned long)st.st_size , (unsigned long)file_length);
+	  exit (1);
+	}
 
       if (mode == mode_sparse && !ST_IS_SPARSE (st))
-	error (1, 0, _("created file is not sparse"));
+	exit (1);
     }
 }
 
@@ -338,11 +334,7 @@ parse_opt (int key, char *arg, struct argp_state *state)
 
     case 'r':
       mode = mode_exec;
-      if (arg)
-	{
-	  argcv_get (arg, "", NULL, &exec_argc, &exec_argv);
-	  checkpoint_option = "--checkpoint";
-	}
+      argcv_get (arg, "", NULL, &exec_argc, &exec_argv);
       break;
 
     case 'T':
@@ -352,7 +344,7 @@ parse_opt (int key, char *arg, struct argp_state *state)
     case OPT_SEEK:
       seek_offset = get_size (arg, 0);
       break;
-
+      
     case OPT_CHECKPOINT:
       {
 	char *p;
@@ -372,7 +364,6 @@ parse_opt (int key, char *arg, struct argp_state *state)
     case OPT_TRUNCATE:
     case OPT_TOUCH:
     case OPT_EXEC:
-    case OPT_UNLINK:
       reg_action (key, arg);
       break;
 
@@ -424,16 +415,16 @@ generate_simple_file (char *filename)
 
   if (filename)
     {
-      fp = fopen (filename, seek_offset ? "rb+" : "wb");
+      fp = fopen (filename, seek_offset ? "r+" : "w");
       if (!fp)
-	error (EXIT_FAILURE, errno, _("cannot open `%s'"), filename);
+	error (EXIT_FAILURE, 0, _("cannot open `%s'"), filename);
     }
   else
     fp = stdout;
 
   if (fseeko (fp, seek_offset, 0))
-    error (EXIT_FAILURE, errno, "%s", _("cannot seek"));
-
+    error (EXIT_FAILURE, 0, _("cannot seek: %s"), strerror (errno));
+  
   fill (fp, file_length, pattern);
 
   fclose (fp);
@@ -462,7 +453,7 @@ read_name_from_file (FILE *fp, struct obstack *stk)
 void
 generate_files_from_list ()
 {
-  FILE *fp = strcmp (files_from, "-") ? fopen (files_from, "rb") : stdin;
+  FILE *fp = strcmp (files_from, "-") ? fopen (files_from, "r") : stdin;
   struct obstack stk;
 
   if (!fp)
@@ -510,16 +501,16 @@ generate_sparse_file (int argc, char **argv)
 {
   int i;
   int fd;
-  int flags = O_CREAT | O_RDWR | O_BINARY;
-
+  int flags = O_CREAT|O_RDWR;
+  
   if (!file_name)
     error (EXIT_FAILURE, 0,
 	   _("cannot generate sparse files on standard output, use --file option"));
   if (!seek_offset)
     flags |= O_TRUNC;
-  fd = open (file_name, flags, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+  fd = open (file_name, flags, 0644);
   if (fd < 0)
-    error (EXIT_FAILURE, errno, _("cannot open `%s'"), file_name);
+    error (EXIT_FAILURE, 0, _("cannot open `%s'"), file_name);
 
   buffer = xmalloc (block_size);
 
@@ -584,7 +575,7 @@ print_stat (const char *name)
 	{
 	  mode_t mask = ~0;
 
-	  if (ispunct ((unsigned char) p[4]))
+	  if (ispunct (p[4]))
 	    {
 	      char *q;
 
@@ -666,7 +657,7 @@ exec_checkpoint (struct action *p)
 
     case OPT_APPEND:
       {
-	FILE *fp = fopen (p->name, "ab");
+	FILE *fp = fopen (p->name, "a");
 	if (!fp)
 	  {
 	    error (0, errno, _("cannot open `%s'"), p->name);
@@ -680,7 +671,7 @@ exec_checkpoint (struct action *p)
 
     case OPT_TRUNCATE:
       {
-	int fd = open (p->name, O_RDWR | O_BINARY);
+	int fd = open (p->name, O_RDWR);
 	if (fd == -1)
 	  {
 	    error (0, errno, _("cannot open `%s'"), p->name);
@@ -695,11 +686,6 @@ exec_checkpoint (struct action *p)
       system (p->name);
       break;
 
-    case OPT_UNLINK:
-      if (unlink (p->name))
-	error (0, errno, _("cannot unlink `%s'"), p->name);
-      break;
-      
     default:
       abort ();
     }
@@ -745,17 +731,11 @@ exec_command (void)
 
   /* Insert --checkpoint option.
      FIXME: This assumes that exec_argv does not use traditional tar options
-     (without dash).
-     FIXME: There is no way to set checkpoint argument (granularity).
-  */
-  if (checkpoint_option)
-    {
-      exec_argc++;
-      exec_argv = xrealloc (exec_argv, (exec_argc + 1) * sizeof (*exec_argv));
-      memmove (exec_argv+2, exec_argv+1,
-	       (exec_argc - 1) * sizeof (*exec_argv));
-      exec_argv[1] = checkpoint_option;
-    }
+     (without dash) */
+  exec_argc++;
+  exec_argv = xrealloc (exec_argv, (exec_argc + 1) * sizeof (*exec_argv));
+  memmove (exec_argv+2, exec_argv+1, (exec_argc - 1) * sizeof (*exec_argv));
+  exec_argv[1] = "--checkpoint";
 
 #ifdef SIGCHLD
   /* System V fork+wait does not work if SIGCHLD is ignored.  */
@@ -781,23 +761,23 @@ exec_command (void)
       setenv ("LC_ALL", "POSIX", 1);
 
       execvp (exec_argv[0], exec_argv);
-      error (EXIT_FAILURE, errno, "execvp %s", exec_argv[0]);
+      error (EXIT_FAILURE, errno, "execvp");
     }
 
   /* Master */
   close (fd[1]);
-  fp = fdopen (fd[0], "rb");
+  fp = fdopen (fd[0], "r");
   if (fp == NULL)
     error (EXIT_FAILURE, errno, "fdopen");
 
   while ((p = fgets (buf, sizeof buf, fp)))
     {
-      while (*p && !isspace ((unsigned char) *p) && *p != ':')
+      while (*p && !isspace (*p) && *p != ':')
 	p++;
 
       if (*p == ':')
 	{
-	  for (p++; *p && isspace ((unsigned char) *p); p++)
+	  for (p++; *p && isspace (*p); p++)
 	    ;
 
 	  if (*p
@@ -805,7 +785,7 @@ exec_command (void)
 	    {
 	      char *end;
 	      size_t n = strtoul (p + sizeof CHECKPOINT_TEXT - 1, &end, 10);
-	      if (!(*end && !isspace ((unsigned char) *end)))
+	      if (!(*end && !isspace (*end)))
 		{
 		  process_checkpoint (n);
 		  continue;
@@ -893,13 +873,6 @@ main (int argc, char **argv)
       break;
 
     case mode_exec:
-      if (!checkpoint_option)
-	{
-	  exec_argc = argc;
-	  exec_argv = argv;
-	}
-      else if (argc)
-	error (EXIT_FAILURE, 0, _("too many arguments"));
       exec_command ();
       break;
 

@@ -1,624 +1,41 @@
 # Swedish messages for cpio.
-# Copyright (C) 2001, 2004, 2009 Free Software Foundation, Inc.
-# This file is distributed under the same license as the cpio package.
+# Copyright (C) 2001, 2004 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2001, 2004.
-# Daniel Nylander <po@danielnylander.se>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cpio 2.10\n"
+"Project-Id-Version: cpio 2.6\n"
 "Report-Msgid-Bugs-To: bug-cpio@gnu.org\n"
-"POT-Creation-Date: 2010-03-10 15:04+0200\n"
-"PO-Revision-Date: 2009-07-28 13:54+0100\n"
-"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
-"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"POT-Creation-Date: 2007-06-07 14:16+0300\n"
+"PO-Revision-Date: 2004-12-26 20:49+0100\n"
+"Last-Translator: Christian Rose <menthos@menthos.com>\n"
+"Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: gnu/argmatch.c:135
-#, c-format
-msgid "invalid argument %s for %s"
-msgstr "ogiltigt argument %s f√∂r %s"
-
-#: gnu/argmatch.c:136
-#, c-format
-msgid "ambiguous argument %s for %s"
-msgstr "tvetydigt argument %s f√∂r %s"
-
-#: gnu/argmatch.c:155
-#, c-format
-msgid "Valid arguments are:"
-msgstr "Giltiga argument √§r:"
-
-#: gnu/argp-help.c:149
-#, c-format
-msgid "ARGP_HELP_FMT: %s value is less than or equal to %s"
-msgstr "ARGP_HELP_FMT: %s-v√§rdet √§r mindre √§n eller lika med %s"
-
-#: gnu/argp-help.c:222
-#, c-format
-msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
-msgstr "%.*s: ARGP_HELP_FMT-parameter kr√§ver ett v√§rde"
-
-#: gnu/argp-help.c:228
-#, c-format
-msgid "%.*s: ARGP_HELP_FMT parameter must be positive"
-msgstr "%.*s: ARGP_HELP_FMT-parameter m√•ste vara positiv"
-
-#: gnu/argp-help.c:237
-#, c-format
-msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
-msgstr "%.*s: Ok√§nd ARGP_HELP_FMT-parameter"
-
-#: gnu/argp-help.c:249
-#, c-format
-msgid "Garbage in ARGP_HELP_FMT: %s"
-msgstr "Skr√§p i ARGP_HELP_FMT: %s"
-
-#: gnu/argp-help.c:1246
-msgid ""
-"Mandatory or optional arguments to long options are also mandatory or "
-"optional for any corresponding short options."
-msgstr ""
-"Obligatoriska eller valfria argument till l√•nga flaggor √§r √§ven "
-"obligatoriska eller valfria f√∂r alla motsvarande korta flaggor."
-
-#: gnu/argp-help.c:1639
-msgid "Usage:"
-msgstr "Anv√§ndning:"
-
-#: gnu/argp-help.c:1643
-msgid "  or: "
-msgstr "  eller: "
-
-#: gnu/argp-help.c:1655
-msgid " [OPTION...]"
-msgstr " [FLAGGA...]"
-
-#: gnu/argp-help.c:1682
-#, c-format
-msgid "Try `%s --help' or `%s --usage' for more information.\n"
-msgstr "Prova med \"%s --help\" eller \"%s --usage\" f√∂r mer information.\n"
-
-#: gnu/argp-help.c:1710
-#, c-format
-msgid "Report bugs to %s.\n"
-msgstr "Rapportera fel till %s.\n"
-
-#: gnu/argp-help.c:1929 gnu/error.c:155
-msgid "Unknown system error"
-msgstr "Ok√§nt systemfel"
-
-#: gnu/argp-parse.c:83
-msgid "give this help list"
-msgstr "visa denna hj√§lplista"
-
-#: gnu/argp-parse.c:84
-msgid "give a short usage message"
-msgstr "visa ett kort anv√§ndningsmeddelande"
-
-#: gnu/argp-parse.c:85 tests/genfile.c:131
-msgid "NAME"
-msgstr "NAMN"
-
-#: gnu/argp-parse.c:85
-msgid "set the program name"
-msgstr "ange programnamnet"
-
-#: gnu/argp-parse.c:86
-msgid "SECS"
-msgstr "S"
-
-#: gnu/argp-parse.c:87
-msgid "hang for SECS seconds (default 3600)"
-msgstr "v√§nta i S sekunder (standard √§r 3600)"
-
-#: gnu/argp-parse.c:144
-msgid "print program version"
-msgstr "skriv ut programmets version"
-
-#: gnu/argp-parse.c:160
-#, c-format
-msgid "(PROGRAM ERROR) No version known!?"
-msgstr "(PROGRAMFEL) Ingen k√§nd version!?"
-
-#: gnu/argp-parse.c:613
-#, c-format
-msgid "%s: Too many arguments\n"
-msgstr "%s: F√∂r m√•nga argument\n"
-
-#: gnu/argp-parse.c:756
-msgid "(PROGRAM ERROR) Option should have been recognized!?"
-msgstr "(PROGRAMFEL) Flaggan borde ha k√§nts igen!?"
-
-#: gnu/closeout.c:114 src/util.c:93 src/util.c:96 src/util.c:145
-#, c-format
-msgid "write error"
-msgstr "skrivfel"
-
-#: gnu/getopt.c:531 gnu/getopt.c:547
-#, fuzzy, c-format
-msgid "%s: option '%s' is ambiguous\n"
-msgstr "%s: flaggan \"%s\" √§r tvetydig\n"
-
-#: gnu/getopt.c:580 gnu/getopt.c:584
-#, fuzzy, c-format
-msgid "%s: option '--%s' doesn't allow an argument\n"
-msgstr "%s: flaggan \"--%s\" till√•ter inget argument\n"
-
-#: gnu/getopt.c:593 gnu/getopt.c:598
-#, fuzzy, c-format
-msgid "%s: option '%c%s' doesn't allow an argument\n"
-msgstr "%s: flaggan \"%c%s\" till√•ter inget argument\n"
-
-#: gnu/getopt.c:641 gnu/getopt.c:660 gnu/getopt.c:963 gnu/getopt.c:982
-#, fuzzy, c-format
-msgid "%s: option '%s' requires an argument\n"
-msgstr "%s: flaggan \"%s\" kr√§ver ett argument\n"
-
-#: gnu/getopt.c:698 gnu/getopt.c:701
-#, fuzzy, c-format
-msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: ok√§nd flagga \"--%s\"\n"
-
-#: gnu/getopt.c:709 gnu/getopt.c:712
-#, fuzzy, c-format
-msgid "%s: unrecognized option '%c%s'\n"
-msgstr "%s: ok√§nd flagga \"%c%s\"\n"
-
-#: gnu/getopt.c:761 gnu/getopt.c:764
-#, fuzzy, c-format
-msgid "%s: invalid option -- '%c'\n"
-msgstr "%s: ogiltig flagga -- %c\n"
-
-#: gnu/getopt.c:814 gnu/getopt.c:831 gnu/getopt.c:1034 gnu/getopt.c:1052
-#, fuzzy, c-format
-msgid "%s: option requires an argument -- '%c'\n"
-msgstr "%s: flaggan kr√§ver ett argument -- %c\n"
-
-#: gnu/getopt.c:884 gnu/getopt.c:900
-#, fuzzy, c-format
-msgid "%s: option '-W %s' is ambiguous\n"
-msgstr "%s: flaggan \"-W %s\" √§r tvetydig\n"
-
-#: gnu/getopt.c:924 gnu/getopt.c:942
-#, fuzzy, c-format
-msgid "%s: option '-W %s' doesn't allow an argument\n"
-msgstr "%s: flaggan \"-W %s\" till√•ter inget argument\n"
-
-#: gnu/obstack.c:425 gnu/obstack.c:427 gnu/xalloc-die.c:36
-msgid "memory exhausted"
-msgstr "minnet √§r slut"
-
-#: gnu/openat-die.c:36
-#, c-format
-msgid "unable to record current working directory"
-msgstr "kunde inte registrera aktuell arbetskatalog"
-
-#: gnu/openat-die.c:54
-#, c-format
-msgid "failed to return to initial working directory"
-msgstr "misslyckades med att √•terg√• till initial arbetskatalog"
-
-#. TRANSLATORS:
-#. Get translations for open and closing quotation marks.
-#.
-#. The message catalog should translate "`" to a left
-#. quotation mark suitable for the locale, and similarly for
-#. "'".  If the catalog has no translation,
-#. locale_quoting_style quotes `like this', and
-#. clocale_quoting_style quotes "like this".
-#.
-#. For example, an American English Unicode locale should
-#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
-#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
-#. MARK).  A British English Unicode locale should instead
-#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK)
-#. and U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
-#.
-#. If you don't know what to put here, please see
-#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
-#. and use glyphs suitable for your language.
-#: gnu/quotearg.c:274
-msgid "`"
-msgstr "\""
-
-#: gnu/quotearg.c:275
-msgid "'"
-msgstr "\""
-
-#: gnu/version-etc.c:76
-#, c-format
-msgid "Packaged by %s (%s)\n"
-msgstr "Paketerat av %s (%s)\n"
-
-#: gnu/version-etc.c:79
-#, c-format
-msgid "Packaged by %s\n"
-msgstr "Paketerat av %s\n"
-
-#. TRANSLATORS: Translate "(C)" to the copyright symbol
-#. (C-in-a-circle), if this symbol is available in the user's
-#. locale.  Otherwise, do not translate "(C)"; leave it as-is.
-#: gnu/version-etc.c:86
-msgid "(C)"
-msgstr "¬©"
-
-#: gnu/version-etc.c:88
-msgid ""
-"\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
-"html>.\n"
-"This is free software: you are free to change and redistribute it.\n"
-"There is NO WARRANTY, to the extent permitted by law.\n"
-"\n"
-msgstr ""
-"\n"
-"Licens GPLv3+: GNU GPL version 3 eller senare <http://gnu.org/licenses/gpl."
-"html>.\n"
-"Detta √§r fri programvara: du f√•r √§ndra och distribuera den.\n"
-"Det finns INGEN GARANTI, s√• l√•ngt som lagen till√•ter.\n"
-"\n"
-
-#. TRANSLATORS: %s denotes an author name.
-#: gnu/version-etc.c:104
-#, c-format
-msgid "Written by %s.\n"
-msgstr "Skrivet av %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#: gnu/version-etc.c:108
-#, c-format
-msgid "Written by %s and %s.\n"
-msgstr "Skrivet av %s och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#: gnu/version-etc.c:112
-#, c-format
-msgid "Written by %s, %s, and %s.\n"
-msgstr "Skrivet av %s, %s och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#. You can use line breaks, estimating that each author name occupies
-#. ca. 16 screen columns and that a screen line has ca. 80 columns.
-#: gnu/version-etc.c:119
-#, c-format
-msgid ""
-"Written by %s, %s, %s,\n"
-"and %s.\n"
-msgstr ""
-"Skrivet av %s, %s, %s\n"
-"och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#. You can use line breaks, estimating that each author name occupies
-#. ca. 16 screen columns and that a screen line has ca. 80 columns.
-#: gnu/version-etc.c:126
-#, c-format
-msgid ""
-"Written by %s, %s, %s,\n"
-"%s, and %s.\n"
-msgstr ""
-"Skrivet av %s, %s, %s,\n"
-"%s och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#. You can use line breaks, estimating that each author name occupies
-#. ca. 16 screen columns and that a screen line has ca. 80 columns.
-#: gnu/version-etc.c:133
-#, c-format
-msgid ""
-"Written by %s, %s, %s,\n"
-"%s, %s, and %s.\n"
-msgstr ""
-"Skrivet av %s, %s, %s,\n"
-"%s, %s och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#. You can use line breaks, estimating that each author name occupies
-#. ca. 16 screen columns and that a screen line has ca. 80 columns.
-#: gnu/version-etc.c:141
-#, c-format
-msgid ""
-"Written by %s, %s, %s,\n"
-"%s, %s, %s, and %s.\n"
-msgstr ""
-"Skrivet av %s, %s, %s,\n"
-"%s, %s, %s och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#. You can use line breaks, estimating that each author name occupies
-#. ca. 16 screen columns and that a screen line has ca. 80 columns.
-#: gnu/version-etc.c:149
-#, c-format
-msgid ""
-"Written by %s, %s, %s,\n"
-"%s, %s, %s, %s,\n"
-"and %s.\n"
-msgstr ""
-"Skrivet av %s, %s, %s,\n"
-"%s, %s, %s, %s\n"
-"och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#. You can use line breaks, estimating that each author name occupies
-#. ca. 16 screen columns and that a screen line has ca. 80 columns.
-#: gnu/version-etc.c:158
-#, c-format
-msgid ""
-"Written by %s, %s, %s,\n"
-"%s, %s, %s, %s,\n"
-"%s, and %s.\n"
-msgstr ""
-"Skrivet av %s, %s, %s,\n"
-"%s, %s, %s, %s,\n"
-"%s och %s.\n"
-
-#. TRANSLATORS: Each %s denotes an author name.
-#. You can use line breaks, estimating that each author name occupies
-#. ca. 16 screen columns and that a screen line has ca. 80 columns.
-#: gnu/version-etc.c:169
-#, c-format
-msgid ""
-"Written by %s, %s, %s,\n"
-"%s, %s, %s, %s,\n"
-"%s, %s, and others.\n"
-msgstr ""
-"Skrivet av %s, %s, %s,\n"
-"%s, %s, %s, %s,\n"
-"%s, %s och andra.\n"
-
-#. TRANSLATORS: The placeholder indicates the bug-reporting address
-#. for this package.  Please add _another line_ saying
-#. "Report translation bugs to <...>\n" with the address for translation
-#. bugs (typically your translation team's web or email address).
-#: gnu/version-etc.c:247
-#, fuzzy, c-format
-msgid ""
-"\n"
-"Report bugs to: %s\n"
-msgstr "Rapportera fel till %s.\n"
-
-#: gnu/version-etc.c:249
-#, fuzzy, c-format
-msgid "Report %s bugs to: %s\n"
-msgstr "Rapportera fel i %s till <%s>.\n"
-
-#: gnu/version-etc.c:253
-#, c-format
-msgid "%s home page: <%s>\n"
-msgstr ""
-
-#: gnu/version-etc.c:255
-#, fuzzy, c-format
-msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
-msgstr "Webbsida f√∂r %s: <http://www.gnu.org/software/%s/>.\n"
-
-#: gnu/version-etc.c:258
-#, fuzzy
-msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
-msgstr ""
-"Allm√§n hj√§lp f√∂r hur man anv√§nder GNU-programvara: <http://www.gnu.org/"
-"gethelp/>.\n"
-
-#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
-#. Directly translating this to another language will not work, first because
-#. %s itself is not translated.
-#. Translate it as `%s: Function %s failed'.
-#: lib/error.c:58 lib/error.c:71
-#, c-format
-msgid "%s: Cannot %s"
-msgstr "%s: Funktionen \"%s\" misslyckades"
-
-#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
-#. Directly translating this to another language will not work, first because
-#. %s itself is not translated.
-#. Translate it as `%s: Function %s failed'.
-#: lib/error.c:84
-#, c-format
-msgid "%s: Warning: Cannot %s"
-msgstr "%s: Varning: Funktionen \"%s\" misslyckades"
-
-#: lib/error.c:93
-#, c-format
-msgid "%s: Cannot change mode to %s"
-msgstr "%s: Kan inte √§ndra r√§ttigheter till %s"
-
-#: lib/error.c:101
-#, c-format
-msgid "%s: Cannot change ownership to uid %lu, gid %lu"
-msgstr "%s: Kan inte √§ndra √§garskap till uid %lu, gid %lu"
-
-#: lib/error.c:127
-#, c-format
-msgid "%s: Cannot hard link to %s"
-msgstr "%s: Kan inte h√•rdl√§nka till %s"
-
-#: lib/error.c:179 lib/error.c:211
-#, c-format
-msgid "%s: Read error at byte %s, while reading %lu byte"
-msgid_plural "%s: Read error at byte %s, while reading %lu bytes"
-msgstr[0] "%s: L√§sfel p√• byte %s, vid l√§sning av %lu byte"
-msgstr[1] "%s: L√§sfel p√• byte %s, vid l√§sning av %lu byte"
-
-#: lib/error.c:192
-#, c-format
-msgid "%s: Warning: Read error at byte %s, while reading %lu byte"
-msgid_plural "%s: Warning: Read error at byte %s, while reading %lu bytes"
-msgstr[0] "%s: Varning: L√§sfel p√• byte %s, vid l√§sning av %lu byte"
-msgstr[1] "%s: Varning: L√§sfel p√• byte %s, vid l√§sning av %lu byte"
-
-#: lib/error.c:259
-#, c-format
-msgid "%s: Cannot seek to %s"
-msgstr "%s: Kan inte s√∂ka till %s"
-
-#: lib/error.c:275
-#, c-format
-msgid "%s: Warning: Cannot seek to %s"
-msgstr "%s: Varning: Kan inte s√∂ka till %s"
-
-#: lib/error.c:284
-#, c-format
-msgid "%s: Cannot create symlink to %s"
-msgstr "%s: Kan inte skapa symbolisk l√§nk till %s"
-
-#: lib/error.c:349
-#, c-format
-msgid "%s: Wrote only %lu of %lu byte"
-msgid_plural "%s: Wrote only %lu of %lu bytes"
-msgstr[0] "%s: Skrev endast %lu av %lu byte"
-msgstr[1] "%s: Skrev endast %lu av %lu byte"
-
-#: lib/names.c:155
-#, c-format
-msgid "Removing leading `%s' from member names"
-msgstr "Tar bort inledande \"%s\" fr√•n medlemsnamn"
-
-#: lib/names.c:156
-#, c-format
-msgid "Removing leading `%s' from hard link targets"
-msgstr "Tar bort inledande \"%s\" fr√•n m√•l f√∂r h√•rda l√§nkar"
-
-#: lib/names.c:169
-msgid "Substituting `.' for empty member name"
-msgstr "Ers√§tter \".\" f√∂r tomma medlemsnamn"
-
-#: lib/names.c:170
-msgid "Substituting `.' for empty hard link target"
-msgstr "Ers√§tter \".\" f√∂r tomma m√•l f√∂r h√•rda l√§nkar"
-
-#: lib/rtapelib.c:299
-#, c-format
-msgid "exec/tcp: Service not available"
-msgstr "exec/tcp: Tj√§nsten √§r inte tillg√§nglig"
-
-#: lib/rtapelib.c:303
-#, c-format
-msgid "stdin"
-msgstr "standard in"
-
-#: lib/rtapelib.c:306
-#, c-format
-msgid "stdout"
-msgstr "standard ut"
-
-#: lib/rtapelib.c:429
-#, c-format
-msgid "Cannot connect to %s: resolve failed"
-msgstr "Kan inte ansluta till %s: uppslag misslyckades"
-
-#: lib/rtapelib.c:515
-#, c-format
-msgid "Cannot execute remote shell"
-msgstr "Kan inte k√∂ra fj√§rrskal"
-
-#: rmt/rmt.c:413
-msgid "Seek direction out of range"
-msgstr "S√∂kningsriktningen √§r utanf√∂r intervallet"
-
-#: rmt/rmt.c:419
-#, fuzzy
-msgid "Invalid seek direction"
-msgstr "Ogiltigt regulj√§rt uttryck"
-
-#: rmt/rmt.c:427
-#, fuzzy
-msgid "Invalid seek offset"
-msgstr "Ogiltig storlek: %s"
-
-#: rmt/rmt.c:433
-msgid "Seek offset out of range"
-msgstr "S√∂kningsposition √§r utanf√∂r intervallet"
-
-#: rmt/rmt.c:474 rmt/rmt.c:525 rmt/rmt.c:589
-#, fuzzy
-msgid "Invalid byte count"
-msgstr "Ogiltigt slut p√• intervall"
-
-#: rmt/rmt.c:480 rmt/rmt.c:531 rmt/rmt.c:595 rmt/rmt.c:606
-#, fuzzy
-msgid "Byte count out of range"
-msgstr "S√∂kningsposition √§r utanf√∂r intervallet"
-
-#: rmt/rmt.c:539
-#, fuzzy
-msgid "Premature eof"
-msgstr "rmtd: F√∂r tidigt filslut\n"
-
-#: rmt/rmt.c:582
-#, fuzzy
-msgid "Invalid operation code"
-msgstr "Huvud√•tg√§rdsl√§ge:"
-
-#: rmt/rmt.c:617 rmt/rmt.c:661
-msgid "Operation not supported"
-msgstr ""
-
-#: rmt/rmt.c:645
-#, fuzzy
-msgid "Unexpected arguments"
-msgstr "Inte tillr√§ckligt m√•nga argument"
-
-#: rmt/rmt.c:670
-msgid "Manipulate a tape drive, accepting commands from a remote process"
-msgstr ""
-
-#: rmt/rmt.c:677 src/main.c:123 tests/genfile.c:167
-msgid "NUMBER"
-msgstr "ANTAL"
-
-#: rmt/rmt.c:678
-msgid "set debug level"
-msgstr ""
-
-#: rmt/rmt.c:679 src/main.c:151 src/main.c:157 tests/genfile.c:133
-#: tests/genfile.c:181 tests/genfile.c:185 tests/genfile.c:188
-#: tests/genfile.c:194
-msgid "FILE"
-msgstr "FIL"
-
-#: rmt/rmt.c:680
-msgid "set debug output file name"
-msgstr ""
-
-#: rmt/rmt.c:696 rmt/rmt.c:764
-#, fuzzy, c-format
-msgid "cannot open %s"
-msgstr "kan inte √∂ppna \"%s\""
-
-#: rmt/rmt.c:761 tests/genfile.c:885 tests/genfile.c:902
-#, c-format
-msgid "too many arguments"
-msgstr "f√∂r m√•nga argument"
-
-#: rmt/rmt.c:803
-msgid "Garbage command"
-msgstr "Skr√§pkommando"
 
 #: src/copyin.c:45
 #, c-format
 msgid "warning: skipped %ld byte of junk"
 msgid_plural "warning: skipped %ld bytes of junk"
-msgstr[0] "varning: hoppade √∂ver %ld byte med skr√§p"
-msgstr[1] "varning: hoppade √∂ver %ld byte med skr√§p"
+msgstr[0] "varning: hoppade ˆver %ld byte med skr‰p"
+msgstr[1] "varning: hoppade ˆver %ld byte med skr‰p"
 
 #: src/copyin.c:66
 #, c-format
 msgid "rename %s -> "
-msgstr "byt namn p√• %s -> "
+msgstr "byt namn pÂ %s -> "
 
 #: src/copyin.c:95 src/copyout.c:562
 #, c-format
 msgid "%s: file name too long"
-msgstr "%s: filnamnet √§r f√∂r l√•ngt"
+msgstr "%s: filnamnet ‰r fˆr lÂngt"
 
-#: src/copyin.c:181 src/copyin.c:528 src/copyin.c:553 src/copyin.c:1442
-#, c-format
+#: src/copyin.c:181 src/copyin.c:528 src/copyin.c:553 src/copyin.c:1524
+#, fuzzy, c-format
 msgid "%s: checksum error (0x%lx, should be 0x%lx)"
-msgstr "%s: fel i kontrollsumma (0x%lx, borde vara 0x%lx)"
+msgstr "%s: fel i kontrollsumma (0x%x, borde vara 0x%x)"
 
 #: src/copyin.c:208 src/copypass.c:129
 #, c-format
@@ -630,165 +47,172 @@ msgstr "%s skapades inte: nyare eller lika gammal version finns"
 msgid "cannot remove current %s"
 msgstr "kan inte ta bort aktuella %s"
 
-#: src/copyin.c:279 src/copyin.c:476 src/copyin.c:601 src/copypass.c:394
+#: src/copyin.c:279 src/copyin.c:476 src/copyin.c:683 src/copypass.c:427
 #, c-format
 msgid "cannot link %s to %s"
-msgstr "kan inte l√§nka %s till %s"
+msgstr "kan inte l‰nka %s till %s"
 
 #: src/copyin.c:509
 #, c-format
 msgid "cannot swap halfwords of %s: odd number of halfwords"
-msgstr "kan inte v√§xla halvord i %s: udda antal halvord"
+msgstr "kan inte v‰xla halvord i %s: udda antal halvord"
 
 #: src/copyin.c:517
 #, c-format
 msgid "cannot swap bytes of %s: odd number of bytes"
-msgstr "kan inte v√§xla byte i %s: udda antal byte"
+msgstr "kan inte v‰xla byte i %s: udda antal byte"
 
-#: src/copyin.c:673
-#, c-format
+#: src/copyin.c:642
+#, fuzzy, c-format
+msgid "%s is not a directory"
+msgstr "\"%s\" finns men ‰r inte en katalog"
+
+#: src/copyin.c:755
+#, fuzzy, c-format
 msgid "%s: Cannot symlink to %s"
-msgstr "%s: Kan inte symboliskt l√§nka till %s"
+msgstr "kan inte l‰nka %s till %s"
 
-#: src/copyin.c:727 src/copyout.c:850 src/copypass.c:317
+#: src/copyin.c:809 src/copyout.c:851 src/copypass.c:356
 #, c-format
 msgid "%s: unknown file type"
-msgstr "%s: ok√§nd filtyp"
+msgstr "%s: ok‰nd filtyp"
 
-#: src/copyin.c:912 src/copyin.c:919
+#: src/copyin.c:994 src/copyin.c:1001
 #, c-format
 msgid "Malformed number %.*s"
-msgstr "Felformulerat nummer %.*s"
+msgstr ""
 
-#: src/copyin.c:929
+#: src/copyin.c:1011
 #, c-format
 msgid "Archive value %.*s is out of range"
-msgstr "Arkivv√§rdet %.*s √§r utanf√∂r intervallet"
+msgstr ""
 
-#: src/copyin.c:964
+#: src/copyin.c:1046
 #, c-format
 msgid "premature end of archive"
-msgstr "f√∂r tidigt slut p√• arkivet"
+msgstr "fˆr tidigt slut pÂ arkivet"
 
-#: src/copyin.c:1184
+#: src/copyin.c:1266
 #, c-format
 msgid "warning: archive header has reverse byte-order"
-msgstr "varning: arkivhuvudet har omv√§nd byteordning"
+msgstr "varning: arkivhuvudet har omv‰nd byteordning"
 
-#: src/copyin.c:1331
+#: src/copyin.c:1413
 #, c-format
 msgid "standard input is closed"
-msgstr "standard in √§r st√§ngd"
+msgstr "standard in ‰r st‰ngd"
 
-#: src/copyin.c:1497 src/copyout.c:893 src/copypass.c:335
+#: src/copyin.c:1576 src/copyout.c:893 src/copypass.c:370
 #, c-format
-msgid "%lu block\n"
-msgid_plural "%lu blocks\n"
-msgstr[0] "%lu block\n"
-msgstr[1] "%lu block\n"
+msgid "%d block\n"
+msgid_plural "%d blocks\n"
+msgstr[0] "%d block\n"
+msgstr[1] "%d block\n"
 
 #: src/copyout.c:51 src/copyout.c:60
 #, c-format
 msgid "cannot read checksum for %s"
-msgstr "kan inte l√§sa kontrollsumma f√∂r %s"
+msgstr "kan inte l‰sa kontrollsumma fˆr %s"
 
 #: src/copyout.c:300
 #, c-format
 msgid "%s: field width not sufficient for storing %s"
-msgstr "%s: f√§ltbredden √§r inte tillr√§ckligt f√∂r lagring av %s"
+msgstr ""
 
 #: src/copyout.c:308
-#, c-format
+#, fuzzy, c-format
 msgid "%s: truncating %s"
-msgstr "%s: kortar ner %s"
+msgstr "%s: trunkerar inodsnummer"
 
 #: src/copyout.c:343 src/copyout.c:406 src/copyout.c:480
+#, fuzzy
 msgid "inode number"
-msgstr "inodsnummer"
+msgstr "filnummer = %d\n"
 
 #: src/copyout.c:346 src/copyout.c:409 src/copyout.c:484
 msgid "file mode"
-msgstr "filr√§ttigheter"
+msgstr ""
 
 #: src/copyout.c:349 src/copyout.c:411 src/copyout.c:488
 msgid "uid"
-msgstr "uid"
+msgstr ""
 
 #: src/copyout.c:352 src/copyout.c:413 src/copyout.c:492
 msgid "gid"
-msgstr "gid"
+msgstr ""
 
 #: src/copyout.c:355 src/copyout.c:416 src/copyout.c:496
 msgid "number of links"
-msgstr "antal l√§nkar"
+msgstr ""
 
 #: src/copyout.c:358 src/copyout.c:421
 msgid "modification time"
-msgstr "√§ndringstid"
+msgstr ""
 
 #: src/copyout.c:361 src/copyout.c:428 src/copyout.c:515
 msgid "file size"
-msgstr "filstorlek"
+msgstr ""
 
 #: src/copyout.c:365
 msgid "device major number"
-msgstr "enhetens √∂vre nummer"
+msgstr ""
 
 #: src/copyout.c:369
 msgid "device minor number"
-msgstr "enhetens undre nummer"
+msgstr ""
 
 #: src/copyout.c:373
 msgid "rdev major"
-msgstr "rdev √∂vre"
+msgstr ""
 
 #: src/copyout.c:377
 msgid "rdev minor"
-msgstr "rdev undre"
+msgstr ""
 
 #: src/copyout.c:381 src/copyout.c:424 src/copyout.c:505
 msgid "name size"
-msgstr "namnstorlek"
+msgstr ""
 
 #: src/copyout.c:403
+#, fuzzy
 msgid "device number"
-msgstr "enhetsnummer"
+msgstr "filnummer = %d\n"
 
 #: src/copyout.c:418
 msgid "rdev"
-msgstr "rdev"
+msgstr ""
 
 #: src/copyout.c:476
 #, c-format
 msgid "%s: truncating inode number"
-msgstr "%s: kortar ner inodsnummer"
+msgstr "%s: trunkerar inodsnummer"
 
-#: src/copyout.c:619
+#: src/copyout.c:620
 #, c-format
 msgid "standard output is closed"
-msgstr "standard ut √§r st√§ngd"
+msgstr "standard ut ‰r st‰ngd"
 
-#: src/copyout.c:640 src/copypass.c:86
+#: src/copyout.c:641 src/copypass.c:86
 #, c-format
 msgid "blank line ignored"
 msgstr "tom rad ignorerades"
 
-#: src/copyout.c:775
+#: src/copyout.c:776
 #, c-format
 msgid "%s not dumped: not a regular file"
 msgstr "%s dumpades inte: inte en vanlig fil"
 
-#: src/copyout.c:826
+#: src/copyout.c:827
 #, c-format
 msgid "%s: symbolic link too long"
-msgstr "%s: symbolisk l√§nk √§r f√∂r l√•ng"
+msgstr "%s: symbolisk l‰nk ‰r fˆr lÂng"
 
-#: src/copypass.c:389
+#: src/copypass.c:422
 #, c-format
 msgid "%s linked to %s"
-msgstr "%s l√§nkad till %s"
+msgstr "%s l‰nkad till %s"
 
-#: src/main.c:73
+#: src/main.c:67
 msgid ""
 "GNU `cpio' copies files to and from archives\n"
 "\n"
@@ -800,927 +224,797 @@ msgid ""
 "  # Copy files named in name-list to destination-directory\n"
 "  cpio -p destination-directory < name-list\n"
 msgstr ""
-"GNU \"cpio\" kopierar filer till och fr√•n arkiv\n"
+"GNU \"cpio\" kopierar filer till och frÂn arkiv\n"
 "\n"
 "Exempel:\n"
-"  # Kopiera filer som √§r namngivna i namnlista till arkivet\n"
+"  # Kopiera filer som ‰r namngivna i namnlista till arkivet\n"
 "  cpio -o < namnlista [> arkiv]\n"
-"  # Extrahera filer fr√•n arkivet\n"
+"  # Extrahera filer frÂn arkivet\n"
 "  cpio -i [< arkiv]\n"
-"  # Kopiera filer som √§r namngivna i namnlista till destinationskatalog\n"
+"  # Kopiera filer som ‰r namngivna i namnlista till destinationskatalog\n"
 "  cpio -p destinationskatalog < namnlista\n"
 
-#: src/main.c:87
+#: src/main.c:81
 #, c-format
 msgid "%s is meaningless with %s"
-msgstr "%s √§r meningsl√∂st utan %s"
+msgstr "%s ‰r meningslˆst utan %s"
+
+#: src/main.c:87
+msgid "Main operation mode:"
+msgstr "HuvudÂtg‰rdsl‰ge:"
+
+#: src/main.c:89
+msgid "Create the archive (run in copy-out mode)"
+msgstr "Skapa arkivet (kˆr i l‰get kopiera-ut)"
+
+#: src/main.c:91
+msgid "Extract files from an archive (run in copy-in mode)"
+msgstr "Extrahera filer frÂn ett arkiv (kˆr i l‰get kopiera-in)"
 
 #: src/main.c:93
-msgid "Main operation mode:"
-msgstr "Huvud√•tg√§rdsl√§ge:"
+msgid "Run in copy-pass mode"
+msgstr "Kˆr i l‰get kopiera-skickavidare"
 
 #: src/main.c:95
-msgid "Create the archive (run in copy-out mode)"
-msgstr "Skapa arkivet (k√∂r i l√§get kopiera-ut)"
-
-#: src/main.c:97
-msgid "Extract files from an archive (run in copy-in mode)"
-msgstr "Extrahera filer fr√•n ett arkiv (k√∂r i l√§get kopiera-in)"
-
-#: src/main.c:99
-msgid "Run in copy-pass mode"
-msgstr "K√∂r i l√§get kopiera-skickavidare"
+msgid "Print a table of contents of the input"
+msgstr "Visa en innehÂllsfˆrteckning fˆr indata"
 
 #: src/main.c:101
-msgid "Print a table of contents of the input"
-msgstr "Visa en inneh√•llsf√∂rteckning f√∂r indata"
-
-#: src/main.c:107
 msgid "Operation modifiers valid in any mode:"
-msgstr "√Ötg√§rdsmodifierare giltiga i alla l√§gen:"
+msgstr "≈tg‰rdsmodifierare giltiga i alla l‰gen:"
 
-#: src/main.c:109 src/main.c:176 src/main.c:205
+#: src/main.c:103 src/main.c:170 src/main.c:199
 msgid "[[USER@]HOST:]FILE-NAME"
-msgstr "[[ANV√ÑNDARE@]V√ÑRD:]FILNAMN"
+msgstr "[[ANVƒNDARE@]VƒRD:]FILNAMN"
 
-#: src/main.c:110
+#: src/main.c:104
 msgid ""
 "Use this FILE-NAME instead of standard input or output. Optional USER and "
 "HOST specify the user and host names in case of a remote archive"
 msgstr ""
-"Anv√§nd FILNAMN ist√§llet f√∂r standard in eller standard ut. De valfria "
-"ANV√ÑNDARE och V√ÑRD anger anv√§ndarnamnet och v√§rdnamnet i det fall arkivet √§r "
-"ett fj√§rrarkiv"
+"Anv‰nd FILNAMN ist‰llet fˆr standard in eller standard ut. De valfria "
+"ANVƒNDARE och VƒRD anger anv‰ndarnamnet och v‰rdnamnet i det fall arkivet ‰r "
+"ett fj‰rrarkiv"
 
-#: src/main.c:112
+#: src/main.c:106
 msgid "Archive file is local, even if its name contains colons"
-msgstr "Arkivfilen √§r lokal, √§ven om namnet inneh√•ller kolon"
+msgstr "Arkivfilen ‰r lokal, ‰ven om namnet innehÂller kolon"
 
-#: src/main.c:113 tests/genfile.c:154
+#: src/main.c:107
 msgid "FORMAT"
 msgstr "FORMAT"
 
-#: src/main.c:114
+#: src/main.c:108
 msgid "Use given archive FORMAT"
-msgstr "Anv√§nd det angivna arkivformatet"
+msgstr "Anv‰nd det angivna arkivformatet"
 
-#: src/main.c:116
+#: src/main.c:110
 msgid "Set the I/O block size to 5120 bytes"
-msgstr "St√§ll in I/O-blockstorleken till 5120 byte"
+msgstr "St‰ll in I/O-blockstorleken till 5120 byte"
 
-#: src/main.c:117
+#: src/main.c:111
 msgid "BLOCK-SIZE"
 msgstr "BLOCKSTORLEK"
 
-# ¬∑ (centered dot) is normally used as the multiplication sign in Swedish.
-# See "Svenska skrivregler" ¬ß260.
+# ∑ (centered dot) is normally used as the multiplication sign in Swedish.
+# See "Svenska skrivregler" ß260.
 #
-#: src/main.c:118
+#: src/main.c:112
 msgid "Set the I/O block size to BLOCK-SIZE * 512 bytes"
-msgstr "St√§ll in I/O-blockstorlek till BLOCKSTORLEK ¬∑ 512 byte"
+msgstr "St‰ll in I/O-blockstorlek till BLOCKSTORLEK ∑ 512 byte"
+
+#: src/main.c:114
+msgid "Use the old portable (ASCII) archive format"
+msgstr "Anv‰nd det gamla portabla (ASCII) arkivformatet"
+
+#: src/main.c:116
+msgid "Print a \".\" for each file processed"
+msgstr "Visa ett \".\" fˆr varje behandlad fil"
+
+#: src/main.c:117
+msgid "NUMBER"
+msgstr "ANTAL"
+
+#: src/main.c:118
+msgid "Set the I/O block size to the given NUMBER of bytes"
+msgstr "St‰ll in I/O-blockstorleken till det angivna antalet byte"
+
+#: src/main.c:119
+msgid "STRING"
+msgstr "STRƒNG"
 
 #: src/main.c:120
-msgid "Use the old portable (ASCII) archive format"
-msgstr "Anv√§nd det gamla portabla (ASCII) arkivformatet"
-
-#: src/main.c:122
-msgid "Print a \".\" for each file processed"
-msgstr "Visa ett \".\" f√∂r varje behandlad fil"
-
-#: src/main.c:124
-msgid "Set the I/O block size to the given NUMBER of bytes"
-msgstr "St√§ll in I/O-blockstorleken till det angivna antalet byte"
-
-#: src/main.c:125 tests/genfile.c:170
-msgid "STRING"
-msgstr "STR√ÑNG"
-
-#: src/main.c:126
 msgid "Print STRING when the end of a volume of the backup media is reached"
-msgstr "Visa STR√ÑNG d√• slutet p√• en volym av s√§kerhetskopieringsmediumet n√•s"
+msgstr "Visa STRƒNG dÂ slutet pÂ en volym av s‰kerhetskopieringsmediumet nÂs"
 
-#: src/main.c:129
+#: src/main.c:123
 msgid "Only copy files that do not match any of the given patterns"
-msgstr "Kopiera endast filer som inte matchar n√•got av de angivna m√∂nstren"
+msgstr "Kopiera endast filer som inte matchar nÂgot av de angivna mˆnstren"
 
-#: src/main.c:131
+#: src/main.c:125
 msgid "In the verbose table of contents listing, show numeric UID and GID"
-msgstr "Visa numeriska UID och GID i den utf√∂rliga inneh√•llsf√∂rteckningen"
+msgstr "Visa numeriska UID och GID i den utfˆrliga innehÂllsfˆrteckningen"
 
-#: src/main.c:133 src/mt.c:182 tests/genfile.c:191
+#: src/main.c:127
 msgid "COMMAND"
 msgstr "KOMMANDO"
 
-#: src/main.c:134
+#: src/main.c:128
 msgid "Use remote COMMAND instead of rsh"
-msgstr "Anv√§nd fj√§rrkommando ist√§llet f√∂r rsh"
+msgstr "Anv‰nd fj‰rrkommando ist‰llet fˆr rsh"
 
-#: src/main.c:136
+#: src/main.c:130
 msgid "Do not print the number of blocks copied"
 msgstr "Visa inte antalet block som kopierats"
 
-#: src/main.c:138
+#: src/main.c:132
 msgid "Verbosely list the files processed"
-msgstr "Skriv utf√∂rligt ut de filer som behandlas"
+msgstr "Skriv utfˆrligt ut de filer som behandlas"
 
-#: src/main.c:141
+#: src/main.c:135
 msgid "Enable debugging info"
-msgstr "Aktivera fels√∂kningsinformation"
+msgstr "Aktivera felsˆkningsinformation"
 
-#: src/main.c:143
+#: src/main.c:137
 msgid "FLAG"
 msgstr "FLAGGA"
 
-#: src/main.c:144
+#: src/main.c:138
 msgid ""
 "Control warning display. Currently FLAG is one of 'none', 'truncate', 'all'. "
 "Multiple options accumulate."
 msgstr ""
-"Styr varningsvisning. F√∂r n√§rvarande √§r FLAGGA n√•got av \"none\", \"truncate"
-"\", \"all\". Multipla flaggor kan l√§ggas till."
+"Styr varningsvisning. Fˆr n‰rvarande ‰r FLAGGA nÂgot av \"none\", \"truncate"
+"\", \"all\". Flera flaggor kan ackumuleras."
 
-#: src/main.c:150
+#: src/main.c:144
 msgid "Operation modifiers valid only in copy-in mode:"
-msgstr "√Ötg√§rdsmodifierare giltiga endast i l√§get kopiera-in:"
+msgstr "≈tg‰rdsmodifierare giltiga endast i l‰get kopiera-in:"
 
-#: src/main.c:152
+#: src/main.c:145 src/main.c:151
+msgid "FILE"
+msgstr "FIL"
+
+#: src/main.c:146
+#, fuzzy
 msgid ""
 "Read additional patterns specifying filenames to extract or list from FILE"
 msgstr ""
-"L√§s ytterligare m√∂nster som anger filnamn att extrahera eller lista fr√•n FIL"
+"L‰s ytterligare mˆnster som anger filnamn att extrahera eller lista frÂn FIL "
+"i l‰get kopiera-in"
 
-#: src/main.c:154
+#: src/main.c:148
+#, fuzzy
 msgid ""
 "When reading a CRC format archive, only verify the CRC's of each file in the "
 "archive, don't actually extract the files"
 msgstr ""
-"Verifiera endast CRC f√∂r varje fil i arkivet, extrahera inte filerna, d√• ett "
-"arkiv i CRC-format l√§ses"
+"Verifiera endast CRC fˆr varje fil, extrahera inte filerna, dÂ ett arkiv i "
+"CRC-format l‰ses i l‰get kopiera-in"
 
-#: src/main.c:156
+#: src/main.c:150
 msgid "Interactively rename files"
-msgstr "Byt namn p√• filer interaktivt"
+msgstr "Byt namn pÂ filer interaktivt"
 
-#: src/main.c:160
+#: src/main.c:154
 msgid ""
 "Swap both halfwords of words and bytes of halfwords in the data. Equivalent "
 "to -sS"
 msgstr ""
-"Byt plats p√• halvord i ord och byte i halvord i data. Likv√§rdigt med -sS"
+"Byt plats pÂ halvord i ord och byte i halvord i data. Likv‰rdigt med -sS"
 
-#: src/main.c:162
+#: src/main.c:156
 msgid "Swap the bytes of each halfword in the files"
-msgstr "Byt plats p√• byten i varje halvord i filerna"
+msgstr "Byt plats pÂ byten i varje halvord i filerna"
 
-#: src/main.c:164
+#: src/main.c:158
 msgid "Swap the halfwords of each word (4 bytes) in the files"
-msgstr "Byt plats p√• halvorden i varje ord (4 byte) i filerna"
+msgstr "Byt plats pÂ halvorden i varje ord (4 byte) i filerna"
 
-#: src/main.c:167
+#: src/main.c:161
 msgid "Extract files to standard output"
 msgstr "Extrahera filerna till standard ut"
 
-#: src/main.c:173
+#: src/main.c:167
 msgid "Operation modifiers valid only in copy-out mode:"
-msgstr "√Ötg√§rdsmodifierare giltiga endast i l√§get kopiera-ut:"
+msgstr "≈tg‰rdsmodifierare giltiga endast i l‰get kopiera-ut:"
 
-#: src/main.c:175
+#: src/main.c:169
 msgid "Append to an existing archive."
-msgstr "L√§gg till i ett befintligt arkiv."
+msgstr "L‰gg till i ett befintligt arkiv."
 
-#: src/main.c:177
+#: src/main.c:171
 msgid ""
 "Archive filename to use instead of standard output. Optional USER and HOST "
 "specify the user and host names in case of a remote archive"
 msgstr ""
-"Arkivfilnamn att anv√§nda ist√§llet f√∂r standard ut. De valfria ANV√ÑNDARE och "
-"V√ÑRD anger anv√§ndarnamnet och v√§rdnamnet i det fall arkivet √§r ett fj√§rrarkiv"
+"Arkivfilnamn att anv‰nda ist‰llet fˆr standard ut. De valfria ANVƒNDARE och "
+"VƒRD anger anv‰ndarnamnet och v‰rdnamnet i det fall arkivet ‰r ett fj‰rrarkiv"
 
-#: src/main.c:183
+#: src/main.c:177
 msgid "Operation modifiers valid only in copy-pass mode:"
-msgstr "√Ötg√§rdsmodifierare giltiga endast i l√§get kopiera-skickavidare:"
+msgstr "≈tg‰rdsmodifierare giltiga endast i l‰get kopiera-skickavidare:"
 
-#: src/main.c:185
+#: src/main.c:179
 msgid "Link files instead of copying them, when  possible"
-msgstr "L√§nka filer ist√§llet f√∂r att kopiera dem d√• s√• √§r m√∂jligt"
+msgstr "L‰nka filer ist‰llet fˆr att kopiera dem dÂ sÂ ‰r mˆjligt"
 
-#: src/main.c:192
+#: src/main.c:186
+#, fuzzy
 msgid "Operation modifiers valid in copy-in and copy-out modes:"
-msgstr "√Ötg√§rdsmodifierare giltiga f√∂r l√§gena kopiera-in och kopiera-ut:"
+msgstr ""
+"≈tg‰rdsmodifierare giltiga fˆr l‰gena kopiera-in och kopiera-skickavidare:"
 
-#: src/main.c:194
+#: src/main.c:188
 msgid "Do not strip file system prefix components from the file names"
-msgstr "Ta inte bort prefixkomponenter f√∂r filsystem fr√•n filnamn"
+msgstr ""
 
-#: src/main.c:197
+#: src/main.c:191
 msgid "Create all files relative to the current directory"
 msgstr "Skapa alla filer relativt den aktuella katalogen"
 
-#: src/main.c:202
+#: src/main.c:196
+#, fuzzy
 msgid "Operation modifiers valid in copy-out and copy-pass modes:"
 msgstr ""
-"√Ötg√§rdsmodifierare giltiga f√∂r l√§gena kopiera-ut och kopiera-skickavidare:"
+"≈tg‰rdsmodifierare giltiga fˆr l‰gena kopiera-ut och kopiera-skickavidare:"
 
-#: src/main.c:204
+#: src/main.c:198
 msgid ""
 "A list of filenames is terminated by a null character instead of a newline"
 msgstr ""
-"En lista med filnamn som avslutas med ett nulltecken ist√§llet f√∂r en nyrad"
+"En lista med filnamn som avslutas med ett nulltecken ist‰llet fˆr en nyrad"
 
-#: src/main.c:206
+#: src/main.c:200
 msgid ""
 "Archive filename to use instead of standard input. Optional USER and HOST "
 "specify the user and host names in case of a remote archive"
 msgstr ""
-"Arkivfilnamn att anv√§nda ist√§llet f√∂r standard in. De valfria ANV√ÑNDARE och "
-"V√ÑRD anger anv√§ndarnamnet och v√§rdnamnet i det fall arkivet √§r ett fj√§rrarkiv"
+"Arkivfilnamn att anv‰nda ist‰llet fˆr standard in. De valfria ANVƒNDARE och "
+"VƒRD anger anv‰ndarnamnet och v‰rdnamnet i det fall arkivet ‰r ett fj‰rrarkiv"
 
-#: src/main.c:208
+#: src/main.c:202
 msgid ""
 "Dereference  symbolic  links  (copy  the files that they point to instead of "
 "copying the links)."
 msgstr ""
-"Dereferera symboliska l√§nkar (kopiera filerna som de pekar p√• ist√§llet f√∂r "
-"att kopiera l√§nkarna)."
+"Dereferera symboliska l‰nkar (kopiera filerna som de pekar pÂ ist‰llet fˆr "
+"att kopiera l‰nkarna)."
 
-#: src/main.c:209
+#: src/main.c:203
 msgid "[USER][:.][GROUP]"
-msgstr "[ANV√ÑNDARE][:.][GRUPP]"
+msgstr "[ANVƒNDARE][:.][GRUPP]"
 
-#: src/main.c:210
+#: src/main.c:204
 msgid ""
 "Set the ownership of all files created to the specified USER and/or GROUP"
 msgstr ""
-"St√§ll in √§garen p√• alla filer som skapas till den angivna anv√§ndaren och/"
+"St‰ll in ‰garen pÂ alla filer som skapas till den angivna anv‰ndaren och/"
 "eller gruppen"
 
-#: src/main.c:212
+#: src/main.c:206
 msgid "Reset the access times of files after reading them"
-msgstr "√Öterst√§ll filers √•tkomsttider efter att de l√§sts"
+msgstr "≈terst‰ll filers Âtkomsttider efter att de l‰sts"
 
-#: src/main.c:218
+#: src/main.c:212
+#, fuzzy
 msgid "Operation modifiers valid in copy-in and copy-pass modes:"
 msgstr ""
-"√Ötg√§rdsmodifierare giltiga f√∂r l√§gena kopiera-in och kopiera-skickavidare:"
+"≈tg‰rdsmodifierare giltiga fˆr l‰gena kopiera-in och kopiera-skickavidare:"
+
+#: src/main.c:214
+msgid "Retain previous file modification times when creating files"
+msgstr "BehÂll tidigare fil‰ndringstider dÂ filer skapas"
+
+#: src/main.c:216
+msgid "Create leading directories where needed"
+msgstr "Skapa inledande kataloger dÂ sÂ behˆvs"
+
+#: src/main.c:218
+msgid "Do not change the ownership of the files"
+msgstr "ƒndra inte ‰garen pÂ filer"
 
 #: src/main.c:220
-msgid "Retain previous file modification times when creating files"
-msgstr "Beh√•ll tidigare fil√§ndringstider d√• filer skapas"
+msgid "Replace all files unconditionally"
+msgstr "Ers‰tt ovillkorligen alla filer"
 
 #: src/main.c:222
-msgid "Create leading directories where needed"
-msgstr "Skapa inledande kataloger d√• s√• beh√∂vs"
-
-#: src/main.c:224
-msgid "Do not change the ownership of the files"
-msgstr "√Ñndra inte √§garen p√• filer"
-
-#: src/main.c:226
-msgid "Replace all files unconditionally"
-msgstr "Ers√§tt ovillkorligen alla filer"
-
-#: src/main.c:228
 msgid "Write files with large blocks of zeros as sparse files"
 msgstr "Skriv filer med stora block med nollor som glesa filer"
 
-#: src/main.c:304 src/main.c:321
+#: src/main.c:228
+msgid "Informative options:"
+msgstr "Informativa flaggor:"
+
+#: src/main.c:230
+msgid "Give this help list"
+msgstr "Visa denna hj‰lplista"
+
+#: src/main.c:231
+msgid "Give a short usage message"
+msgstr "Visa ett kort anv‰ndningsmeddelande"
+
+#: src/main.c:232
+msgid "Print license and exit"
+msgstr "Visa licenstexten och avsluta"
+
+#: src/main.c:233
+msgid "Print program version"
+msgstr "Visa programmets version"
+
+#: src/main.c:237
+msgid "hang for SECS seconds (default 3600)"
+msgstr ""
+
+#: src/main.c:250
+#, fuzzy, c-format
+msgid ""
+"   GNU cpio is free software; you can redistribute it and/or modify\n"
+"   it under the terms of the GNU General Public License as published by\n"
+"   the Free Software Foundation; either version 2 of the License, or\n"
+"   (at your option) any later version.\n"
+"\n"
+"   GNU cpio is distributed in the hope that it will be useful,\n"
+"   but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"   GNU General Public License for more details.\n"
+"\n"
+"   You should have received a copy of the GNU General Public License\n"
+"   along with GNU cpio; if not, write to the Free Software Foundation,\n"
+"   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\n"
+"\n"
+msgstr ""
+"   Fˆljande text ‰r en informell ˆvers‰ttning som enbart tillhandahÂlls\n"
+"   i informativt syfte. Fˆr alla juridiska tolkningar g‰ller den\n"
+"   engelska originaltexten.\n"
+"\n"
+"   GNU cpio ‰r fri programvara. Du kan distribuera det och/eller\n"
+"   modifiera det under villkoren i GNU General Public License, publicerad\n"
+"   av Free Software Foundation, antingen version 2 eller (om du sÂ vill)\n"
+"   nÂgon senare version.\n"
+"\n"
+"   GNU cpio distribueras i hopp om att det ska vara anv‰ndbart, men UTAN\n"
+"   N≈GON GARANTI, ‰ven utan underfˆrstÂdd garanti vid K÷P eller\n"
+"   LƒMPLIGHET F÷R N≈GOT SPECIELLT ƒNDAM≈L. Se GNU General Public License\n"
+"   fˆr ytterligare information.\n"
+"\n"
+"   Du bˆr ha fÂtt en kopia av GNU General Public License tillsammans med\n"
+"   detta program. Om inte, skriv till Free Software Foundation, Inc.,\n"
+"   59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.\n"
+"\n"
+
+#: src/main.c:333 src/main.c:350
 #, c-format
 msgid "invalid block size"
 msgstr "ogiltig blockstorlek"
 
-#: src/main.c:310 src/main.c:342
+#: src/main.c:339 src/main.c:371
 #, c-format
 msgid "Archive format multiply defined"
-msgstr "Arkivformatet har angivits flera g√•nger"
+msgstr "Arkivformatet har angivits flera gÂnger"
 
-#: src/main.c:360
+#: src/main.c:389
 #, c-format
 msgid ""
 "invalid archive format `%s'; valid formats are:\n"
 "crc newc odc bin ustar tar (all-caps also recognized)"
 msgstr ""
-"arkivformatet \"%s\" √§r ogiltigt; giltiga format √§r:\n"
-"crc, newc, odc, bin, ustar, tar (stora bokst√§ver fungerar ocks√•)"
+"arkivformatet \"%s\" ‰r ogiltigt; giltiga format ‰r:\n"
+"crc, newc, odc, bin, ustar, tar (stora bokst‰ver fungerar ocksÂ)"
 
-#: src/main.c:367 src/main.c:417 src/main.c:431
+#: src/main.c:396 src/main.c:446 src/main.c:460
 #, c-format
 msgid "Mode already defined"
-msgstr "L√§get redan angivet"
+msgstr "L‰get redan angivet"
 
-#: src/main.c:411
+#: src/main.c:440
 #, c-format
 msgid "--no-preserve-owner cannot be used with --owner"
-msgstr "--no-preserve-owner kan inte anv√§ndas tillsammans med --owner"
+msgstr "--no-preserve-owner kan inte anv‰ndas tillsammans med --owner"
 
-#: src/main.c:454
+#: src/main.c:483
 #, c-format
 msgid "--owner cannot be used with --no-preserve-owner"
-msgstr "--owner kan inte anv√§ndas tillsammans med --no-preserve-owner"
+msgstr "--owner kan inte anv‰ndas tillsammans med --no-preserve-owner"
 
-#: src/main.c:501
+#: src/main.c:530
 #, c-format
 msgid "Invalid value for --warning option: %s"
-msgstr "Ogiltigt v√§rde f√∂r flaggan --warning: %s"
+msgstr "Ogiltigt v‰rde fˆr flaggan --warning: %s"
 
-#: src/main.c:531
+#: src/main.c:583
 msgid "[destination-directory]"
 msgstr "[destinationskatalog]"
 
-#: src/main.c:561
+#: src/main.c:602 src/main.c:618
 #, c-format
 msgid ""
 "You must specify one of -oipt options.\n"
 "Try `%s --help' or `%s --usage' for more information.\n"
 msgstr ""
-"Du m√•ste ange en av flaggorna -oipt.\n"
-"Prova med \"%s --help\" eller \"%s --usage\" f√∂r mer information.\n"
+"Du mÂste ange en av flaggorna -oipt.\n"
+"Prova med \"%s --help\" eller \"%s --usage\" fˆr mer information.\n"
 
-#: src/main.c:589
+#: src/main.c:646
 #, c-format
 msgid "Both -I and -F are used in copy-in mode"
-msgstr "B√•de -I och -F anv√§nds i l√§get kopiera-in"
+msgstr "BÂde -I och -F anv‰nds i l‰get kopiera-in"
 
-#: src/main.c:601 src/main.c:637
+#: src/main.c:658 src/main.c:694
 #, c-format
 msgid "Too many arguments"
-msgstr "F√∂r m√•nga argument"
+msgstr "Fˆr mÂnga argument"
 
-#: src/main.c:620
-#, c-format
+#: src/main.c:677
+#, fuzzy, c-format
 msgid ""
 "--append is used but no archive file name is given (use -F or -O options)"
 msgstr ""
-"--append anv√§nds men inget arkivfilnamn har angivits (anv√§nd flaggorna -F "
+"--append anv‰nds men inget arkivfilnamn har angivits (anv‰nd flaggorna -F "
 "eller -O)"
 
-#: src/main.c:626
+#: src/main.c:683
 #, c-format
 msgid "Both -O and -F are used in copy-out mode"
-msgstr "B√•de -O och -F anv√§nds i l√§get kopiera-ut"
+msgstr "BÂde -O och -F anv‰nds i l‰get kopiera-ut"
 
-#: src/main.c:639
-#, c-format
+#: src/main.c:696
+#, fuzzy, c-format
 msgid "Not enough arguments"
-msgstr "Inte tillr√§ckligt m√•nga argument"
+msgstr "Fˆr mÂnga argument"
 
-#: src/main.c:643
+#: src/main.c:700
 #, c-format
 msgid "Archive format is not specified in copy-pass mode (use --format option)"
 msgstr ""
-"Arkivformatet har inte angivits i l√§get kopiera-skickavidare (anv√§nd flaggan "
+"Arkivformatet har inte angivits i l‰get kopiera-skickavidare (anv‰nd flaggan "
 "--format)"
 
-#: src/main.c:665
+#: src/main.c:722
 #, c-format
 msgid "-F can be used only with --create or --extract"
-msgstr "-F kan endast anv√§ndas tillsammans med --create eller --extract"
+msgstr "-F kan endast anv‰ndas tillsammans med --create eller --extract"
 
-#: src/main.c:668
-#, c-format
+#: src/main.c:725
+#, fuzzy, c-format
 msgid "Cannot open %s"
-msgstr "Kan inte √∂ppna %s"
+msgstr "kan inte ˆppna katalogen %s"
 
-#: src/main.c:740
+#: src/main.c:797
 #, c-format
 msgid "error closing archive"
-msgstr "fel vid st√§ngning av arkiv"
+msgstr "fel vid st‰ngning av arkiv"
 
-#: src/makepath.c:96 src/makepath.c:155
+#: src/makepath.c:117 src/makepath.c:184
 #, c-format
 msgid "cannot make directory `%s'"
 msgstr "kan inte skapa katalogen \"%s\""
 
-#: src/makepath.c:131 src/makepath.c:181
+#: src/makepath.c:159 src/makepath.c:237
 #, c-format
 msgid "`%s' exists but is not a directory"
-msgstr "\"%s\" finns men √§r inte en katalog"
-
-#: src/mt.c:166
-msgid "control magnetic tape drive operation"
-msgstr ""
-
-#: src/mt.c:180
-msgid "DEVICE"
-msgstr ""
-
-#: src/mt.c:181
-msgid "use device as the file name of the tape drive to operate on"
-msgstr ""
+msgstr "\"%s\" finns men ‰r inte en katalog"
 
 #: src/mt.c:183
-#, fuzzy
-msgid "use remote COMMAND instead of rsh"
-msgstr "Anv√§nd fj√§rrkommando ist√§llet f√∂r rsh"
-
-#: src/mt.c:204
-#, fuzzy
-msgid "operation"
-msgstr "Huvud√•tg√§rdsl√§ge:"
-
-#: src/mt.c:212
-#, fuzzy, c-format
-msgid "invalid count value"
-msgstr "ogiltig anv√§ndare"
-
-#: src/mt.c:231
-#, c-format
-msgid "no tape device specified"
-msgstr "ingen bandstation √§r angiven"
-
-#: src/mt.c:254
-msgid "operation [count]"
-msgstr ""
-
-#: src/mt.c:271
 #, c-format
 msgid "%s is not a character special file"
-msgstr "%s √§r ingen teckenspecialfil"
+msgstr "%s ‰r ingen teckenspecialfil"
 
-#: src/mt.c:282 src/mt.c:291
+#: src/mt.c:196 src/mt.c:205
 #, c-format
 msgid "%s: rmtioctl failed"
-msgstr "%s: rmtioctl misslyckades"
+msgstr ""
 
-#: src/mt.c:344
+#: src/mt.c:225
+#, c-format
+msgid ""
+"Usage: %s [-V] [-f device] [--file=device] [--rsh-command=command]\n"
+"\t[--help] [--version] operation [count]\n"
+msgstr ""
+"Anv‰ndning: %s [-V] [-f enhet] [--file=enhet] [--rsh-command=kommando]\n"
+"            [--help] [--version] Âtg‰rd [antal]\n"
+
+#: src/mt.c:307
+#, c-format
+msgid "no tape device specified"
+msgstr "ingen bandstation ‰r angiven"
+
+#: src/mt.c:320
 #, c-format
 msgid "%s: rmtopen failed"
-msgstr "%s: rmtopen misslyckades"
+msgstr ""
 
-#: src/mt.c:357
+#: src/mt.c:333
 #, c-format
 msgid "%s: rmtclose failed"
-msgstr "%s: rmtclose misslyckades"
+msgstr ""
 
-#: src/tar.c:309
+#: src/tar.c:308
 #, c-format
 msgid "invalid header: checksum error"
 msgstr "ogiltigt huvud: fel i kontrollsumma"
 
-#: src/userspec.c:116
+#: src/userspec.c:142
 msgid "invalid user"
-msgstr "ogiltig anv√§ndare"
+msgstr "ogiltig anv‰ndare"
 
-#: src/userspec.c:122
+#: src/userspec.c:148
 msgid "cannot get the login group of a numeric UID"
-msgstr "kan inte f√• tag i inloggningsgruppen f√∂r ett numeriskt UID"
+msgstr "kan inte fÂ tag i inloggningsgruppen fˆr ett numeriskt UID"
 
-#: src/userspec.c:162
+#: src/userspec.c:188
 msgid "invalid group"
 msgstr "ogiltig grupp"
 
-#: src/util.c:207 src/util.c:376
+#: src/util.c:91 src/util.c:94 src/util.c:143
+#, c-format
+msgid "write error"
+msgstr "skrivfel"
+
+#: src/util.c:205 src/util.c:374
 #, c-format
 msgid "read error"
-msgstr "l√§sfel"
+msgstr "l‰sfel"
 
-#: src/util.c:210
+#: src/util.c:208
 #, c-format
 msgid "premature end of file"
-msgstr "f√∂r tidigt slut p√• filen"
+msgstr "fˆr tidigt slut pÂ filen"
 
-#: src/util.c:495 src/util.c:545
-#, c-format
+#: src/util.c:493 src/util.c:543
+#, fuzzy, c-format
 msgid "File %s shrunk by %s byte, padding with zeros"
 msgid_plural "File %s shrunk by %s bytes, padding with zeros"
-msgstr[0] "Filen %s minskade med %s byte, fyller ut med nollor"
-msgstr[1] "Filen %s minskade med %s byte, fyller ut med nollor"
+msgstr[0] "Filen %s minskade med %ld byte, fyller ut med nollor"
+msgstr[1] "Filen %s minskade med %ld byte, fyller ut med nollor"
 
-#: src/util.c:501 src/util.c:551
-#, c-format
+#: src/util.c:499 src/util.c:549
+#, fuzzy, c-format
 msgid "Read error at byte %lld in file %s, padding with zeros"
-msgstr "L√§sfel vid byte %lld i filen %s, fyller ut med nollor"
+msgstr "L‰sfel vid byte %ld i filen %s, fyller ut med nollor"
 
-#: src/util.c:586
-#, c-format
+#: src/util.c:584
+#, fuzzy, c-format
 msgid "File %s grew, %<PRIuMAX> new byte not copied"
 msgid_plural "File %s grew, %<PRIuMAX> new bytes not copied"
-msgstr[0] "Filen %s v√§xte, %<PRIuMAX> nya byte kopierades inte"
-msgstr[1] "Filen %s v√§xte, %<PRIuMAX> nya byte kopierades inte"
+msgstr[0] "Filen %s v‰xte, %ld nya byte kopierades inte"
+msgstr[1] "Filen %s v‰xte, %ld nya byte kopierades inte"
 
-#: src/util.c:592
+#: src/util.c:590
 #, c-format
 msgid "File %s was modified while being copied"
-msgstr "Filen %s √§ndrades under tiden den kopierades"
+msgstr "Filen %s ‰ndrades under tiden den kopierades"
 
-#: src/util.c:620
+#: src/util.c:618
 #, c-format
 msgid "virtual memory exhausted"
-msgstr "slut p√• virtuellt minne"
+msgstr "virtuella minnet slut"
 
-#: src/util.c:626
-#, c-format
-msgid "Creating intermediate directory `%s'"
-msgstr "Skapar tillf√§lliga katalogen \"%s\""
-
-#: src/util.c:663 src/util.c:669
+#: src/util.c:654 src/util.c:660
 #, c-format
 msgid "cannot seek on output"
-msgstr "kan inte s√∂ka p√• utdata"
+msgstr "kan inte sˆka pÂ utdata"
 
-#: src/util.c:841
+#: src/util.c:832
 #, c-format
 msgid "Found end of tape.  Load next tape and press RETURN. "
-msgstr "Hittade slutet p√• bandet. Ladda n√§sta band och tryck RETUR. "
+msgstr "Hittade slutet pÂ bandet. Ladda n‰sta band och tryck RETUR. "
 
-#: src/util.c:843
+#: src/util.c:834
 #, c-format
 msgid "Found end of tape.  To continue, type device/file name when ready.\n"
 msgstr ""
-"Hittade slutet p√• bandet. Skriv in namnet p√• enheten/filen n√§r du √§r redo\n"
-"att forts√§tta.\n"
+"Hittade slutet pÂ bandet. Skriv in namnet pÂ enheten/filen n‰r du ‰r redo\n"
+"att forts‰tta.\n"
 
-#: src/util.c:866
+#: src/util.c:857
 #, c-format
 msgid "To continue, type device/file name when ready.\n"
-msgstr "Skriv in namnet p√• enheten/filen n√§r du √§r redo att forts√§tta.\n"
+msgstr "Skriv in namnet pÂ enheten/filen n‰r du ‰r redo att forts‰tta.\n"
 
-#: src/util.c:891
+#: src/util.c:882
 #, c-format
 msgid "internal error: tape descriptor changed from %d to %d"
-msgstr "internt fel: bandhandtaget √§ndrades fr√•n %d till %d"
+msgstr "internt fel: bandhandtaget ‰ndrades frÂn %d till %d"
 
-#: src/util.c:1610
+#: lib/getopt.c:531 lib/getopt.c:547
 #, c-format
-msgid "%s is not a directory"
-msgstr "%s √§r inte en katalog"
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: flaggan \"%s\" ‰r tvetydig\n"
 
-#: tests/genfile.c:112
-msgid ""
-"genfile manipulates data files for GNU paxutils test suite.\n"
-"OPTIONS are:\n"
-msgstr ""
-"genfile manipulerar datafiler f√∂r testsviten GNU paxutils.\n"
-"FLAGGOR √§r:\n"
+#: lib/getopt.c:580 lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: flaggan \"--%s\" tillÂter inget argument\n"
 
-#: tests/genfile.c:128
-msgid "File creation options:"
-msgstr "Flaggor f√∂r att skapa filer:"
+#: lib/getopt.c:593 lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: flaggan \"%c%s\" tillÂter inget argument\n"
 
-#: tests/genfile.c:129 tests/genfile.c:140
-msgid "SIZE"
-msgstr "STORLEK"
+#: lib/getopt.c:641 lib/getopt.c:660 lib/getopt.c:976 lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: flaggan \"%s\" kr‰ver ett argument\n"
 
-#: tests/genfile.c:130
-msgid "Create file of the given SIZE"
-msgstr "Skapa fil med angiven STORLEK"
+#: lib/getopt.c:698 lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: ok‰nd flagga \"--%s\"\n"
 
-#: tests/genfile.c:132
-msgid "Write to file NAME, instead of standard output"
-msgstr "Skriv till filen NAMN ist√§llet f√∂r standard ut"
+#: lib/getopt.c:709 lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: ok‰nd flagga \"%c%s\"\n"
 
-#: tests/genfile.c:134
-msgid "Read file names from FILE"
-msgstr "L√§s filnamn fr√•n FIL"
+#: lib/getopt.c:764 lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: otillÂten flagga -- %c\n"
 
-#: tests/genfile.c:136
-msgid "-T reads null-terminated names"
-msgstr "-T l√§ser null-terminerade namn"
+#: lib/getopt.c:773 lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: ogiltig flagga -- %c\n"
 
-#: tests/genfile.c:137
-msgid "PATTERN"
-msgstr "M√ñNSTER"
+#: lib/getopt.c:828 lib/getopt.c:844 lib/getopt.c:1048 lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: flaggan kr‰ver ett argument -- %c\n"
 
-#: tests/genfile.c:138
-msgid "Fill the file with the given PATTERN. PATTERN is 'default' or 'zeros'"
-msgstr ""
-"Fyll ut filen med angivet M√ñNSTER. M√ñNSTER √§r \"default\" eller \"zeros\""
+#: lib/getopt.c:897 lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: flaggan \"-W %s\" ‰r tvetydig\n"
 
-#: tests/genfile.c:141
-msgid "Size of a block for sparse file"
-msgstr "Storlek p√• ett block f√∂r gles fil"
+#: lib/getopt.c:937 lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: flaggan \"-W %s\" tillÂter inget argument\n"
 
-#: tests/genfile.c:143
-msgid "Generate sparse file. Rest of the command line gives the file map."
-msgstr "Generera gles fil. Resten av kommandoraden anger filkartan."
+#: lib/rtapelib.c:299
+#, c-format
+msgid "exec/tcp: Service not available"
+msgstr "exec/tcp: Tj‰nsten ‰r inte tillg‰nglig"
 
-#: tests/genfile.c:145
-msgid "OFFSET"
-msgstr "POSITION"
+#: lib/rtapelib.c:303
+#, c-format
+msgid "stdin"
+msgstr "standard in"
 
-#: tests/genfile.c:146
-msgid "Seek to the given offset before writing data"
-msgstr "S√∂k till angiven position innan data skrivs"
+#: lib/rtapelib.c:306
+#, c-format
+msgid "stdout"
+msgstr "standard ut"
 
-#: tests/genfile.c:152
-msgid "File statistics options:"
-msgstr "Flaggor f√∂r filstatistik:"
+#: lib/rtapelib.c:512
+#, c-format
+msgid "Cannot execute remote shell"
+msgstr "Kan inte kˆra fj‰rrskal"
 
-#: tests/genfile.c:155
-msgid "Print contents of struct stat for each given file. Default FORMAT is: "
-msgstr ""
-"Skriv ut inneh√•llet f√∂r struktuerad stat f√∂r varje angiven fil. "
-"StandardFORMAT √§r: "
-
-#: tests/genfile.c:162
-msgid "Synchronous execution options:"
-msgstr "Flaggor f√∂r synkron k√∂rning:"
-
-#: tests/genfile.c:164
-#, fuzzy
-msgid "OPTION"
-msgstr " [FLAGGA...]"
-
-#: tests/genfile.c:165
-#, fuzzy
-msgid ""
-"Execute ARGS. Useful with --checkpoint and one of --cut, --append, --touch, "
-"--unlink"
-msgstr ""
-"K√∂r angivet KOMMANDO. Anv√§ndbart med --checkpoint och en av --cut, --append, "
-"--touch"
-
-#: tests/genfile.c:168
-msgid "Perform given action (see below) upon reaching checkpoint NUMBER"
-msgstr "Genomf√∂r angiven √•tg√§rd (se nedan) n√§r kontrollpunkt NUMMER n√•s"
-
-#: tests/genfile.c:171
-msgid "Set date for next --touch option"
-msgstr "St√§ll in datum f√∂r n√§sta --touch-flagga"
-
-#: tests/genfile.c:174
-msgid "Display executed checkpoints and exit status of COMMAND"
-msgstr "Visa k√∂rda kontrollpunkter och avslutningsstatus f√∂r KOMMANDO"
-
-#: tests/genfile.c:179
-msgid ""
-"Synchronous execution actions. These are executed when checkpoint number "
-"given by --checkpoint option is reached."
-msgstr ""
-"√Ötg√§rder f√∂r synkron k√∂rning. Dessa k√∂rs n√§r kontrollpunktens nummer, som "
-"anges med flaggan --checkpoint, n√•s."
-
-#: tests/genfile.c:182
-msgid ""
-"Truncate FILE to the size specified by previous --length option (or 0, if it "
-"is not given)"
-msgstr ""
-"Korta ner FIL till storleken angiven av f√∂reg√•ende flaggan --length (eller "
-"0, om den inte har angivits)"
-
-#: tests/genfile.c:186
-msgid "Append SIZE bytes to FILE. SIZE is given by previous --length option."
-msgstr ""
-"L√§gg till STORLEK byte till FIL. STORLEK anges av f√∂reg√•ende flaggan --"
-"length."
-
-#: tests/genfile.c:189
-msgid "Update the access and modification times of FILE"
-msgstr "Uppdatera √•tkomst- och √§ndringstider f√∂r FIL"
-
-#: tests/genfile.c:192
-msgid "Execute COMMAND"
-msgstr "K√∂r KOMMANDO"
-
-#: tests/genfile.c:195
-msgid "Unlink FILE"
+#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
+#. Directly translating this to another language will not work, first because
+#. %s itself is not translated.
+#. Translate it as `%s: Function %s failed'.
+#: lib/paxerror.c:58 lib/paxerror.c:71
+#, c-format
+msgid "%s: Cannot %s"
 msgstr ""
 
-#: tests/genfile.c:245
+#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
+#. Directly translating this to another language will not work, first because
+#. %s itself is not translated.
+#. Translate it as `%s: Function %s failed'.
+#: lib/paxerror.c:84
 #, c-format
-msgid "Invalid size: %s"
-msgstr "Ogiltig storlek: %s"
+msgid "%s: Warning: Cannot %s"
+msgstr ""
 
-#: tests/genfile.c:250
-#, c-format
-msgid "Number out of allowed range: %s"
-msgstr "Numret √§r utanf√∂r till√•tet intervall: %s"
-
-#: tests/genfile.c:253
-#, c-format
-msgid "Negative size: %s"
-msgstr "Negativ storlek: %s"
-
-#: tests/genfile.c:266 tests/genfile.c:568
-#, c-format
-msgid "stat(%s) failed"
-msgstr "stat(%s) misslyckades"
-
-#: tests/genfile.c:269
-#, c-format
-msgid "requested file length %lu, actual %lu"
-msgstr "beg√§rde fill√§ngd %lu, faktisk l√§ngd %lu"
-
-#: tests/genfile.c:273
-#, c-format
-msgid "created file is not sparse"
-msgstr "skapad fil √§r inte gles"
-
-#: tests/genfile.c:362
-#, c-format
-msgid "Error parsing number near `%s'"
-msgstr "Fel vid tolkning av tal n√§ra \"%s\""
-
-#: tests/genfile.c:368
-#, c-format
-msgid "Unknown date format"
-msgstr "Ok√§nt datumformat"
-
-#: tests/genfile.c:392
-msgid "[ARGS...]"
-msgstr "[ARG...]"
-
-#: tests/genfile.c:429 tests/genfile.c:469 tests/genfile.c:522
-#: tests/genfile.c:672 tests/genfile.c:686
-#, c-format
-msgid "cannot open `%s'"
-msgstr "kan inte √∂ppna \"%s\""
-
-#: tests/genfile.c:435
-msgid "cannot seek"
-msgstr "kan inte s√∂ka"
-
-#: tests/genfile.c:452
-#, c-format
-msgid "file name contains null character"
-msgstr "filnamnet inneh√•ller null-tecken"
-
-#: tests/genfile.c:517
-#, c-format
-msgid "cannot generate sparse files on standard output, use --file option"
-msgstr "kan inte generera glesa filer p√• standard ut, anv√§nd flaggan --file"
-
-#: tests/genfile.c:595
-#, c-format
-msgid "incorrect mask (near `%s')"
-msgstr "felaktig mask (n√§ra \"%s\")"
-
-#: tests/genfile.c:601 tests/genfile.c:634
-#, c-format
-msgid "Unknown field `%s'"
-msgstr "Ok√§nt f√§lt \"%s\""
-
-#: tests/genfile.c:661
-#, c-format
-msgid "cannot set time on `%s'"
-msgstr "kan inte st√§lla in tid p√• \"%s\""
-
-#: tests/genfile.c:700
+#: lib/paxerror.c:93
 #, fuzzy, c-format
-msgid "cannot unlink `%s'"
-msgstr "kan inte √∂ppna \"%s\""
+msgid "%s: Cannot change mode to %s"
+msgstr "%s kan inte anv‰ndas tillsammans med %s"
 
-#: tests/genfile.c:826
+#: lib/paxerror.c:101
+#, fuzzy, c-format
+msgid "%s: Cannot change ownership to uid %lu, gid %lu"
+msgstr "ƒndra inte ‰garen pÂ filer"
+
+#: lib/paxerror.c:127
+#, fuzzy, c-format
+msgid "%s: Cannot hard link to %s"
+msgstr "kan inte l‰nka %s till %s"
+
+#: lib/paxerror.c:179 lib/paxerror.c:211
+#, fuzzy, c-format
+msgid "%s: Read error at byte %s, while reading %lu byte"
+msgid_plural "%s: Read error at byte %s, while reading %lu bytes"
+msgstr[0] "L‰sfel vid byte %ld i filen %s, fyller ut med nollor"
+msgstr[1] "L‰sfel vid byte %ld i filen %s, fyller ut med nollor"
+
+#: lib/paxerror.c:192
 #, c-format
-msgid "Command exited successfully\n"
-msgstr "Kommandot avslutades utan problem\n"
+msgid "%s: Warning: Read error at byte %s, while reading %lu byte"
+msgid_plural "%s: Warning: Read error at byte %s, while reading %lu bytes"
+msgstr[0] ""
+msgstr[1] ""
 
-#: tests/genfile.c:828
+#: lib/paxerror.c:259
+#, fuzzy, c-format
+msgid "%s: Cannot seek to %s"
+msgstr "%s kan inte anv‰ndas tillsammans med %s"
+
+#: lib/paxerror.c:275
 #, c-format
-msgid "Command failed with status %d\n"
-msgstr "Kommandot misslyckades med status %d\n"
+msgid "%s: Warning: Cannot seek to %s"
+msgstr ""
 
-#: tests/genfile.c:832
+#: lib/paxerror.c:284
+#, fuzzy, c-format
+msgid "%s: Cannot create symlink to %s"
+msgstr "kan inte l‰nka %s till %s"
+
+#: lib/paxerror.c:349
 #, c-format
-msgid "Command terminated on signal %d\n"
-msgstr "Kommandot avslutades p√• signal %d\n"
+msgid "%s: Wrote only %lu of %lu byte"
+msgid_plural "%s: Wrote only %lu of %lu bytes"
+msgstr[0] ""
+msgstr[1] ""
 
-#: tests/genfile.c:834
+#: lib/paxnames.c:132
 #, c-format
-msgid "Command stopped on signal %d\n"
-msgstr "Kommandot stoppades p√• signal %d\n"
+msgid "Removing leading `%s' from member names"
+msgstr ""
 
-#: tests/genfile.c:837
+#: lib/paxnames.c:133
 #, c-format
-msgid "Command dumped core\n"
-msgstr "Kommandot dumpade minnet\n"
+msgid "Removing leading `%s' from hard link targets"
+msgstr ""
 
-#: tests/genfile.c:840
-#, c-format
-msgid "Command terminated\n"
-msgstr "Kommandot avslutat\n"
+#: lib/paxnames.c:146
+msgid "Substituting `.' for empty member name"
+msgstr ""
 
-#: tests/genfile.c:872
-#, c-format
-msgid "--stat requires file names"
-msgstr "--stat kr√§ver filnamn"
-
-#~ msgid "%s: illegal option -- %c\n"
-#~ msgstr "%s: otill√•ten flagga -- %c\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Report bugs to <%s>.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Rapportera fel till <%s>.\n"
-#~ "Skicka synpunkter p√• √∂vers√§ttningen till <tp-sv@listor.tp-sv.se>.\n"
-
-#~ msgid "Input string too long"
-#~ msgstr "Inmatningsstr√§ngen √§r f√∂r l√•ng"
-
-#~ msgid "Number syntax error"
-#~ msgstr "Fel i nummersyntax"
-
-#~ msgid "rmtd: Cannot allocate buffer space\n"
-#~ msgstr "rmtd: Kan inte allokera buffertutrymme\n"
-
-#~ msgid "Cannot allocate buffer space"
-#~ msgstr "Kan inte allokera buffertutrymme"
-
-#~ msgid "Try `%s --help' for more information.\n"
-#~ msgstr "Prova \"%s --help\" f√∂r mer information.\n"
-
-#~ msgid ""
-#~ "Usage: %s [OPTION]\n"
-#~ "Manipulate a tape drive, accepting commands from a remote process.\n"
-#~ "\n"
-#~ "  --version  Output version info.\n"
-#~ "  --help     Output this help.\n"
-#~ msgstr ""
-#~ "Anv√§ndning: %s [FLAGGA]\n"
-#~ "Manipulera en bandenhet, som accepterar kommandon fr√•n en fj√§rrprocess.\n"
-#~ "\n"
-#~ "  --version  Skriv ut versionsinformation.\n"
-#~ "  --help     Skriv ut denna hj√§lp.\n"
-
-#~ msgid "Seek offset error"
-#~ msgstr "Fel vid positionss√∂kning"
-
-#~ msgid "Premature end of file"
-#~ msgstr "F√∂r tidigt slut p√• filen"
-
-#~ msgid "Informative options:"
-#~ msgstr "Informativa flaggor:"
-
-#~ msgid "Give this help list"
-#~ msgstr "Visa denna hj√§lplista"
-
-#~ msgid "Give a short usage message"
-#~ msgstr "Visa ett kort anv√§ndningsmeddelande"
-
-#~ msgid "Print license and exit"
-#~ msgstr "Visa licenstexten och avsluta"
-
-#~ msgid "Print program version"
-#~ msgstr "Visa programmets version"
-
-#~ msgid ""
-#~ "   GNU cpio is free software; you can redistribute it and/or modify\n"
-#~ "   it under the terms of the GNU General Public License as published by\n"
-#~ "   the Free Software Foundation; either version 3 of the License, or\n"
-#~ "   (at your option) any later version.\n"
-#~ "\n"
-#~ "   GNU cpio is distributed in the hope that it will be useful,\n"
-#~ "   but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "   GNU General Public License for more details.\n"
-#~ "\n"
-#~ "   You should have received a copy of the GNU General Public License\n"
-#~ "   along with GNU cpio; if not, write to the Free Software Foundation,\n"
-#~ "   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\n"
-#~ "\n"
-#~ msgstr ""
-#~ "   F√∂ljande text √§r en informell √∂vers√§ttning som enbart tillhandah√•lls\n"
-#~ "   i informativt syfte. F√∂r alla juridiska tolkningar g√§ller den\n"
-#~ "   engelska originaltexten.\n"
-#~ "\n"
-#~ "   GNU cpio √§r fri programvara. Du kan distribuera det och/eller\n"
-#~ "   modifiera det under villkoren i GNU General Public License, "
-#~ "publicerad\n"
-#~ "   av Free Software Foundation, antingen version 3 eller (om du s√• vill)\n"
-#~ "   n√•gon senare version.\n"
-#~ "\n"
-#~ "   GNU cpio distribueras i hopp om att det ska vara anv√§ndbart, men UTAN\n"
-#~ "   N√ÖGON GARANTI, √§ven utan underf√∂rst√•dd garanti vid S√ÑLJBARHET eller\n"
-#~ "   L√ÑMPLIGHET F√ñR N√ÖGOT SPECIELLT √ÑNDAM√ÖL. Se GNU General Public License\n"
-#~ "   f√∂r ytterligare information.\n"
-#~ "\n"
-#~ "   Du b√∂r ha f√•tt en kopia av GNU General Public License tillsammans med\n"
-#~ "   GNU cpio. Om inte, skriv till Free Software Foundation, Inc.,\n"
-#~ "   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Usage: %s [-V] [-f device] [--file=device] [--rsh-command=command]\n"
-#~ "\t[--help] [--version] operation [count]\n"
-#~ msgstr ""
-#~ "Anv√§ndning: %s [-V] [-f enhet] [--file=enhet] [--rsh-command=kommando]\n"
-#~ "            [--help] [--version] √•tg√§rd [antal]\n"
-
-#~ msgid "%s: Unexpected inconsistency when making directory"
-#~ msgstr "%s: Ov√§ntad inkonsistens vid skapande av katalogen"
+#: lib/paxnames.c:147
+msgid "Substituting `.' for empty hard link target"
+msgstr ""
 
 #~ msgid "error %d"
 #~ msgstr "fel %d"
 
+#, fuzzy
+#~ msgid "%s: Read error at byte %s, reading %lu byte"
+#~ msgid_plural "%s: Read error at byte %s, reading %lu bytes"
+#~ msgstr[0] "L‰sfel vid byte %ld i filen %s, fyller ut med nollor"
+#~ msgstr[1] "L‰sfel vid byte %ld i filen %s, fyller ut med nollor"
+
 #~ msgid "USER"
-#~ msgstr "ANV√ÑNDARE"
+#~ msgstr "ANVƒNDARE"
+
+#~ msgid "HOST"
+#~ msgstr "VƒRD"
+
+#~ msgid "FILE-NAME"
+#~ msgstr "FILNAMN"
 
 #~ msgid "Set the I/O block size to %d bytes"
-#~ msgstr "St√§ll in I/O-blockstorleken till %d byte"
+#~ msgstr "St‰ll in I/O-blockstorleken till %d byte"
 
 #~ msgid "Link files instead of copying them, when possible"
-#~ msgstr "L√§nka filer ist√§llet f√∂r att kopiera dem d√• s√• √§r m√∂jligt"
+#~ msgstr "L‰nka filer ist‰llet fˆr att kopiera dem dÂ sÂ ‰r mˆjligt"
 
 #~ msgid ""
 #~ "Dereference symbolic links (copy the files that they point to instead of "
 #~ "copying the links)."
 #~ msgstr ""
-#~ "Dereferera symboliska l√§nkar (kopiera filerna som de pekar p√• ist√§llet "
-#~ "f√∂r att kopiera l√§nkarna)."
+#~ "Dereferera symboliska l‰nkar (kopiera filerna som de pekar pÂ ist‰llet "
+#~ "fˆr att kopiera l‰nkarna)."
 
 #~ msgid "--%s cannot be used with --%s"
-#~ msgstr "--%s kan inte anv√§ndas tillsammans med --%s"
+#~ msgstr "--%s kan inte anv‰ndas tillsammans med --%s"
+
+#~ msgid "Memory exhausted"
+#~ msgstr "Minnet slut"
 
 #~ msgid "block size cannot be 0"
 #~ msgstr "blockstorleken kan inte vara 0"
@@ -1735,7 +1029,7 @@ msgstr "--stat kr√§ver filnamn"
 #~ msgstr "tolkningsfel i blockstorlek"
 
 #~ msgid "Regular expression too big"
-#~ msgstr "Regulj√§ra uttrycket √§r f√∂r stort"
+#~ msgstr "Regulj‰ra uttrycket ‰r fˆr stort"
 
 #~ msgid ""
 #~ "Usage: %s {-o|--create} [-0acvABLV] [-C bytes] [-H format] [-M message]\n"
@@ -1746,9 +1040,9 @@ msgstr "--stat kr√§ver filnamn"
 #~ "       [--block-size=blocks] [--dereference] [--io-size=bytes] [--quiet]\n"
 #~ "       [--force-local] [--help] [--version] < name-list [> archive]\n"
 #~ msgstr ""
-#~ "Anv√§ndning: %s {-o|--create} [-0acvABLV] [-C byte] [-H format]\n"
-#~ "            [-M meddelande] [-O [[anv√§ndare@]v√§rd:]arkiv]\n"
-#~ "            [-F [[anv√§ndare@]v√§rd:]arkiv] [--file=[[anv√§ndare@]v√§rd:]"
+#~ "Anv‰ndning: %s {-o|--create} [-0acvABLV] [-C byte] [-H format]\n"
+#~ "            [-M meddelande] [-O [[anv‰ndare@]v‰rd:]arkiv]\n"
+#~ "            [-F [[anv‰ndare@]v‰rd:]arkiv] [--file=[[anv‰ndare@]v‰rd:]"
 #~ "arkiv]\n"
 #~ "            [--format=format] [--message=meddelande] [--null]\n"
 #~ "            [--reset-access-time] [--verbose] [--dot] [--append]\n"
@@ -1757,7 +1051,7 @@ msgstr "--stat kr√§ver filnamn"
 #~ "            [--force-local] [--help] [--version] < namnlista [> arkiv]\n"
 
 #~ msgid "Premature end of regular expression"
-#~ msgstr "F√∂r tidigt slut av regulj√§rt uttryck"
+#~ msgstr "Fˆr tidigt slut av regulj‰rt uttryck"
 
 #~ msgid ""
 #~ "       %s {-r|--read} {-w|--write} [-cdnv] [-f archive] [-s replacement]\n"
@@ -1768,34 +1062,34 @@ msgstr "--stat kr√§ver filnamn"
 #~ "       %s {-r|--read} {-w|--write} [-cdnv] [-f archive] [-s replacement]\n"
 #~ "       [--nonmatching] [--directories-only] [--first-pattern] [--"
 #~ "verbose]\n"
-#~ "       [--replace=ers√§ttning] [m√∂nster...] [< arkiv]\n"
+#~ "       [--replace=ers‰ttning] [mˆnster...] [< arkiv]\n"
 
 #~ msgid "block number = %d\n"
 #~ msgstr "blocknummer = %d\n"
 
 #~ msgid "Invalid character class name"
-#~ msgstr "Ogiltigt namn p√• teckenklass"
+#~ msgstr "Ogiltigt namn pÂ teckenklass"
 
 #~ msgid "drive type = %d\n"
 #~ msgstr "enhetstyp = %d\n"
 
 #~ msgid "unrecognized flag `%c' for -p; recognized flags are `aemop'"
-#~ msgstr "ok√§nd flagga \"%c\" f√∂r -p; k√§nda flaggor √§r \"aemop\""
+#~ msgstr "ok‰nd flagga \"%c\" fˆr -p; k‰nda flaggor ‰r \"aemop\""
 
 #~ msgid "ambiguous"
 #~ msgstr "tvetydig"
 
 #~ msgid "missing regexp"
-#~ msgstr "regulj√§rt uttryck saknas"
+#~ msgstr "regulj‰rt uttryck saknas"
 
 #~ msgid "1 block\n"
 #~ msgstr "1 block\n"
 
 #~ msgid "No match"
-#~ msgstr "Ingen tr√§ff"
+#~ msgstr "Ingen tr‰ff"
 
 #~ msgid "residue count = %d\n"
-#~ msgstr "√•terst√•r = %d\n"
+#~ msgstr "ÂterstÂr = %d\n"
 
 #~ msgid ""
 #~ "       %s {-p|--pass-through} [-0adlmuvLV] [-R [user][:.][group]]\n"
@@ -1806,14 +1100,14 @@ msgstr "--stat kr√§ver filnamn"
 #~ "       [--dereference] [--owner=[user][:.][group]] [--no-preserve-owner]\n"
 #~ "       [--sparse] [--help] [--version] destination-directory < name-list\n"
 #~ msgstr ""
-#~ "       %s {-p|--pass-through} [-0adlmuvLV] [-R [anv√§ndare][:.][grupp]]\n"
+#~ "       %s {-p|--pass-through} [-0adlmuvLV] [-R [anv‰ndare][:.][grupp]]\n"
 #~ "       [--null] [--reset-access-time] [--make-directories] [--link] [--"
 #~ "quiet]\n"
 #~ "       [--preserve-modification-time] [--unconditional] [--verbose] [--"
 #~ "dot]\n"
-#~ "       [--dereference] [--owner=[anv√§ndare][:.][grupp]] [--no-preserve-"
+#~ "       [--dereference] [--owner=[anv‰ndare][:.][grupp]] [--no-preserve-"
 #~ "owner]\n"
-#~ "       [--sparse] [--help] [--version] m√•lkatalog < namnlista\n"
+#~ "       [--sparse] [--help] [--version] mÂlkatalog < namnlista\n"
 
 #~ msgid "drive status = %d\n"
 #~ msgstr "enhetsstatus = %d\n"
@@ -1841,20 +1135,20 @@ msgstr "--stat kr√§ver filnamn"
 #~ msgstr ""
 #~ "       %s {-i|--extract} [-bcdfmnrtsuvBSV] [-C byte] [-E fil] [-H "
 #~ "format]\n"
-#~ "       [-M meddelande] [-R [anv√§ndare][:.][grupp]]\n"
-#~ "       [-I [[anv√§ndare@]v√§rd:]arkiv] [-F [[anv√§ndare@]v√§rd:]arkiv]\n"
-#~ "       [--file=[[anv√§ndare@]v√§rd:]arkiv] [--make-directories] [--"
+#~ "       [-M meddelande] [-R [anv‰ndare][:.][grupp]]\n"
+#~ "       [-I [[anv‰ndare@]v‰rd:]arkiv] [-F [[anv‰ndare@]v‰rd:]arkiv]\n"
+#~ "       [--file=[[anv‰ndare@]v‰rd:]arkiv] [--make-directories] [--"
 #~ "nonmatching]\n"
 #~ "       [--preserve-modification-time] [--numeric-uid-gid] [--rename] [--"
 #~ "list]\n"
 #~ "       [--swap-bytes] [--swap] [--dot] [--unconditional] [--verbose]\n"
 #~ "       [--block-size=block] [--swap-halfwords] [--io-size=byte]\n"
-#~ "       [--pattern-file=fil] [--format=format] [--owner=[anv√§ndare][:.]"
+#~ "       [--pattern-file=fil] [--format=format] [--owner=[anv‰ndare][:.]"
 #~ "[grupp]]\n"
 #~ "       [--no-preserve-owner] [--message=meddelande] [--force-local]\n"
 #~ "       [--no-absolute-filenames] [--sparse] [--only-verify-crc] [--"
 #~ "quiet]\n"
-#~ "       [--help] [--version] [m√∂nster...] [< arkiv]\n"
+#~ "       [--help] [--version] [mˆnster...] [< arkiv]\n"
 
 #~ msgid ""
 #~ "       %s {-r|--read} [-cdiknuv] [-f archive] [-s replacement]\n"
@@ -1862,13 +1156,16 @@ msgstr "--stat kr√§ver filnamn"
 #~ "verbose]\n"
 #~ "       [--replace=replacement] [pattern...] [< archive]\n"
 #~ msgstr ""
-#~ "       %s {-r|--read} [-cdiknuv] [-f arkiv] [-s ers√§ttning]\n"
+#~ "       %s {-r|--read} [-cdiknuv] [-f arkiv] [-s ers‰ttning]\n"
 #~ "       [--nonmatching] [--directories-only] [--first-pattern] [--"
 #~ "verbose]\n"
-#~ "       [--replace=ers√§ttning] [m√∂nster...] [< arkiv]\n"
+#~ "       [--replace=ers‰ttning] [mˆnster...] [< arkiv]\n"
 
 #~ msgid "drive status (low) = %d\n"
-#~ msgstr "enhetsstatus (l√•g) = %d\n"
+#~ msgstr "enhetsstatus (lÂg) = %d\n"
+
+#~ msgid "Invalid collation character"
+#~ msgstr "Ogiltigt kollationeringstecken"
 
 #~ msgid "Unmatched \\{"
 #~ msgstr "Ensamt \\{"
@@ -1877,25 +1174,25 @@ msgstr "--stat kr√§ver filnamn"
 #~ msgstr "Ensamt ) eller \\)"
 
 #~ msgid "Invalid preceding regular expression"
-#~ msgstr "Ogiltigt f√∂reg√•ende regulj√§rt uttryck"
+#~ msgstr "Ogiltigt fˆregÂende regulj‰rt uttryck"
 
 #~ msgid "null regexp"
-#~ msgstr "tomt regulj√§rt uttryck"
+#~ msgstr "tomt regulj‰rt uttryck"
 
 #~ msgid "%s already exists; not created"
 #~ msgstr "%s finns redan; skapades inte"
 
 #~ msgid "Invalid back reference"
-#~ msgstr "Ogiltig bak√•treferens"
+#~ msgstr "Ogiltig bakÂtreferens"
 
 #~ msgid ""
 #~ "Usage: %s [-cdnv] [-f archive] [-s replacement] [--nonmatching]\n"
 #~ "       [--directories-only] [--first-pattern] [--verbose]\n"
 #~ "       [--replace=replacement] [pattern...] [< archive]\n"
 #~ msgstr ""
-#~ "Anv√§ndning: %s [-cdnv] [-f arkiv] [-s ers√§ttning] [--nonmatching]\n"
+#~ "Anv‰ndning: %s [-cdnv] [-f arkiv] [-s ers‰ttning] [--nonmatching]\n"
 #~ "            [--directories-only] [--first-pattern] [--verbose]\n"
-#~ "            [--replace=ers√§ttning] [m√∂nster...] [< arkiv]\n"
+#~ "            [--replace=ers‰ttning] [mˆnster...] [< arkiv]\n"
 
 #~ msgid "Unmatched ( or \\("
 #~ msgstr "Ensamt ( eller \\("
@@ -1910,19 +1207,25 @@ msgstr "--stat kr√§ver filnamn"
 #~ msgstr "GNU pax version %s\n"
 
 #~ msgid "Invalid content of \\{\\}"
-#~ msgstr "Ogiltigt inneh√•ll i \\{\\}"
+#~ msgstr "Ogiltigt innehÂll i \\{\\}"
+
+#~ msgid "Invalid range end"
+#~ msgstr "Ogiltigt slut pÂ intervall"
 
 #~ msgid "sense key error = %d\n"
 #~ msgstr "sense-nyckelfel = %d\n"
 
 #~ msgid "Trailing backslash"
-#~ msgstr "Avslutande omv√§nt snedstreck"
+#~ msgstr "Avslutande omv‰nt snedstreck"
 
 #~ msgid "can not omit both user and group"
-#~ msgstr "kan inte utel√§mna b√•de anv√§ndare och grupp"
+#~ msgstr "kan inte utel‰mna bÂde anv‰ndare och grupp"
+
+#~ msgid "Invalid regular expression"
+#~ msgstr "Ogiltigt regulj‰rt uttryck"
 
 #~ msgid "No previous regular expression"
-#~ msgstr "Det finns inget tidigare regulj√§rt uttryck"
+#~ msgstr "Det finns inget tidigare regulj‰rt uttryck"
 
 #~ msgid ""
 #~ "       %s {-w|--write} [-cdnv] [-f archive] [-s replacement]\n"
@@ -1930,16 +1233,16 @@ msgstr "--stat kr√§ver filnamn"
 #~ "verbose]\n"
 #~ "       [--replace=replacement] [pattern...] [< archive]\n"
 #~ msgstr ""
-#~ "       %s {-w|--write} [-cdnv] [-f arkiv] [-s ers√§ttning]\n"
+#~ "       %s {-w|--write} [-cdnv] [-f arkiv] [-s ers‰ttning]\n"
 #~ "       [--nonmatching] [--directories-only] [--first-pattern] [--"
 #~ "verbose]\n"
-#~ "       [--replace=ers√§ttning] [m√∂nster...] [< arkiv]\n"
+#~ "       [--replace=ers‰ttning] [mˆnster...] [< arkiv]\n"
 
 #~ msgid "drive status (high) = %d\n"
-#~ msgstr "enhetsstatus (h√∂g) = %d\n"
+#~ msgstr "enhetsstatus (hˆg) = %d\n"
 
 #~ msgid "%s while compiling pattern"
-#~ msgstr "%s vid kompilering av m√∂nster"
+#~ msgstr "%s vid kompilering av mˆnster"
 
 #~ msgid "invalid regexp modifier `%c'"
-#~ msgstr "Ogiltig modifierare av regulj√§rt uttryck \"%c\""
+#~ msgstr "Ogiltig modifierare av regulj‰rt uttryck \"%c\""

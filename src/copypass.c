@@ -1,10 +1,10 @@
 /* copypass.c - cpio copy pass sub-function.
-   Copyright (C) 1990, 1991, 1992, 2001, 2003, 2004, 2006, 2007, 2010
-   Free Software Foundation, Inc.
+   Copyright (C) 1990, 1991, 1992, 2001, 2003, 2004,
+   2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -38,7 +38,7 @@ static void
 set_copypass_perms (int fd, const char *name, struct stat *st)
 {
   struct cpio_file_stat header;
-  header.c_name = (char*)name;
+  header.c_name = name;
   stat_to_cpio (&header, st);
   set_perms (fd, &header);
 }
@@ -64,7 +64,7 @@ process_copy_pass ()
   int cdf_char;
 #endif
 
-  newdir_umask = umask (0);     /* Reset umask to preserve modes of
+  umask (0);                    /* Reset umask to preserve modes of
 				   created files  */
 
   /* Initialize the copy pass.  */
@@ -221,11 +221,50 @@ process_copy_pass ()
 	}
       else if (S_ISDIR (in_file_stat.st_mode))
 	{
-	  struct cpio_file_stat file_stat;
-	  
-	  stat_to_cpio (&file_stat, &in_file_stat);
-	  file_stat.c_name = output_name.ds_string;
-	  cpio_create_dir (&file_stat, existing_dir);
+#ifdef HPUX_CDF
+	  cdf_flag = 0;
+#endif
+	  if (!existing_dir)
+	    {
+#ifdef HPUX_CDF
+	      /* If the directory name ends in a + and is SUID,
+		 then it is a CDF.  Strip the trailing + from the name
+		 before creating it.  */
+	      cdf_char = strlen (output_name.ds_string) - 1;
+	      if ( (cdf_char > 0) &&
+		   (in_file_stat.st_mode & 04000) &&
+		   (output_name.ds_string [cdf_char] == '+') )
+		{
+		  output_name.ds_string [cdf_char] = '\0';
+		  cdf_flag = 1;
+		}
+#endif
+	      res = mkdir (output_name.ds_string, in_file_stat.st_mode);
+
+	    }
+	  else
+	    res = 0;
+	  if (res < 0 && create_dir_flag)
+	    {
+	      create_all_directories (output_name.ds_string);
+	      res = mkdir (output_name.ds_string, in_file_stat.st_mode);
+	    }
+	  if (res < 0)
+	    {
+	      /* In some odd cases where the output_name includes `.',
+	         the directory may have actually been created by
+	         create_all_directories(), so the mkdir will fail
+	         because the directory exists.  If that's the case,
+	         don't complain about it.  */
+	      if ( (errno != EEXIST) ||
+      		   (lstat (output_name.ds_string, &out_file_stat) != 0) ||
+	           !(S_ISDIR (out_file_stat.st_mode) ) )
+		{
+		  stat_error (output_name.ds_string);
+		  continue;
+		}
+	    }
+	  set_copypass_perms (-1, output_name.ds_string, &in_file_stat);
 	}
       else if (S_ISCHR (in_file_stat.st_mode) ||
 	       S_ISBLK (in_file_stat.st_mode) ||
@@ -325,16 +364,10 @@ process_copy_pass ()
 
   if (dot_flag)
     fputc ('\n', stderr);
-
-  apply_delayed_set_stat ();
-  
   if (!quiet_flag)
     {
-      size_t blocks = (output_bytes + io_block_size - 1) / io_block_size;
-      fprintf (stderr,
-	       ngettext ("%lu block\n", "%lu blocks\n",
-			 (unsigned long) blocks),
-	       (unsigned long) blocks);
+      res = (output_bytes + io_block_size - 1) / io_block_size;
+      fprintf (stderr, ngettext ("%d block\n", "%d blocks\n", res), res);
     }
 }
 
@@ -348,7 +381,7 @@ process_copy_pass ()
 
 int
 link_to_maj_min_ino (char *file_name, int st_dev_maj, int st_dev_min,
-		     ino_t st_ino)
+		     int st_ino)
 {
   int	link_res;
   char *link_name;

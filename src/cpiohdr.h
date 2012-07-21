@@ -1,9 +1,9 @@
 /* Extended cpio header from POSIX.1.
-   Copyright (C) 1992, 2006, 2007, 2010 Free Software Foundation, Inc.
+   Copyright (C) 1992, 2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -22,40 +22,21 @@
 
 #include <cpio.h>
 
-#ifdef HAVE_ATTRIB_PACKED
-#define ATTRIB_PACKED __attribute__((packed))
-#endif
-
-#ifdef HAVE_PRAGMA_PACK
-#pragma pack(1)
-#endif
-
-#ifdef HAVE_PRAGMA_PACK_HPPA
-#pragma pack 1
-#endif
-
 struct old_cpio_header
 {
   unsigned short c_magic;
-  unsigned short c_dev;
+  short c_dev;
   unsigned short c_ino;
   unsigned short c_mode;
   unsigned short c_uid;
   unsigned short c_gid;
   unsigned short c_nlink;
-  unsigned short c_rdev;
+  short c_rdev;
   unsigned short c_mtimes[2];
   unsigned short c_namesize;
   unsigned short c_filesizes[2];
-} ATTRIB_PACKED;
+};
 
-#ifdef HAVE_PRAGMA_PACK
-#pragma pack(1)
-#endif
-
-#ifdef HAVE_PRAGMA_PACK_HPPA
-#pragma pack 1
-#endif
 struct old_ascii_header
 {
   char c_magic[6];
@@ -69,7 +50,7 @@ struct old_ascii_header
   char c_mtime[11];
   char c_namesize[6];
   char c_filesize[11];
-} ATTRIB_PACKED;
+};
 
 /* "New" portable format and CRC format:
 
@@ -81,13 +62,6 @@ struct old_ascii_header
 /* All the fields in the header are ISO 646 (approximately ASCII) strings
    of hexadecimal numbers, left padded, not NUL terminated: */
 
-#ifdef HAVE_PRAGMA_PACK
-#pragma pack(1)
-#endif
-
-#ifdef HAVE_PRAGMA_PACK_HPPA
-#pragma pack 1
-#endif
 struct new_ascii_header
 {
   char c_magic[6];     /* "070701" for "new" portable format
@@ -106,7 +80,7 @@ struct new_ascii_header
   char c_namesize[8];  /* count includes terminating NUL in pathname */
   char c_chksum[8];    /* 0 for "new" portable format; for CRC format
 			  the sum of all the bytes in the file  */
-} ATTRIB_PACKED;
+};
 
 struct cpio_file_stat /* Internal representation of a CPIO header */
 {

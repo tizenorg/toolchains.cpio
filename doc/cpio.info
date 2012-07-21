@@ -1,14 +1,13 @@
-This is cpio.info, produced by makeinfo version 4.13 from cpio.texi.
+This is cpio.info, produced by makeinfo version 4.8 from cpio.texi.
 
 INFO-DIR-SECTION Archiving
 START-INFO-DIR-ENTRY
 * Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
 END-INFO-DIR-ENTRY
 
-   This manual documents GNU cpio (version 2.11, 12 February 2010).
+   This manual documents GNU cpio (version 2.8, 7 June 2007).
 
-   Copyright (C) 1995, 2001, 2002, 2004, 2010 Free Software Foundation,
-Inc.
+   Copyright (C) 1995, 2001, 2002, 2004 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -31,7 +30,7 @@ cpio
 GNU cpio is a tool for creating and extracting archives, or copying
 files from one place to another.  It handles a number of cpio formats as
 well as reading and writing tar files.  This is the first edition of the
-GNU cpio documentation and is consistent with 2.11.
+GNU cpio documentation and is consistent with 2.8.
 
 * Menu:
 
@@ -175,7 +174,7 @@ unreadable.  *Note Options::.
      cpio {-o|--create} [-0acvABLV] [-C bytes] [-H format]
      [-M message] [-O [[user@]host:]archive] [-F [[user@]host:]archive]
      [--file=[[user@]host:]archive] [--format=format]
-     [--message=message] [--null] [--reset-access-time] [--verbose]
+     [--message=message][--null] [--reset-access-time] [--verbose]
      [--dot] [--append] [--block-size=blocks] [--dereference]
      [--io-size=bytes] [--rsh-command=command] [--help] [--version]
      < name-list [> archive]
@@ -205,8 +204,8 @@ extracted.  *Note Options::.
      [--swap-halfwords] [--io-size=bytes] [--pattern-file=file]
      [--format=format] [--owner=[user][:.][group]]
      [--no-preserve-owner] [--message=message] [--help] [--version]
-     [--no-absolute-filenames] [--sparse] [-only-verify-crc] [--to-stdout]
-     [-quiet] [--rsh-command=command] [pattern...] [< archive]
+     [--no-absolute-filenames] [--sparse] [-only-verify-crc] [-quiet]
+     [--rsh-command=command] [pattern...] [< archive]
 
 
 File: cpio.info,  Node: Copy-pass mode,  Next: Options,  Prev: Copy-in mode,  Up: Invoking cpio
@@ -304,31 +303,30 @@ File: cpio.info,  Node: Options,  Prev: Copy-pass mode,  Up: Invoking cpio
 
 `-H FORMAT'
 `--format=FORMAT'
-     Use archive format FORMAT.  The valid formats are listed below
-     with file size limits for individual files in parentheses; the same
-     names are also recognized in all-caps.  The default in copy-in
-     mode is to automatically detect the archive format, and in
+     Use archive format FORMAT.  The valid formats are listed below;
+     the same names are also recognized in all-caps.  The default in
+     copy-in mode is to automatically detect the archive format, and in
      copy-out mode is `bin'.
 
     `bin'
-          The obsolete binary format. (2147483647 bytes)
+          The obsolete binary format.
 
     `odc'
-          The old (POSIX.1) portable format. (8589934591 bytes)
+          The old (POSIX.1) portable format.
 
     `newc'
           The new (SVR4) portable format, which supports file systems
-          having more than 65536 i-nodes. (4294967295 bytes)
+          having more than 65536 i-nodes.
 
     `crc'
           The new (SVR4) portable format with a checksum added.
 
     `tar'
-          The old tar format. (8589934591 bytes)
+          The old tar format.
 
     `ustar'
           The POSIX.1 tar format.  Also recognizes GNU tar archives,
-          which are similar but not identical. (8589934591 bytes)
+          which are similar but not identical.
 
     `hpbin'
           The obsolete binary format used by HPUX's cpio (which stores
@@ -458,10 +456,6 @@ File: cpio.info,  Node: Options,  Prev: Copy-pass mode,  Up: Invoking cpio
 `--list'
      Print a table of contents of the input.
 
-`--to-stdout'
-     Extract files to standard output.  This option may be used in
-     copy-in mode.
-
 `-u'
 `--unconditional'
      Replace all files, without asking whether to replace existing
@@ -547,16 +541,16 @@ Concept Index
 
 
 Tag Table:
-Node: Top1021
-Node: Introduction1803
-Node: Tutorial2519
-Node: Invoking cpio6190
-Node: Copy-out mode6381
-Node: Copy-in mode7312
-Node: Copy-pass mode8711
-Node: Options9510
-Node: Media17631
-Node: Reports18610
-Node: Concept Index19241
+Node: Top1008
+Node: Introduction1789
+Node: Tutorial2505
+Node: Invoking cpio6176
+Node: Copy-out mode6367
+Node: Copy-in mode7297
+Node: Copy-pass mode8682
+Node: Options9481
+Node: Media17343
+Node: Reports18322
+Node: Concept Index18953
 
 End Tag Table

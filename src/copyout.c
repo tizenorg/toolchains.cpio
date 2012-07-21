@@ -1,10 +1,10 @@
 /* copyout.c - create a cpio archive
-   Copyright (C) 1990, 1991, 1992, 2001, 2003, 2004, 2006, 2007, 2009,
-   2010 Free Software Foundation, Inc.
+   Copyright (C) 1990, 1991, 1992, 2001, 2003, 2004,
+   2006 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -33,10 +33,10 @@
 /* Read FILE_SIZE bytes of FILE_NAME from IN_FILE_DES and
    compute and return a checksum for them.  */
 
-static unsigned long
+static unsigned int
 read_for_checksum (int in_file_des, int file_size, char *file_name)
 {
-  unsigned long crc;
+  unsigned int crc;
   char buf[BUFSIZ];
   int bytes_left;
   int bytes_read;
@@ -110,7 +110,7 @@ static int
 count_defered_links_to_dev_ino (struct cpio_file_stat *file_hdr)
 {
   struct deferment *d;
-  ino_t	ino;
+  int	ino;
   int 	maj;
   int   min;
   int 	count;
@@ -167,7 +167,7 @@ writeout_other_defers (struct cpio_file_stat *file_hdr, int out_des)
 {
   struct deferment *d;
   struct deferment *d_prev;
-  ino_t	ino;
+  int	ino;
   int 	maj;
   int   min;
   ino = file_hdr->c_ino;
@@ -595,6 +595,7 @@ assign_string (char **pvar, char *value)
 void
 process_copy_out ()
 {
+  int res;			/* Result of functions.  */
   dynamic_string input_name;	/* Name of file read from stdin.  */
   struct stat file_stat;	/* Stat record for file.  */
   struct cpio_file_stat file_hdr; /* Output header information.  */
@@ -888,10 +889,8 @@ process_copy_out ()
     fputc ('\n', stderr);
   if (!quiet_flag)
     {
-      size_t blocks = (output_bytes + io_block_size - 1) / io_block_size;
-      fprintf (stderr,
-	       ngettext ("%lu block\n", "%lu blocks\n",
-			 (unsigned long) blocks), (unsigned long) blocks);
+      res = (output_bytes + io_block_size - 1) / io_block_size;
+      fprintf (stderr, ngettext ("%d block\n", "%d blocks\n", res), res);
     }
 }
 
