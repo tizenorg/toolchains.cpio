@@ -1,9 +1,5 @@
 * Mon Jul 23 2012 Anas Nashif <anas.nashif@intel.com> 30a3c52
 - downgrade to 2.8 (GPLv2)
-[ Ryan Ware ]
 - Add default Smack manifest for cpio.spec
-[ Kim Kibum ]
 - Upload Tizen:Base source
-[ Hyesook Choi ]
 - Initial empty repository
-
