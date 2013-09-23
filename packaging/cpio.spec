@@ -27,8 +27,6 @@ Install cpio if you need a program to manage file archives.
 %prep
 %setup -q
 
-
-
 %build
 cp %{SOURCE1001} .
 export ac_cv_prog_cc_c99=no
@@ -41,12 +39,13 @@ make %{?_smp_mflags}
 mkdir -p %{buildroot}%{_mandir}/man1
 cp -a %{SOURCE1} %{buildroot}%{_mandir}/man1
 
-
 mkdir -p %{buildroot}/bin
 ln -sf ../usr/bin/cpio %{buildroot}/bin/
 rm -rf %{buildroot}%{_prefix}/libexec/rmt
 
-
+# license
+mkdir -p %{buildroot}/usr/share/license
+cp COPYING %{buildroot}/usr/share/license/%{name}
 
 %docs_package
 
@@ -55,5 +54,4 @@ rm -rf %{buildroot}%{_prefix}/libexec/rmt
 %doc COPYING
 %{_bindir}/*
 /bin/cpio
-
-
+/usr/share/license/%{name}
