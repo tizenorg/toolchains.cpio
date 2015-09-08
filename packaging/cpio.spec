@@ -1,7 +1,7 @@
 Name:           cpio
 Version:        2.8
-Release:        3
-License:        GPL-3.0+
+Release:        4
+License:        GPL-2.0+
 Summary:        A GNU archiving program
 Url:            http://www.gnu.org/software/cpio/
 Group:          Applications/Archiving
@@ -44,15 +44,17 @@ cp -a %{SOURCE1} %{buildroot}%{_mandir}/man1
 
 mkdir -p %{buildroot}/bin
 ln -sf ../usr/bin/cpio %{buildroot}/bin/
-rm -rf %{buildroot}%{_prefix}/libexec/rmt
+rm -rf %{buildroot}%{_libexecdir}/rmt
 
-
+mkdir -p %{buildroot}%{_datadir}/license
+cat COPYING >> %{buildroot}%{_datadir}/license/%{name}
 
 %docs_package
 
 %files
 %manifest cpio.manifest
 %doc COPYING
+%{_datadir}/license/%{name}
 %{_bindir}/*
 /bin/cpio
 
