@@ -1,6 +1,6 @@
 Name:           cpio
 Version:        2.8
-Release:        4
+Release:        3
 License:        GPL-2.0+
 Summary:        A GNU archiving program
 Url:            http://www.gnu.org/software/cpio/
